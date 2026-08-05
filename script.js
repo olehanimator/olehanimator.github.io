@@ -1,0 +1,1 @@
+document.getElementById('year').textContent=new Date().getFullYear();document.querySelector('.play').addEventListener('click',()=>alert('Showreel placeholder — the real video will be connected here.'));

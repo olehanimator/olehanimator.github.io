@@ -10,7 +10,19 @@
 <body>
 <header class="topbar wrap">
   <a class="logo" href="#top">OL</a>
-  <nav><a href="#projects">Projects</a><a href="#about">About</a><a href="#cv">CV</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a></nav>
+  <div class="topbar-right">
+    <nav>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#cv">CV</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+    </nav>
+    <div class="language-switcher" aria-label="Language selector">
+      <button type="button" data-lang="en" class="active" aria-pressed="true">EN</button>
+      <button type="button" data-lang="de" aria-pressed="false">DE</button>
+      <button type="button" data-lang="uk" aria-pressed="false">UA</button>
+    </div>
+  </div>
 </header>
 <main id="top">
   <section class="hero wrap">
@@ -18,33 +30,33 @@
       <img src="assets/hero.svg" alt="Abstract cinematic showreel placeholder">
       <div class="shade"></div>
       <div class="hero-copy">
-        <p class="eyebrow">3D Artist · Technical Artist</p>
+        <p class="eyebrow" data-i18n="hero.role">3D Artist · Technical Artist</p>
         <h1>Oleh<br>Lytvynenko</h1>
-        <p>I create animation, interactive experiences<br>and technical visualization.</p>
-        <span>● Nürnberg, Germany</span>
+        <p data-i18n-html="hero.intro">I create animation, interactive experiences<br>and technical visualization.</p>
+        <span data-i18n="hero.location">● Nürnberg, Germany</span>
       </div>
       <button class="play" aria-label="Play showreel">▶</button>
-      <div class="reel-label"><strong>Showreel</strong><span>coming soon</span></div>
+      <div class="reel-label"><strong data-i18n="hero.showreel">Showreel</strong><span data-i18n="hero.comingSoon">coming soon</span></div>
       <div class="controls"><span>▶</span><span>00:00</span><i></i><span>01:18</span><span>◖</span><span>⚙</span><span>⛶</span></div>
     </div>
   </section>
 
   <section id="projects" class="wrap projects">
-    <p class="section-label">Selected work</p>
+    <p class="section-label" data-i18n="projects.label">Selected work</p>
     <div class="project-grid">
-      <article class="project-card blue"><img src="assets/interactive.svg" alt="Interactive experiences placeholder"><div><span>01</span><h2>Interactive<br>Experiences</h2><p>Interactive 3D solutions, WebAR, configurators and real-time applications.</p><a href="#interactive">→</a></div></article>
-      <article class="project-card orange"><img src="assets/animation.svg" alt="Animation placeholder"><div><span>02</span><h2>Animation</h2><p>2D and 3D animation, motion design, character animation and storytelling.</p><a href="#animation">→</a></div></article>
-      <article class="project-card green"><img src="assets/game.svg" alt="Game development placeholder"><div><span>03</span><h2>Game<br>Development</h2><p>Game design, artwork, animation and development for engaging experiences.</p><a href="#games">→</a></div></article>
+      <article class="project-card blue"><img src="assets/interactive.svg" alt="Interactive experiences placeholder"><div><span>01</span><h2 data-i18n-html="projects.interactive.title">Interactive<br>Experiences</h2><p data-i18n="projects.interactive.text">Interactive 3D solutions, WebAR, configurators and real-time applications.</p><a href="#interactive">→</a></div></article>
+      <article class="project-card orange"><img src="assets/animation.svg" alt="Animation placeholder"><div><span>02</span><h2 data-i18n="projects.animation.title">Animation</h2><p data-i18n="projects.animation.text">2D and 3D animation, motion design, character animation and storytelling.</p><a href="#animation">→</a></div></article>
+      <article class="project-card green"><img src="assets/game.svg" alt="Game development placeholder"><div><span>03</span><h2 data-i18n-html="projects.game.title">Game<br>Development</h2><p data-i18n="projects.game.text">Game design, artwork, animation and development for engaging experiences.</p><a href="#games">→</a></div></article>
     </div>
   </section>
 
   <section id="about" class="about wrap">
-    <div class="portrait">Portrait</div>
-    <div><p class="eyebrow accent">About me</p><p>I’m a 3D Artist and Technical Artist with a background in animation, interactive media and game development. I combine artistic vision with technical expertise to create engaging visual experiences.</p><p>I enjoy solving complex challenges and bringing ideas to life through animation, real-time technologies and interactive design.</p></div>
-    <div class="contact"><p>✉ your-email@example.com</p><p>● Nürnberg, Germany</p><p>◎ English · Ukrainian · Russian</p><a id="cv" href="#">⇩ Download CV</a></div>
+    <div class="portrait" data-i18n="about.portrait">Portrait</div>
+    <div><p class="eyebrow accent" data-i18n="about.title">About me</p><p data-i18n="about.p1">I’m a 3D Artist and Technical Artist with a background in animation, interactive media and game development. I combine artistic vision with technical expertise to create engaging visual experiences.</p><p data-i18n="about.p2">I enjoy solving complex challenges and bringing ideas to life through animation, real-time technologies and interactive design.</p></div>
+    <div class="contact"><p>✉ your-email@example.com</p><p data-i18n="about.location">● Nürnberg, Germany</p><p data-i18n="about.languages">◎ English · Ukrainian · Russian</p><a id="cv" href="#" data-i18n="about.cv">⇩ Download CV</a></div>
   </section>
 </main>
-<footer class="wrap"><span>© <b id="year"></b> Oleh Lytvynenko</span><span>All rights reserved</span></footer>
+<footer class="wrap"><span>© <b id="year"></b> Oleh Lytvynenko</span><span data-i18n="footer.rights">All rights reserved</span></footer>
 <script src="script.js"></script>
 </body>
 </html>

@@ -9,9 +9,9 @@ const translations={
     "projects.animation.title":"Animation","projects.animation.text":"2D and 3D animation, motion design, character animation and storytelling.",
     "projects.game.title":"Game<br>Development","projects.game.text":"Game design, artwork, animation and development for engaging experiences.",
     "about.portrait":"Portrait","about.title":"About me",
-    "about.p1":"I’m a 3D Artist and Technical Artist with a background in animation, interactive media and game development. I combine artistic vision with technical expertise to create engaging visual experiences.",
-    "about.p2":"I enjoy solving complex challenges and bringing ideas to life through animation, real-time technologies and interactive design.",
-    "about.location":"● Nürnberg, Germany","about.languages":"◎ English · Ukrainian · Russian","about.cv":"⇩ Download CV",
+    "about.p1":"I’m a 3D Artist and Technical Artist with experience in 3D graphics, animation, interactive applications and game development. In my work, I combine an artistic approach with technical thinking—creating visual content, real-time solutions, technical visualizations and interactive projects.",
+    "about.p2":"I enjoy exploring complex challenges, seeing the project as a whole, finding the right balance between visual quality and technical constraints, and turning ideas into clear, working solutions.",
+    "about.location":"● Nürnberg, Germany","about.languages":"◎ German · English · Ukrainian · Russian","about.cv":"⇩ Download CV",
     "footer.rights":"All rights reserved","showreel.alert":"Showreel placeholder — the real video will be connected here."
   },
   de:{
@@ -24,9 +24,9 @@ const translations={
     "projects.animation.title":"Animation","projects.animation.text":"2D- und 3D-Animation, Motion Design, Character Animation und visuelles Storytelling.",
     "projects.game.title":"Game<br>Development","projects.game.text":"Game Design, Grafik, Animation und Entwicklung für überzeugende Spielerlebnisse.",
     "about.portrait":"Porträt","about.title":"Über mich",
-    "about.p1":"Ich bin 3D Artist und Technical Artist mit Erfahrung in Animation, interaktiven Medien und Game Development. Ich verbinde gestalterische Vision mit technischem Know-how, um überzeugende visuelle Erlebnisse zu entwickeln.",
-    "about.p2":"Ich löse gerne komplexe Aufgaben und setze Ideen mit Animation, Echtzeittechnologien und interaktivem Design um.",
-    "about.location":"● Nürnberg, Deutschland","about.languages":"◎ Englisch · Ukrainisch · Russisch","about.cv":"⇩ CV herunterladen",
+    "about.p1":"Ich bin 3D Artist und Technical Artist mit Erfahrung in 3D-Grafik, Animation, interaktiven Anwendungen und Game Development. In meiner Arbeit verbinde ich gestalterisches Denken mit einem technischen Ansatz und entwickle visuellen Content, Echtzeitlösungen, technische Visualisierungen und interaktive Projekte.",
+    "about.p2":"Ich arbeite mich gerne in komplexe Aufgaben ein, behalte das Gesamtbild eines Projekts im Blick, finde die passende Balance zwischen visueller Qualität und technischen Rahmenbedingungen und verwandle Ideen in klare, funktionierende Lösungen.",
+    "about.location":"● Nürnberg, Deutschland","about.languages":"◎ Deutsch · Englisch · Ukrainisch · Russisch","about.cv":"⇩ CV herunterladen",
     "footer.rights":"Alle Rechte vorbehalten","showreel.alert":"Showreel-Platzhalter — hier wird später das echte Video eingebunden."
   },
   uk:{
@@ -39,9 +39,9 @@ const translations={
     "projects.animation.title":"Анімація","projects.animation.text":"2D- і 3D-анімація, motion design, анімація персонажів та візуальний сторітелінг.",
     "projects.game.title":"Розробка<br>ігор","projects.game.text":"Геймдизайн, графіка, анімація та розробка захопливих ігрових проєктів.",
     "about.portrait":"Портрет","about.title":"Про мене",
-    "about.p1":"Я 3D Artist і Technical Artist із досвідом в анімації, інтерактивних медіа та розробці ігор. Я поєдную художнє бачення з технічною експертизою, щоб створювати виразні візуальні проєкти.",
-    "about.p2":"Мені подобається розв’язувати складні завдання та втілювати ідеї за допомогою анімації, технологій реального часу й інтерактивного дизайну.",
-    "about.location":"● Нюрнберг, Німеччина","about.languages":"◎ Англійська · Українська · Російська","about.cv":"⇩ Завантажити CV",
+    "about.p1":"Я 3D Artist і Technical Artist із досвідом у 3D-графіці, анімації, інтерактивних застосунках і розробці ігор. У своїй роботі я поєдную художній підхід із технічним мисленням — створюю візуальний контент, рішення реального часу, технічні візуалізації та інтерактивні проєкти.",
+    "about.p2":"Мені подобається розбиратися у складних завданнях, бачити проєкт цілісно, знаходити баланс між візуальною якістю й технічними обмеженнями та перетворювати ідеї на зрозумілі, робочі рішення.",
+    "about.location":"● Нюрнберг, Німеччина","about.languages":"◎ Німецька · Англійська · Українська · Російська","about.cv":"⇩ Завантажити CV",
     "footer.rights":"Усі права захищено","showreel.alert":"Це місце для шоурілу — пізніше тут буде підключено справжнє відео."
   }
 };

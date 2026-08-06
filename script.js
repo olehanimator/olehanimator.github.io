@@ -75,5 +75,25 @@ const savedLanguage=localStorage.getItem('portfolio-language');
 const browserLanguage=(navigator.language||'en').slice(0,2);
 setLanguage(savedLanguage||(['en','de','uk'].includes(browserLanguage)?browserLanguage:'en'));
 
+const portraitImage=document.querySelector('.portrait img');
+async function loadPortraitFallback(){
+  if(!portraitImage||portraitImage.dataset.fallbackLoading==='true') return;
+  portraitImage.dataset.fallbackLoading='true';
+  try{
+    const response=await fetch('https://api.github.com/repos/olehanimator/olehanimator.github.io/contents/assets/portrait.jpg?ref=main',{headers:{Accept:'application/vnd.github+json'}});
+    if(!response.ok) throw new Error(`Portrait request failed: ${response.status}`);
+    const data=await response.json();
+    const base64=String(data.content||'').replace(/\s/g,'');
+    if(!base64) throw new Error('Portrait data is empty');
+    portraitImage.src=`data:image/jpeg;base64,${base64}`;
+  }catch(error){
+    console.error('Could not load portrait image.',error);
+  }
+}
+if(portraitImage){
+  portraitImage.addEventListener('error',loadPortraitFallback,{once:true});
+  if(portraitImage.complete&&portraitImage.naturalWidth===0) loadPortraitFallback();
+}
+
 document.getElementById('year').textContent=new Date().getFullYear();
 document.querySelector('.play').addEventListener('click',()=>alert(translations[currentLanguage]['showreel.alert']));

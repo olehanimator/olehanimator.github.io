@@ -3,13 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Oleh Lytvynenko — 3D Artist and Technical Artist">
+  <meta name="description" content="Portfolio of Oleh Lytvynenko, a 3D Artist and Technical Artist working in 3D graphics, animation, interactive applications, real-time solutions and game development.">
+  <meta name="author" content="Oleh Lytvynenko">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://olehanimator.github.io/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Oleh Lytvynenko Portfolio">
+  <meta property="og:title" content="Oleh Lytvynenko — 3D Artist & Technical Artist">
+  <meta property="og:description" content="3D graphics, animation, interactive applications, real-time solutions and game development.">
+  <meta property="og:url" content="https://olehanimator.github.io/">
+  <meta property="og:image" content="https://olehanimator.github.io/assets/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Oleh Lytvynenko — 3D Artist & Technical Artist">
+  <meta name="twitter:description" content="3D graphics, animation, interactive applications, real-time solutions and game development.">
+  <meta name="twitter:image" content="https://olehanimator.github.io/assets/og-image.svg">
   <title>Oleh Lytvynenko — 3D Artist & Technical Artist</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="topbar wrap">
-  <a class="logo" href="#top">OL</a>
+  <a class="logo" href="#top" aria-label="Oleh Lytvynenko — home">OL</a>
   <div class="topbar-right">
     <nav>
       <a href="#projects" data-i18n="nav.projects">Projects</a>
@@ -44,22 +60,23 @@
   <section id="projects" class="wrap projects">
     <p class="section-label" data-i18n="projects.label">Selected work</p>
     <div class="project-grid">
-      <article class="project-card blue"><img src="assets/interactive.svg" alt="Interactive experiences placeholder"><div><span>01</span><h2 data-i18n-html="projects.interactive.title">Interactive<br>Experiences</h2><p data-i18n="projects.interactive.text">Interactive 3D solutions, WebAR, configurators and real-time applications.</p><a href="#interactive">→</a></div></article>
-      <article class="project-card orange"><img src="assets/animation.svg" alt="Animation placeholder"><div><span>02</span><h2 data-i18n="projects.animation.title">Animation</h2><p data-i18n="projects.animation.text">2D and 3D animation, motion design, character animation and storytelling.</p><a href="#animation">→</a></div></article>
-      <article class="project-card green"><img src="assets/game.svg" alt="Game development placeholder"><div><span>03</span><h2 data-i18n-html="projects.game.title">Game<br>Development</h2><p data-i18n="projects.game.text">Game design, artwork, animation and development for engaging experiences.</p><a href="#games">→</a></div></article>
+      <article class="project-card blue"><img src="assets/interactive.svg" alt="Interactive experiences placeholder"><div><span>01</span><h2 data-i18n-html="projects.interactive.title">Interactive<br>Experiences</h2><p data-i18n="projects.interactive.text">Interactive 3D solutions, WebAR, configurators and real-time applications.</p><a href="#interactive" aria-label="Interactive experiences">→</a></div></article>
+      <article class="project-card orange"><img src="assets/animation.svg" alt="Animation placeholder"><div><span>02</span><h2 data-i18n="projects.animation.title">Animation</h2><p data-i18n="projects.animation.text">2D and 3D animation, motion design, character animation and storytelling.</p><a href="#animation" aria-label="Animation">→</a></div></article>
+      <article class="project-card green"><img src="assets/game.svg" alt="Game development placeholder"><div><span>03</span><h2 data-i18n-html="projects.game.title">Game<br>Development</h2><p data-i18n="projects.game.text">Game design, artwork, animation and development for engaging experiences.</p><a href="#games" aria-label="Game development">→</a></div></article>
     </div>
   </section>
 
   <section id="about" class="about wrap">
-    <div class="portrait" data-i18n="about.portrait">Portrait</div>
-    <div><p class="eyebrow accent" data-i18n="about.title">About me</p><p data-i18n="about.p1">I’m a 3D Artist and Technical Artist with experience in 3D graphics, animation, interactive applications and game development. In my work, I combine an artistic approach with technical thinking—creating visual content, real-time solutions, technical visualizations and interactive projects.</p><p data-i18n="about.p2">I enjoy exploring complex challenges, seeing the project as a whole, finding the right balance between visual quality and technical constraints, and turning ideas into clear, working solutions.</p></div>
-    <div class="contact">
-      <p>✉ <a href="mailto:olehanimator@gmail.com">olehanimator@gmail.com</a></p>
-      <p>☎ <a href="tel:+491789136914">+49 178 9136914</a></p>
-      <p data-i18n="about.location">● Nürnberg, Germany</p>
-      <p data-i18n="about.languages">◎ German · English · Ukrainian · Russian</p>
-      <p><a href="https://www.linkedin.com/in/oleh-lytvynenko-2490a337" target="_blank" rel="noreferrer">LinkedIn ↗</a></p>
-      <a id="cv" href="#" data-i18n="about.cv">⇩ Download CV</a>
+    <div class="portrait"><img src="assets/portrait.jpg" alt="Portrait of Oleh Lytvynenko" width="240" height="240" loading="lazy"></div>
+    <div class="about-copy"><p class="eyebrow accent" data-i18n="about.title">About me</p><p data-i18n="about.p1">I’m a 3D Artist and Technical Artist with experience in 3D graphics, animation, interactive applications and game development. In my work, I combine an artistic approach with technical thinking—creating visual content, real-time solutions, technical visualizations and interactive projects.</p><p data-i18n="about.p2">I enjoy exploring complex challenges, seeing the project as a whole, finding the right balance between visual quality and technical constraints, and turning ideas into clear, working solutions.</p></div>
+    <div class="contact" aria-label="Contact details">
+      <p class="contact-label">Contact</p>
+      <a class="contact-row" href="mailto:olehanimator@gmail.com"><span>✉</span><span><small>Email</small>olehanimator@gmail.com</span></a>
+      <a class="contact-row" href="tel:+491789136914"><span>☎</span><span><small>Phone</small>+49 178 9136914</span></a>
+      <div class="contact-row static"><span>●</span><span><small>Location</small><span data-i18n="about.locationText">Nürnberg, Germany</span></span></div>
+      <a class="contact-row" href="https://www.linkedin.com/in/oleh-lytvynenko-2490a337" target="_blank" rel="noreferrer"><span>↗</span><span><small>LinkedIn</small>oleh-lytvynenko</span></a>
+      <p class="languages" data-i18n="about.languages">German · English · Ukrainian · Russian</p>
+      <a id="cv" class="cv-link disabled" href="#" aria-disabled="true" data-i18n="about.cvSoon">CV coming soon</a>
     </div>
   </section>
 </main>

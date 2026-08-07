@@ -1,0 +1,13 @@
+html,body{max-width:100%;overflow-x:clip}.contact-icon{width:22px;height:22px;display:grid;place-items:center;color:#cbd0d3}.contact-icon svg{display:block;width:20px;height:20px}.linkedin-icon{color:#e7e7e3}
+@media(max-width:700px){
+  :root{--mobile-gutter:16px}
+  .wrap{width:calc(100% - (var(--mobile-gutter) * 2));max-width:var(--max);margin-left:auto;margin-right:auto}
+  .topbar{width:calc(100% - (var(--mobile-gutter) * 2));min-width:0}
+  .topbar-right{min-width:0;max-width:calc(100% - 48px)}
+  .topbar nav{max-width:100%;justify-content:flex-end}
+  .hero,.projects,.about,footer{margin-left:auto;margin-right:auto}
+  .hero-card,.project-grid,.about{width:100%}
+  .project-card{max-width:100%}
+  .about{padding:14px}
+  footer{padding-left:0;padding-right:0}
+}

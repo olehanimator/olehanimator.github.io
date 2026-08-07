@@ -7,22 +7,107 @@
   <title>Project Template — Oleh Lytvynenko</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    .case{width:min(calc(100% - 48px),1100px);margin:0 auto;padding:56px 0 96px}.case-back{display:inline-flex;margin-bottom:48px;color:#a8adb0;text-decoration:none}.case h1{font-size:clamp(54px,8vw,96px);line-height:.9;letter-spacing:-.055em;margin:0 0 28px}.case-intro{max-width:760px;color:#cfd2d3;font-size:20px}.case-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:52px 0}.case-meta div{padding:18px;border:1px solid rgba(255,255,255,.1);border-radius:12px}.case-meta small{display:block;color:#7f878b;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}.case-media{aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:linear-gradient(135deg,#141b20,#0b0f12);display:grid;place-items:center;color:#697176;margin:40px 0}.case-section{max-width:780px;margin:64px 0}.case-section h2{font-size:30px;margin-bottom:14px}.case-section p{color:#cfd2d3}@media(max-width:700px){.case{width:calc(100% - 32px);padding-top:32px}.case-meta{grid-template-columns:1fr}.case-intro{font-size:17px}}
-  </style>
+  <link rel="stylesheet" href="project.css">
 </head>
-<body>
-  <main class="case">
-    <a class="case-back" href="/">← Back to portfolio</a>
-    <p class="eyebrow accent">Selected project</p>
-    <h1>Project<br>Title</h1>
-    <p class="case-intro">A concise project summary will go here: what the project was, what problem it solved and what made the work interesting.</p>
-    <div class="case-meta"><div><small>Role</small>3D / Technical Artist</div><div><small>Tools</small>Unity · Cinema 4D</div><div><small>Year</small>2026</div></div>
-    <div class="case-media">Project video / hero image</div>
-    <section class="case-section"><h2>Overview</h2><p>Short context about the project, goal and constraints.</p></section>
-    <section class="case-section"><h2>What I did</h2><p>Your concrete responsibilities, decisions and contribution.</p></section>
-    <div class="case-media">Additional video / image</div>
-    <section class="case-section"><h2>Result</h2><p>What was delivered, improved or learned.</p></section>
+<body class="project-page">
+  <header class="project-header project-shell">
+    <a class="project-home" href="/"><span>←</span><span>Portfolio</span></a>
+    <div class="language-switcher" aria-label="Language selector">
+      <button type="button" class="active" aria-pressed="true">EN</button>
+      <button type="button" aria-pressed="false">DE</button>
+      <button type="button" aria-pressed="false">UA</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="project-hero project-shell">
+      <p class="project-category">Interactive · Selected project</p>
+      <h1>Project<br>Title</h1>
+      <p class="project-lead">One clear sentence explaining what the project is, what makes it interesting, and why it matters.</p>
+
+      <div class="project-meta">
+        <div><small>Role</small><strong>3D Artist · Technical Artist</strong></div>
+        <div><small>Contribution</small><strong>Design · Animation · Development</strong></div>
+        <div><small>Tools</small><strong>Unity · Cinema 4D · C#</strong></div>
+        <div><small>Year</small><strong>2026</strong></div>
+      </div>
+
+      <div class="media-frame hero-media" aria-label="Hero project media placeholder">
+        <div class="media-placeholder">Main video / hero image</div>
+      </div>
+    </section>
+
+    <div class="project-content project-shell">
+      <aside class="project-index" aria-label="Project sections">
+        <p>Case study</p>
+        <a href="#overview">01 · Overview</a>
+        <a href="#challenge">02 · Challenge</a>
+        <a href="#work">03 · What I did</a>
+        <a href="#process">04 · Process</a>
+        <a href="#result">05 · Result</a>
+      </aside>
+
+      <div>
+        <section id="overview" class="project-section">
+          <p class="section-kicker">01 · Overview</p>
+          <h2>What the project was</h2>
+          <p>Short context: what was being built, who it was for, and what the final experience needed to do. This section should be concise and easy to scan.</p>
+        </section>
+
+        <section id="challenge" class="project-section">
+          <p class="section-kicker">02 · Challenge</p>
+          <h2>The problem to solve</h2>
+          <p>Describe the main creative or technical challenge. This is where the reader understands why the project required more than simply producing assets.</p>
+          <ul>
+            <li>Key visual or interaction constraint</li>
+            <li>Technical limitation or performance target</li>
+            <li>Production or workflow challenge</li>
+          </ul>
+        </section>
+
+        <section id="work" class="project-section">
+          <p class="section-kicker">03 · What I did</p>
+          <h2>My contribution</h2>
+          <p>Explain your own role clearly. Focus on decisions, responsibilities and concrete work rather than listing software.</p>
+          <ul>
+            <li>Designed and prepared the visual content</li>
+            <li>Built or integrated the real-time solution</li>
+            <li>Optimized assets and workflow for production</li>
+          </ul>
+        </section>
+
+        <div class="project-gallery" aria-label="Project media gallery placeholders">
+          <div class="media-frame wide"><div class="media-placeholder">Process video / wide image</div></div>
+          <div class="media-frame square"><div class="media-placeholder">Detail image</div></div>
+          <div class="media-frame square"><div class="media-placeholder">Detail image</div></div>
+        </div>
+
+        <section id="process" class="project-section">
+          <p class="section-kicker">04 · Process</p>
+          <h2>How the solution came together</h2>
+          <p>Use this area only when the process itself is interesting. It can show prototypes, animation tests, iterations, technical setup or before-and-after comparisons.</p>
+        </section>
+
+        <section id="result" class="project-result">
+          <p class="section-kicker">05 · Result</p>
+          <h2>The outcome</h2>
+          <p>Summarize what was delivered and what improved because of your work. When possible, use concrete outcomes instead of generic statements.</p>
+        </section>
+      </div>
+    </div>
+
+    <section class="next-project project-shell">
+      <div>
+        <small>Next project</small>
+        <a href="#">Project title</a>
+      </div>
+      <span class="arrow">→</span>
+    </section>
   </main>
+
+  <footer class="project-footer project-shell">
+    <span>© 2026 Oleh Lytvynenko</span>
+    <a class="project-home" href="/">Back to portfolio</a>
+  </footer>
 </body>
 </html>

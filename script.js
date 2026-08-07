@@ -75,5 +75,8 @@ const savedLanguage=localStorage.getItem('portfolio-language');
 const browserLanguage=(navigator.language||'en').slice(0,2);
 setLanguage(savedLanguage||(['en','de','uk'].includes(browserLanguage)?browserLanguage:'en'));
 
+const portraitImage=document.querySelector('.portrait img');
+if(portraitImage) portraitImage.src='assets/portrait-final.webp?v=2';
+
 document.getElementById('year').textContent=new Date().getFullYear();
 document.querySelector('.play').addEventListener('click',()=>alert(translations[currentLanguage]['showreel.alert']));

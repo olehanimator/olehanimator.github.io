@@ -1,9 +1,9 @@
-html,body{max-width:100%;overflow-x:clip}.contact-icon{width:22px;height:22px;display:grid;place-items:center;color:#cbd0d3}.contact-icon svg{display:block;width:20px;height:20px}.linkedin-icon{color:#e7e7e3}
+html,body{max-width:100%;overflow-x:clip}.logo-mark{width:40px;height:40px;display:grid;place-items:center;color:#f3f2ee;text-decoration:none}.logo-mark svg{display:block;width:34px;height:34px}.contact-icon{width:22px;height:22px;display:grid;place-items:center;color:#cbd0d3}.contact-icon svg{display:block;width:20px;height:20px}.linkedin-icon{width:22px;height:22px;border-radius:4px;background:#0A66C2;color:#fff;padding:3px}.linkedin-icon svg{width:16px;height:16px}.contact .contact-row:hover .linkedin-icon{background:#0A66C2}
 @media(max-width:700px){
   :root{--mobile-gutter:16px}
   .wrap{width:calc(100% - (var(--mobile-gutter) * 2));max-width:var(--max);margin-left:auto;margin-right:auto}
   .topbar{width:calc(100% - (var(--mobile-gutter) * 2));min-width:0}
-  .topbar-right{min-width:0;max-width:calc(100% - 48px)}
+  .topbar-right{min-width:0;max-width:calc(100% - 52px)}
   .topbar nav{max-width:100%;justify-content:flex-end}
   .hero,.projects,.about,footer{margin-left:auto;margin-right:auto}
   .hero-card,.project-grid,.about{width:100%}

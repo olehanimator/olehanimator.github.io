@@ -1,4 +1,4 @@
-html,body{max-width:100%;overflow-x:clip}.logo-mark{width:40px;height:40px;display:grid;place-items:center;color:#f3f2ee;text-decoration:none}.logo-mark svg{display:block;width:34px;height:34px}.contact-icon{width:22px;height:22px;display:grid;place-items:center;color:#cbd0d3}.contact-icon svg{display:block;width:20px;height:20px}.linkedin-icon{width:22px;height:22px;border-radius:4px;background:#0A66C2;color:#fff;padding:3px}.linkedin-icon svg{width:16px;height:16px}.contact .contact-row:hover .linkedin-icon{background:#0A66C2}
+html,body{max-width:100%;overflow-x:clip}.logo-mark{width:40px;height:40px;display:grid;place-items:center;color:#f3f2ee;text-decoration:none}.logo-mark svg{display:block;width:34px;height:34px}.contact-icon{width:22px;height:22px;display:grid;place-items:center;color:#cbd0d3}.contact-icon svg{display:block;width:20px;height:20px}.linkedin-icon{width:22px;height:22px;border-radius:4px;background:#0A66C2;color:#fff;padding:3px}.linkedin-icon svg{width:16px;height:16px}.contact .contact-row:hover .linkedin-icon{background:#0A66C2}.play{left:50%;top:50%}.reel-label{left:50%;top:calc(50% + 70px)}
 @media(max-width:700px){
   :root{--mobile-gutter:16px}
   .wrap{width:calc(100% - (var(--mobile-gutter) * 2));max-width:var(--max);margin-left:auto;margin-right:auto}
@@ -10,4 +10,6 @@ html,body{max-width:100%;overflow-x:clip}.logo-mark{width:40px;height:40px;displ
   .project-card{max-width:100%}
   .about{padding:14px}
   footer{padding-left:0;padding-right:0}
+  .play{left:50%;top:64%}
+  .reel-label{left:50%;top:calc(64% + 70px)}
 }

@@ -13,6 +13,7 @@
   let pinchStartDistance = 0;
   let pinchStartZoom = 1;
   let pinchZoom = 1;
+  let liveScale = 1;
 
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
@@ -20,6 +21,20 @@
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
     return Math.hypot(dx, dy);
+  }
+
+  function midpoint(touches) {
+    return {
+      x: (touches[0].clientX + touches[1].clientX) / 2,
+      y: (touches[0].clientY + touches[1].clientY) / 2
+    };
+  }
+
+  function clearLiveTransform() {
+    liveScale = 1;
+    pagesEl.style.transform = '';
+    pagesEl.style.transformOrigin = '';
+    pagesEl.style.willChange = '';
   }
 
   async function calculateBaseScale() {
@@ -42,6 +57,7 @@
     const xRatio = oldScrollWidth ? oldCenterX / oldScrollWidth : 0.5;
     const yRatio = oldScrollHeight ? oldCenterY / oldScrollHeight : 0;
 
+    clearLiveTransform();
     pagesEl.innerHTML = '';
     statusEl.textContent = 'Rendering CV…';
     statusEl.classList.remove('hidden');
@@ -99,24 +115,47 @@
       pinchStartDistance = distance(event.touches);
       pinchStartZoom = zoom;
       pinchZoom = zoom;
+      liveScale = 1;
+
+      const point = midpoint(event.touches);
+      const rect = pagesEl.getBoundingClientRect();
+      const originX = point.x - rect.left;
+      const originY = point.y - rect.top;
+      pagesEl.style.transformOrigin = `${originX}px ${originY}px`;
+      pagesEl.style.willChange = 'transform';
     }
   }, { passive: true });
 
   shell.addEventListener('touchmove', (event) => {
     if (event.touches.length !== 2 || !pinchStartDistance) return;
     event.preventDefault();
+
     const factor = distance(event.touches) / pinchStartDistance;
     pinchZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, pinchStartZoom * factor));
+    liveScale = pinchZoom / pinchStartZoom;
+
+    // Fast visual feedback while the fingers are moving. The PDF is re-rendered
+    // at full quality only after the gesture ends.
+    pagesEl.style.transform = `scale(${liveScale})`;
   }, { passive: false });
 
   shell.addEventListener('touchend', async (event) => {
     if (event.touches.length < 2 && pinchStartDistance) {
       pinchStartDistance = 0;
-      if (Math.abs(pinchZoom - zoom) > 0.03) {
-        zoom = pinchZoom;
+      const targetZoom = pinchZoom;
+      clearLiveTransform();
+
+      if (Math.abs(targetZoom - zoom) > 0.01) {
+        zoom = targetZoom;
         await renderDocument(true);
       }
     }
+  }, { passive: true });
+
+  shell.addEventListener('touchcancel', () => {
+    pinchStartDistance = 0;
+    pinchZoom = zoom;
+    clearLiveTransform();
   }, { passive: true });
 
   let resizeTimer = null;

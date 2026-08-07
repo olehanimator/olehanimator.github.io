@@ -4,7 +4,7 @@ const translations={
     "hero.role":"3D Artist · Technical Artist",
     "hero.intro":"I create animation, interactive experiences<br>and technical visualization.",
     "hero.location":"● Nürnberg, Germany","hero.showreel":"Showreel","hero.comingSoon":"coming soon",
-    "projects.label":"Selected work",
+    "projects.label":"Selected work","projects.countTwo":"2 projects",
     "projects.interactive.title":"Interactive<br>Experiences","projects.interactive.text":"Interactive 3D solutions, WebAR, configurators and real-time applications.",
     "projects.animation.title":"Animation","projects.animation.text":"2D and 3D animation, motion design, character animation and storytelling.",
     "projects.game.title":"Game<br>Development","projects.game.text":"Game design, artwork, animation and development for engaging experiences.",
@@ -19,7 +19,7 @@ const translations={
     "hero.role":"3D Artist · Technical Artist",
     "hero.intro":"Ich entwickle Animationen, interaktive Erlebnisse<br>und technische Visualisierungen.",
     "hero.location":"● Nürnberg, Deutschland","hero.showreel":"Showreel","hero.comingSoon":"demnächst",
-    "projects.label":"Ausgewählte Arbeiten",
+    "projects.label":"Ausgewählte Arbeiten","projects.countTwo":"2 Projekte",
     "projects.interactive.title":"Interaktive<br>Erlebnisse","projects.interactive.text":"Interaktive 3D-Lösungen, WebAR, Konfiguratoren und Echtzeitanwendungen.",
     "projects.animation.title":"Animation","projects.animation.text":"2D- und 3D-Animation, Motion Design, Character Animation und visuelles Storytelling.",
     "projects.game.title":"Game<br>Development","projects.game.text":"Game Design, Grafik, Animation und Entwicklung für überzeugende Spielerlebnisse.",
@@ -34,7 +34,7 @@ const translations={
     "hero.role":"3D Artist · Technical Artist",
     "hero.intro":"Я створюю анімацію, інтерактивні проєкти<br>та технічну візуалізацію.",
     "hero.location":"● Нюрнберг, Німеччина","hero.showreel":"Шоуріл","hero.comingSoon":"незабаром",
-    "projects.label":"Вибрані роботи",
+    "projects.label":"Вибрані роботи","projects.countTwo":"2 проєкти",
     "projects.interactive.title":"Інтерактивні<br>проєкти","projects.interactive.text":"Інтерактивні 3D-рішення, WebAR, конфігуратори та застосунки реального часу.",
     "projects.animation.title":"Анімація","projects.animation.text":"2D- і 3D-анімація, motion design, анімація персонажів та візуальний сторітелінг.",
     "projects.game.title":"Розробка<br>ігор","projects.game.text":"Геймдизайн, графіка, анімація та розробка захопливих ігрових проєктів.",
@@ -74,26 +74,6 @@ languageButtons.forEach(button=>button.addEventListener('click',()=>setLanguage(
 const savedLanguage=localStorage.getItem('portfolio-language');
 const browserLanguage=(navigator.language||'en').slice(0,2);
 setLanguage(savedLanguage||(['en','de','uk'].includes(browserLanguage)?browserLanguage:'en'));
-
-const portraitImage=document.querySelector('.portrait img');
-async function loadPortraitFallback(){
-  if(!portraitImage||portraitImage.dataset.fallbackLoading==='true') return;
-  portraitImage.dataset.fallbackLoading='true';
-  try{
-    const response=await fetch('https://api.github.com/repos/olehanimator/olehanimator.github.io/contents/assets/portrait.jpg?ref=main',{headers:{Accept:'application/vnd.github+json'}});
-    if(!response.ok) throw new Error(`Portrait request failed: ${response.status}`);
-    const data=await response.json();
-    const base64=String(data.content||'').replace(/\s/g,'');
-    if(!base64) throw new Error('Portrait data is empty');
-    portraitImage.src=`data:image/jpeg;base64,${base64}`;
-  }catch(error){
-    console.error('Could not load portrait image.',error);
-  }
-}
-if(portraitImage){
-  portraitImage.addEventListener('error',loadPortraitFallback,{once:true});
-  if(portraitImage.complete&&portraitImage.naturalWidth===0) loadPortraitFallback();
-}
 
 document.getElementById('year').textContent=new Date().getFullYear();
 document.querySelector('.play').addEventListener('click',()=>alert(translations[currentLanguage]['showreel.alert']));

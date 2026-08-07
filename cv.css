@@ -1,4 +1,4 @@
-:":root{color-scheme:dark;--bg:#050708;--panel:#0b0f12;--line:rgba(255,255,255,.12);--text:#f2f2ef;--muted:#92989c;--blue:#78adff}
+:root{color-scheme:dark;--bg:#050708;--panel:#0b0f12;--line:rgba(255,255,255,.12);--text:#f2f2ef;--muted:#92989c;--blue:#78adff}
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 body{height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden}
@@ -21,7 +21,7 @@ a{color:inherit}
  .back-link{font-size:0;width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;font-size:22px;line-height:1}
  .back-link span{display:none}.cv-title strong{font-size:12px}.cv-title span{font-size:8px}
  .download-link{padding:9px 10px;font-size:10px;white-space:nowrap}
- .viewer-shell{padding:10px 0 18px}
+ .viewer-shell{padding:8px 0 16px}
  .pdf-pages{gap:10px}
 }
 @media(max-width:390px){.cv-title span{display:none}.download-link{font-size:0}.download-link:after{content:"PDF ↓";font-size:10px}}

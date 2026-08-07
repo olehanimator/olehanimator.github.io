@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="description" content="Curriculum Vitae of Oleh Lytvynenko — 3D Artist & Technical Artist.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://olehanimator.github.io/cv.html">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <title>CV — Oleh Lytvynenko</title>
-  <link rel="stylesheet" href="cv.css?v=20260807-1">
+  <link rel="stylesheet" href="cv.css?v=20260807-2">
 </head>
 <body>
   <header class="cv-bar">
@@ -20,16 +20,12 @@
     <a class="download-link" href="assets/cv.pdf" download="Oleh_Lytvynenko_CV.pdf">Download PDF</a>
   </header>
 
-  <main class="viewer-shell">
-    <iframe
-      class="pdf-viewer"
-      src="assets/cv.pdf#view=FitH&toolbar=1&navpanes=0"
-      title="Oleh Lytvynenko CV PDF"
-      loading="eager">
-    </iframe>
-    <noscript>
-      <p class="fallback">JavaScript is not required for the PDF. <a href="assets/cv.pdf">Open the PDF directly.</a></p>
-    </noscript>
+  <main class="viewer-shell" id="viewerShell">
+    <div class="pdf-pages" id="pdfPages" aria-label="CV PDF viewer"></div>
+    <div class="viewer-status" id="viewerStatus">Loading CV…</div>
   </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="cv.js?v=20260807-2"></script>
 </body>
 </html>

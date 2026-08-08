@@ -8,15 +8,30 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <style>
     :root{--bg:#050708;--panel:#0c1115;--text:#f3f2ee;--muted:#92999d;--line:rgba(255,255,255,.1);--blue:#73a2ff}
-    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at 30% 0%,rgba(52,70,86,.18),transparent 32%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;padding:24px}.card{width:min(100%,760px);padding:clamp(32px,7vw,72px);border:1px solid var(--line);border-radius:20px;background:linear-gradient(135deg,#0d1317,#090d10)}.code{margin:0 0 16px;color:var(--blue);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}h1{margin:0;font-size:clamp(54px,12vw,110px);line-height:.9;letter-spacing:-.065em}p{max-width:520px;margin:28px 0;color:#c9ccce;font-size:18px;line-height:1.55}a{display:inline-flex;align-items:center;gap:12px;color:var(--text);text-decoration:none;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:13px 18px}a:hover{border-color:var(--blue)}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at 30% 0%,rgba(52,70,86,.18),transparent 32%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;padding:24px}.card{width:min(100%,760px);padding:clamp(32px,7vw,72px);border:1px solid var(--line);border-radius:20px;background:linear-gradient(135deg,#0d1317,#090d10)}.code{margin:0 0 16px;color:var(--blue);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}h1{margin:0;font-size:clamp(54px,12vw,110px);line-height:.9;letter-spacing:-.065em}p{max-width:520px;margin:28px 0;color:#c9ccce;font-size:18px;line-height:1.55}a{display:inline-flex;align-items:center;gap:12px;color:var(--text);text-decoration:none;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:13px 18px;transition:border-color .25s ease,transform .25s ease}a:hover{border-color:var(--blue);transform:translateY(-1px)}a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}@media(max-width:600px){body{padding:14px}.card{padding:28px 22px;border-radius:16px}p{font-size:16px}}@media(prefers-reduced-motion:reduce){a{transition:none}}
   </style>
 </head>
 <body>
   <main class="card">
-    <p class="code">404 · Page not found</p>
-    <h1>Wrong<br>turn.</h1>
-    <p>This page does not exist, but the portfolio is right where it should be.</p>
-    <a href="/">← Back to portfolio</a>
+    <p class="code" id="errorCode">404 · Page not found</p>
+    <h1 id="errorTitle">Wrong<br>turn.</h1>
+    <p id="errorText">This page does not exist, but the portfolio is right where it should be.</p>
+    <a id="backLink" href="/">← Back to portfolio</a>
   </main>
+  <script>
+    const copy={
+      en:{code:'404 · Page not found',title:'Wrong<br>turn.',text:'This page does not exist, but the portfolio is right where it should be.',back:'← Back to portfolio'},
+      de:{code:'404 · Seite nicht gefunden',title:'Falsche<br>Abzweigung.',text:'Diese Seite gibt es nicht, aber das Portfolio ist genau dort, wo es sein soll.',back:'← Zurück zum Portfolio'},
+      uk:{code:'404 · Сторінку не знайдено',title:'Не туди<br>звернули.',text:'Цієї сторінки не існує, але портфоліо на своєму місці.',back:'← Назад до портфоліо'}
+    };
+    const saved=localStorage.getItem('portfolio-language');
+    const browser=(navigator.language||'en').slice(0,2);
+    const lang=copy[saved]?saved:(copy[browser]?browser:'en');
+    document.documentElement.lang=lang;
+    document.getElementById('errorCode').textContent=copy[lang].code;
+    document.getElementById('errorTitle').innerHTML=copy[lang].title;
+    document.getElementById('errorText').textContent=copy[lang].text;
+    document.getElementById('backLink').textContent=copy[lang].back;
+  </script>
 </body>
 </html>

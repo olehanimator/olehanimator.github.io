@@ -14,6 +14,9 @@
   let pinchStartZoom = 1;
   let pinchZoom = 1;
   let liveScale = 1;
+  let pinchStartMidpoint = null;
+  let liveDx = 0;
+  let liveDy = 0;
 
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
@@ -32,6 +35,9 @@
 
   function clearLiveTransform() {
     liveScale = 1;
+    liveDx = 0;
+    liveDy = 0;
+    pinchStartMidpoint = null;
     pagesEl.style.transform = '';
     pagesEl.style.transformOrigin = '';
     pagesEl.style.willChange = '';
@@ -116,33 +122,46 @@
       pinchStartZoom = zoom;
       pinchZoom = zoom;
       liveScale = 1;
+      liveDx = 0;
+      liveDy = 0;
+      pinchStartMidpoint = midpoint(event.touches);
 
-      const point = midpoint(event.touches);
       const rect = pagesEl.getBoundingClientRect();
-      const originX = point.x - rect.left;
-      const originY = point.y - rect.top;
+      const originX = pinchStartMidpoint.x - rect.left;
+      const originY = pinchStartMidpoint.y - rect.top;
       pagesEl.style.transformOrigin = `${originX}px ${originY}px`;
       pagesEl.style.willChange = 'transform';
     }
   }, { passive: true });
 
   shell.addEventListener('touchmove', (event) => {
-    if (event.touches.length !== 2 || !pinchStartDistance) return;
+    if (event.touches.length !== 2 || !pinchStartDistance || !pinchStartMidpoint) return;
     event.preventDefault();
 
     const factor = distance(event.touches) / pinchStartDistance;
     pinchZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, pinchStartZoom * factor));
     liveScale = pinchZoom / pinchStartZoom;
 
-    // Fast visual feedback while the fingers are moving. The PDF is re-rendered
-    // at full quality only after the gesture ends.
-    pagesEl.style.transform = `scale(${liveScale})`;
+    const point = midpoint(event.touches);
+    liveDx = point.x - pinchStartMidpoint.x;
+    liveDy = point.y - pinchStartMidpoint.y;
+
+    // Scale and pan together in real time. The midpoint between both fingers
+    // acts as the gesture anchor and follows the fingers while they move.
+    pagesEl.style.transform = `translate(${liveDx}px, ${liveDy}px) scale(${liveScale})`;
   }, { passive: false });
 
   shell.addEventListener('touchend', async (event) => {
     if (event.touches.length < 2 && pinchStartDistance) {
       pinchStartDistance = 0;
       const targetZoom = pinchZoom;
+      const panX = liveDx;
+      const panY = liveDy;
+
+      // Carry the two-finger pan into the scroll position before replacing the
+      // temporary transform with a crisp PDF.js render.
+      shell.scrollLeft = Math.max(0, shell.scrollLeft - panX);
+      shell.scrollTop = Math.max(0, shell.scrollTop - panY);
       clearLiveTransform();
 
       if (Math.abs(targetZoom - zoom) > 0.01) {

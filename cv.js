@@ -5,6 +5,7 @@
   const PDF_URL = 'assets/cv.pdf';
   const MIN_ZOOM = 1;
   const MAX_ZOOM = 3.5;
+  const text = window.CV_TEXT || { rendering:'Rendering CV…', error:'Could not load CV.', open:'Open PDF' };
 
   let pdf = null;
   let baseScale = 1;
@@ -86,7 +87,7 @@
 
   async function renderInitial() {
     const token = ++renderToken;
-    statusEl.textContent = 'Rendering CV…';
+    statusEl.textContent = text.rendering;
     statusEl.classList.remove('hidden');
     const fragment = await buildPages(baseScale * zoom, token);
     if (!fragment || token !== renderToken) return;
@@ -103,19 +104,11 @@
     if (!fragment || token !== renderToken) return;
 
     zoom = targetZoom;
-
-    // Important: the old live transform already represents targetZoom visually.
-    // The freshly rendered canvases are ALSO at targetZoom. If we keep the live
-    // transform for even one frame after swapping, the new render gets scaled a
-    // second time and produces the visible jump. Clear the transform and place
-    // the new render in the exact matching scroll position in the same JS task,
-    // before the browser can paint another frame.
     pagesEl.style.transform = '';
     pagesEl.style.transformOrigin = '';
     pagesEl.style.willChange = '';
     pagesEl.replaceChildren(fragment);
 
-    // Force layout now so dimensions below are those of the final crisp render.
     const finalWidth = pagesEl.offsetWidth;
     const finalHeight = pagesEl.offsetHeight;
     const desiredLeft = anchorInfo.normalizedX * finalWidth - anchorInfo.viewportX;
@@ -137,8 +130,6 @@
     pinchStartMidpoint = null;
     lastPinchMidpoint = null;
 
-    // Only edge correction is animated. Normal pinch release has no transition,
-    // because the final render should be pixel-for-pixel at the released scale.
     if (correctionX > 2 || correctionY > 2) {
       shell.scrollTo({ left: clampedLeft, top: clampedTop, behavior: 'smooth' });
     }
@@ -152,7 +143,7 @@
       await renderInitial();
     } catch (error) {
       console.error(error);
-      statusEl.innerHTML = 'Could not load CV. <a href="assets/cv.pdf" style="color:#78adff">Open PDF</a>';
+      statusEl.innerHTML = `${text.error} <a href="assets/cv.pdf" style="color:#78adff">${text.open}</a>`;
     }
   }
 

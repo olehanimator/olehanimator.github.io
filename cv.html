@@ -12,12 +12,12 @@
 </head>
 <body>
   <header class="cv-bar">
-    <a class="back-link" href="index.html" aria-label="Back to portfolio">← <span>Back</span></a>
+    <a class="back-link" id="cvBack" href="index.html" aria-label="Back to portfolio">← <span>Back</span></a>
     <div class="cv-title">
-      <strong>Curriculum Vitae</strong>
+      <strong id="cvTitle">Curriculum Vitae</strong>
       <span>Oleh Lytvynenko</span>
     </div>
-    <a class="download-link" href="assets/cv.pdf" download="Oleh_Lytvynenko_CV.pdf">Download PDF</a>
+    <a class="download-link" id="cvDownload" href="assets/cv.pdf" download="Oleh_Lytvynenko_CV.pdf">Download PDF</a>
   </header>
 
   <main class="viewer-shell" id="viewerShell">
@@ -25,7 +25,28 @@
     <div class="viewer-status" id="viewerStatus">Loading CV…</div>
   </main>
 
+  <script>
+    (() => {
+      const texts = {
+        en: { back:'Back', backAria:'Back to portfolio', title:'Curriculum Vitae', download:'Download PDF', viewerAria:'CV PDF viewer', loading:'Loading CV…', rendering:'Rendering CV…', error:'Could not load CV.', open:'Open PDF' },
+        de: { back:'Zurück', backAria:'Zurück zum Portfolio', title:'Lebenslauf', download:'PDF herunterladen', viewerAria:'CV PDF-Ansicht', loading:'CV wird geladen…', rendering:'CV wird dargestellt…', error:'CV konnte nicht geladen werden.', open:'PDF öffnen' },
+        uk: { back:'Назад', backAria:'Назад до портфоліо', title:'Резюме', download:'Завантажити PDF', viewerAria:'Перегляд CV у PDF', loading:'CV завантажується…', rendering:'CV відображається…', error:'Не вдалося завантажити CV.', open:'Відкрити PDF' }
+      };
+      const saved = localStorage.getItem('portfolio-language');
+      const browser = (navigator.language || 'en').slice(0,2);
+      const lang = texts[saved] ? saved : (texts[browser] ? browser : 'en');
+      const t = texts[lang];
+      window.CV_TEXT = t;
+      document.documentElement.lang = lang;
+      document.getElementById('cvBack').querySelector('span').textContent = t.back;
+      document.getElementById('cvBack').setAttribute('aria-label', t.backAria);
+      document.getElementById('cvTitle').textContent = t.title;
+      document.getElementById('cvDownload').textContent = t.download;
+      document.getElementById('pdfPages').setAttribute('aria-label', t.viewerAria);
+      document.getElementById('viewerStatus').textContent = t.loading;
+    })();
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="cv.js?v=20260808-3"></script>
+  <script src="cv.js?v=20260808-4"></script>
 </body>
 </html>

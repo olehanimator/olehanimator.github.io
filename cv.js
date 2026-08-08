@@ -102,36 +102,46 @@
     const fragment = await buildPages(baseScale * targetZoom, token);
     if (!fragment || token !== renderToken) return;
 
-    // Keep the transformed old render visible while the sharper PDF.js version
-    // is prepared off-screen. Swapping the finished canvases is atomic, so there
-    // is no dark flash between gesture end and the crisp render.
     zoom = targetZoom;
-    pagesEl.replaceChildren(fragment);
+
+    // Important: the old live transform already represents targetZoom visually.
+    // The freshly rendered canvases are ALSO at targetZoom. If we keep the live
+    // transform for even one frame after swapping, the new render gets scaled a
+    // second time and produces the visible jump. Clear the transform and place
+    // the new render in the exact matching scroll position in the same JS task,
+    // before the browser can paint another frame.
     pagesEl.style.transform = '';
     pagesEl.style.transformOrigin = '';
     pagesEl.style.willChange = '';
+    pagesEl.replaceChildren(fragment);
 
-    requestAnimationFrame(() => {
-      const desiredLeft = anchorInfo.normalizedX * pagesEl.offsetWidth - anchorInfo.viewportX;
-      const desiredTop = anchorInfo.normalizedY * pagesEl.offsetHeight - anchorInfo.viewportY;
-      const maxLeft = Math.max(0, shell.scrollWidth - shell.clientWidth);
-      const maxTop = Math.max(0, shell.scrollHeight - shell.clientHeight);
-      const clampedLeft = Math.min(maxLeft, Math.max(0, desiredLeft));
-      const clampedTop = Math.min(maxTop, Math.max(0, desiredTop));
+    // Force layout now so dimensions below are those of the final crisp render.
+    const finalWidth = pagesEl.offsetWidth;
+    const finalHeight = pagesEl.offsetHeight;
+    const desiredLeft = anchorInfo.normalizedX * finalWidth - anchorInfo.viewportX;
+    const desiredTop = anchorInfo.normalizedY * finalHeight - anchorInfo.viewportY;
+    const maxLeft = Math.max(0, shell.scrollWidth - shell.clientWidth);
+    const maxTop = Math.max(0, shell.scrollHeight - shell.clientHeight);
+    const clampedLeft = Math.min(maxLeft, Math.max(0, desiredLeft));
+    const clampedTop = Math.min(maxTop, Math.max(0, desiredTop));
 
-      shell.scrollLeft = clampedLeft;
-      shell.scrollTop = clampedTop;
+    shell.scrollLeft = clampedLeft;
+    shell.scrollTop = clampedTop;
 
-      // If the gesture ended beyond a page boundary, let the final edge
-      // correction settle smoothly instead of snapping.
-      const correctionX = Math.abs(desiredLeft - clampedLeft);
-      const correctionY = Math.abs(desiredTop - clampedTop);
-      if (correctionX > 2 || correctionY > 2) {
-        shell.scrollTo({ left: clampedLeft, top: clampedTop, behavior: 'smooth' });
-      }
+    const correctionX = Math.abs(desiredLeft - clampedLeft);
+    const correctionY = Math.abs(desiredTop - clampedTop);
 
-      clearLiveTransform();
-    });
+    liveScale = 1;
+    liveDx = 0;
+    liveDy = 0;
+    pinchStartMidpoint = null;
+    lastPinchMidpoint = null;
+
+    // Only edge correction is animated. Normal pinch release has no transition,
+    // because the final render should be pixel-for-pixel at the released scale.
+    if (correctionX > 2 || correctionY > 2) {
+      shell.scrollTo({ left: clampedLeft, top: clampedTop, behavior: 'smooth' });
+    }
   }
 
   async function init() {
@@ -203,8 +213,6 @@
       };
 
       if (Math.abs(targetZoom - zoom) > 0.01) {
-        // Do not clear the live transform here. It stays on screen until the
-        // high-resolution replacement is fully rendered in the background.
         commitPinch(targetZoom, anchorInfo);
       } else {
         pagesEl.style.transition = 'transform 160ms ease-out';

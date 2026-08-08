@@ -15,6 +15,7 @@
   let pinchZoom = 1;
   let liveScale = 1;
   let pinchStartMidpoint = null;
+  let lastPinchMidpoint = null;
   let liveDx = 0;
   let liveDy = 0;
 
@@ -38,6 +39,7 @@
     liveDx = 0;
     liveDy = 0;
     pinchStartMidpoint = null;
+    lastPinchMidpoint = null;
     pagesEl.style.transform = '';
     pagesEl.style.transformOrigin = '';
     pagesEl.style.willChange = '';
@@ -54,25 +56,12 @@
     return Math.min(availableWidth / unit.width, availableHeight / unit.height);
   }
 
-  async function renderDocument(preservePosition = false) {
-    const token = ++renderToken;
-    const oldScrollWidth = shell.scrollWidth;
-    const oldScrollHeight = shell.scrollHeight;
-    const oldCenterX = shell.scrollLeft + shell.clientWidth / 2;
-    const oldCenterY = shell.scrollTop + shell.clientHeight / 2;
-    const xRatio = oldScrollWidth ? oldCenterX / oldScrollWidth : 0.5;
-    const yRatio = oldScrollHeight ? oldCenterY / oldScrollHeight : 0;
-
-    clearLiveTransform();
-    pagesEl.innerHTML = '';
-    statusEl.textContent = 'Rendering CV…';
-    statusEl.classList.remove('hidden');
-
-    const scale = baseScale * zoom;
+  async function buildPages(scale, token) {
+    const fragment = document.createDocumentFragment();
     const outputScale = Math.min(window.devicePixelRatio || 1, 2);
 
     for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
-      if (token !== renderToken) return;
+      if (token !== renderToken) return null;
       const page = await pdf.getPage(pageNumber);
       const viewport = page.getViewport({ scale });
       const canvas = document.createElement('canvas');
@@ -81,7 +70,6 @@
       canvas.height = Math.floor(viewport.height * outputScale);
       canvas.style.width = `${viewport.width}px`;
       canvas.style.height = `${viewport.height}px`;
-      pagesEl.appendChild(canvas);
 
       const context = canvas.getContext('2d', { alpha: false });
       await page.render({
@@ -89,19 +77,61 @@
         viewport,
         transform: outputScale === 1 ? null : [outputScale, 0, 0, outputScale, 0, 0]
       }).promise;
+
+      fragment.appendChild(canvas);
     }
 
+    return fragment;
+  }
+
+  async function renderInitial() {
+    const token = ++renderToken;
+    statusEl.textContent = 'Rendering CV…';
+    statusEl.classList.remove('hidden');
+    const fragment = await buildPages(baseScale * zoom, token);
+    if (!fragment || token !== renderToken) return;
+
+    pagesEl.replaceChildren(fragment);
     statusEl.classList.add('hidden');
+    shell.scrollLeft = Math.max(0, (shell.scrollWidth - shell.clientWidth) / 2);
+    shell.scrollTop = 0;
+  }
 
-    if (preservePosition) {
-      requestAnimationFrame(() => {
-        shell.scrollLeft = Math.max(0, shell.scrollWidth * xRatio - shell.clientWidth / 2);
-        shell.scrollTop = Math.max(0, shell.scrollHeight * yRatio - shell.clientHeight / 2);
-      });
-    } else {
-      shell.scrollLeft = Math.max(0, (shell.scrollWidth - shell.clientWidth) / 2);
-      shell.scrollTop = 0;
-    }
+  async function commitPinch(targetZoom, anchorInfo) {
+    const token = ++renderToken;
+    const fragment = await buildPages(baseScale * targetZoom, token);
+    if (!fragment || token !== renderToken) return;
+
+    // Keep the transformed old render visible while the sharper PDF.js version
+    // is prepared off-screen. Swapping the finished canvases is atomic, so there
+    // is no dark flash between gesture end and the crisp render.
+    zoom = targetZoom;
+    pagesEl.replaceChildren(fragment);
+    pagesEl.style.transform = '';
+    pagesEl.style.transformOrigin = '';
+    pagesEl.style.willChange = '';
+
+    requestAnimationFrame(() => {
+      const desiredLeft = anchorInfo.normalizedX * pagesEl.offsetWidth - anchorInfo.viewportX;
+      const desiredTop = anchorInfo.normalizedY * pagesEl.offsetHeight - anchorInfo.viewportY;
+      const maxLeft = Math.max(0, shell.scrollWidth - shell.clientWidth);
+      const maxTop = Math.max(0, shell.scrollHeight - shell.clientHeight);
+      const clampedLeft = Math.min(maxLeft, Math.max(0, desiredLeft));
+      const clampedTop = Math.min(maxTop, Math.max(0, desiredTop));
+
+      shell.scrollLeft = clampedLeft;
+      shell.scrollTop = clampedTop;
+
+      // If the gesture ended beyond a page boundary, let the final edge
+      // correction settle smoothly instead of snapping.
+      const correctionX = Math.abs(desiredLeft - clampedLeft);
+      const correctionY = Math.abs(desiredTop - clampedTop);
+      if (correctionX > 2 || correctionY > 2) {
+        shell.scrollTo({ left: clampedLeft, top: clampedTop, behavior: 'smooth' });
+      }
+
+      clearLiveTransform();
+    });
   }
 
   async function init() {
@@ -109,7 +139,7 @@
       pdf = await pdfjsLib.getDocument(PDF_URL).promise;
       baseScale = await calculateBaseScale();
       zoom = 1;
-      await renderDocument(false);
+      await renderInitial();
     } catch (error) {
       console.error(error);
       statusEl.innerHTML = 'Could not load CV. <a href="assets/cv.pdf" style="color:#78adff">Open PDF</a>';
@@ -125,6 +155,7 @@
       liveDx = 0;
       liveDy = 0;
       pinchStartMidpoint = midpoint(event.touches);
+      lastPinchMidpoint = pinchStartMidpoint;
 
       const rect = pagesEl.getBoundingClientRect();
       const originX = pinchStartMidpoint.x - rect.left;
@@ -143,30 +174,45 @@
     liveScale = pinchZoom / pinchStartZoom;
 
     const point = midpoint(event.touches);
+    lastPinchMidpoint = point;
     liveDx = point.x - pinchStartMidpoint.x;
     liveDy = point.y - pinchStartMidpoint.y;
 
-    // Scale and pan together in real time. The midpoint between both fingers
-    // acts as the gesture anchor and follows the fingers while they move.
     pagesEl.style.transform = `translate(${liveDx}px, ${liveDy}px) scale(${liveScale})`;
   }, { passive: false });
 
-  shell.addEventListener('touchend', async (event) => {
+  shell.addEventListener('touchend', (event) => {
     if (event.touches.length < 2 && pinchStartDistance) {
       pinchStartDistance = 0;
       const targetZoom = pinchZoom;
-      const panX = liveDx;
-      const panY = liveDy;
+      const point = lastPinchMidpoint || pinchStartMidpoint;
+      const shellRect = shell.getBoundingClientRect();
+      const transformedRect = pagesEl.getBoundingClientRect();
+      const normalizedX = transformedRect.width
+        ? (point.x - transformedRect.left) / transformedRect.width
+        : 0.5;
+      const normalizedY = transformedRect.height
+        ? (point.y - transformedRect.top) / transformedRect.height
+        : 0;
 
-      // Carry the two-finger pan into the scroll position before replacing the
-      // temporary transform with a crisp PDF.js render.
-      shell.scrollLeft = Math.max(0, shell.scrollLeft - panX);
-      shell.scrollTop = Math.max(0, shell.scrollTop - panY);
-      clearLiveTransform();
+      const anchorInfo = {
+        normalizedX: Math.min(1, Math.max(0, normalizedX)),
+        normalizedY: Math.min(1, Math.max(0, normalizedY)),
+        viewportX: point.x - shellRect.left,
+        viewportY: point.y - shellRect.top
+      };
 
       if (Math.abs(targetZoom - zoom) > 0.01) {
-        zoom = targetZoom;
-        await renderDocument(true);
+        // Do not clear the live transform here. It stays on screen until the
+        // high-resolution replacement is fully rendered in the background.
+        commitPinch(targetZoom, anchorInfo);
+      } else {
+        pagesEl.style.transition = 'transform 160ms ease-out';
+        pagesEl.style.transform = '';
+        setTimeout(() => {
+          pagesEl.style.transition = '';
+          clearLiveTransform();
+        }, 170);
       }
     }
   }, { passive: true });
@@ -174,7 +220,12 @@
   shell.addEventListener('touchcancel', () => {
     pinchStartDistance = 0;
     pinchZoom = zoom;
-    clearLiveTransform();
+    pagesEl.style.transition = 'transform 160ms ease-out';
+    pagesEl.style.transform = '';
+    setTimeout(() => {
+      pagesEl.style.transition = '';
+      clearLiveTransform();
+    }, 170);
   }, { passive: true });
 
   let resizeTimer = null;
@@ -183,7 +234,7 @@
     resizeTimer = setTimeout(async () => {
       if (!pdf || zoom !== 1) return;
       baseScale = await calculateBaseScale();
-      await renderDocument(false);
+      await renderInitial();
     }, 180);
   });
 

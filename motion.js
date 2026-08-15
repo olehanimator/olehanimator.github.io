@@ -1,3 +1,16 @@
+const brandStyles=document.createElement('link');
+brandStyles.rel='stylesheet';
+brandStyles.href='brand-2026.css?v=20260815-1';
+document.head.appendChild(brandStyles);
+
+const logoLink=document.querySelector('.logo-mark');
+if(logoLink&&!logoLink.querySelector('.logo-name')){
+  const logoName=document.createElement('span');
+  logoName.className='logo-name';
+  logoName.textContent='Oleh Lytvynenko';
+  logoLink.appendChild(logoName);
+}
+
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const revealGroups=[
@@ -31,7 +44,6 @@ if(reducedMotion||!('IntersectionObserver' in window)){
   revealTargets.forEach(element=>revealObserver.observe(element));
 }
 
-// Give project cards a short stagger only after their section becomes visible.
 document.querySelectorAll('.work-section').forEach(section=>{
   section.querySelectorAll('.work-card').forEach((card,index)=>{
     card.style.setProperty('--card-delay',`${90+index*55}ms`);
@@ -39,7 +51,6 @@ document.querySelectorAll('.work-section').forEach(section=>{
   });
 });
 
-// Small press feedback on touch devices without delaying navigation.
 document.querySelectorAll('.work-card,.cv-link,.contact-row,.language-switcher button,.play').forEach(element=>{
   element.addEventListener('pointerdown',()=>element.classList.add('is-pressed'));
   const release=()=>element.classList.remove('is-pressed');

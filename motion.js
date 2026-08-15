@@ -3,6 +3,19 @@ brandStyles.rel='stylesheet';
 brandStyles.href='brand-2026.css?v=20260815-1';
 document.head.appendChild(brandStyles);
 
+if(typeof translations!=='undefined'){
+  translations.en['hero.role']='3D Generalist · Technical Artist';
+  translations.de['hero.role']='3D Generalist · Technical Artist';
+  translations.uk['hero.role']='3D Generalist · Technical Artist';
+  translations.en['about.p1']='I’m a 3D Generalist and Technical Artist with experience in 3D graphics, animation, interactive applications and game development. In my work, I combine an artistic approach with technical thinking—creating visual content, real-time solutions, technical visualizations and interactive projects.';
+  translations.de['about.p1']='Ich bin 3D Generalist und Technical Artist mit Erfahrung in 3D-Grafik, Animation, interaktiven Anwendungen und Game Development. In meiner Arbeit verbinde ich gestalterisches Denken mit einem technischen Ansatz und entwickle visuellen Content, Echtzeitlösungen, technische Visualisierungen und interaktive Projekte.';
+  translations.uk['about.p1']='Я 3D Generalist і Technical Artist із досвідом у 3D-графіці, анімації, інтерактивних застосунках і розробці ігор. У своїй роботі я поєдную художній підхід із технічним мисленням — створюю візуальний контент, рішення реального часу, технічні візуалізації та інтерактивні проєкти.';
+  translations.en['meta.description']='Portfolio of Oleh Lytvynenko, a 3D Generalist and Technical Artist working in 3D graphics, animation, interactive applications, real-time solutions and game development.';
+  translations.de['meta.description']='Portfolio von Oleh Lytvynenko, 3D Generalist und Technical Artist mit Schwerpunkt auf 3D-Grafik, Animation, interaktiven Anwendungen, Echtzeitlösungen und Game Development.';
+  translations.uk['meta.description']='Портфоліо Олега Литвиненка — 3D Generalist і Technical Artist: 3D-графіка, анімація, інтерактивні застосунки, рішення реального часу та розробка ігор.';
+  if(typeof setLanguage==='function'&&typeof currentLanguage!=='undefined')setLanguage(currentLanguage);
+}
+
 const logoLink=document.querySelector('.logo-mark');
 if(logoLink&&!logoLink.querySelector('.logo-name')){
   const logoName=document.createElement('span');

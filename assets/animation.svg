@@ -1,12 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
-<rect width="900" height="600" fill="#090c0e"/>
-<g fill="none" stroke="#7e898b" stroke-opacity=".26" stroke-width="1.4">
-<path d="M0 390L150 290 300 370 430 240 580 340 720 190 900 300"/>
-<path d="M40 500L190 390 340 490 480 350 620 450 780 310 900 380"/>
-<path d="M150 290L190 390M300 370L340 490M430 240L480 350M580 340L620 450M720 190L780 310"/>
-</g>
-<g fill="#151d20"><path d="M150 290L300 370 430 240z"/><path d="M430 240L580 340 720 190z"/><path d="M340 490L480 350 620 450z"/></g>
-<g fill="#4c8587" fill-opacity=".36"><path d="M300 370L430 240 480 350z"/><path d="M580 340L720 190 780 310z"/></g>
-<g fill="none" stroke="#5c9fa1" stroke-opacity=".72" stroke-width="2"><path d="M300 370L430 240L480 350"/><path d="M580 340L720 190"/></g>
-<g fill="#869597" fill-opacity=".22"><circle cx="135" cy="170" r="2"/><circle cx="153" cy="170" r="2"/><circle cx="171" cy="170" r="2"/><circle cx="135" cy="188" r="2"/><circle cx="153" cy="188" r="2"/><circle cx="171" cy="188" r="2"/></g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600"><rect width="900" height="600" fill="#090c0e"/><g fill="#141c1f" fill-opacity=".8"><path d="M0 215L110 120 230 200 135 305z"/><path d="M135 305L230 200 350 285 255 395z"/><path d="M255 395L350 285 475 360 375 470z"/><path d="M375 470L475 360 590 260 535 500z"/><path d="M535 500L590 260 715 350 640 520z"/><path d="M640 520L715 350 835 275 900 395 900 560z"/></g><g fill="#335c5e" fill-opacity=".18"><path d="M135 305L230 200 255 395z"/><path d="M375 470L475 360 535 500z"/><path d="M640 520L715 350 835 275z"/></g><g fill="none" stroke="#899597" stroke-opacity=".18" stroke-width="1.2"><path d="M0 215L110 120 230 200 350 105 475 175 590 95 715 165 835 105 900 145"/><path d="M0 430L135 305 255 395 375 470 535 500 640 520 900 560"/><path d="M110 120L135 305M230 200L255 395M350 105L350 285M475 175L475 360M590 95L590 260M715 165L715 350M835 105L835 275"/><path d="M135 305L350 285 475 360 590 260 715 350 835 275"/></g><g fill="none" stroke="#5c9fa1" stroke-opacity=".26" stroke-width="1.4"><path d="M110 120L230 200L255 395"/><path d="M475 360L535 500"/><path d="M715 350L835 275"/></g><g fill="#829294" fill-opacity=".14"><circle cx="305" cy="155" r="2"/><circle cx="325" cy="155" r="2"/><circle cx="345" cy="155" r="2"/><circle cx="305" cy="175" r="2"/><circle cx="325" cy="175" r="2"/><circle cx="345" cy="175" r="2"/></g></svg>

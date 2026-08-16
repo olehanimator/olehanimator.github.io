@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://olehanimator.github.io/cv.html">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <title>CV — Oleh Lytvynenko</title>
-  <link rel="stylesheet" href="cv.css?v=20260807-2">
+  <link rel="stylesheet" href="cv.css?v=20260816-1">
 </head>
 <body>
   <header class="cv-bar">
@@ -17,7 +17,14 @@
       <strong id="cvTitle">Curriculum Vitae</strong>
       <span>Oleh Lytvynenko</span>
     </div>
-    <a class="download-link" id="cvDownload" href="assets/cv.pdf" download="Oleh_Lytvynenko_CV.pdf">Download PDF</a>
+    <a class="download-link" id="cvDownload" href="assets/cv.pdf" download="Oleh_Lytvynenko_CV.pdf">
+      <svg class="download-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 4v9"></path>
+        <path d="M8.5 10.5 12 14l3.5-3.5"></path>
+        <path d="M5 18.5h14"></path>
+      </svg>
+      <span id="cvDownloadText">Download PDF</span>
+    </a>
   </header>
 
   <main class="viewer-shell" id="viewerShell">
@@ -41,7 +48,7 @@
       document.getElementById('cvBack').querySelector('span').textContent = t.back;
       document.getElementById('cvBack').setAttribute('aria-label', t.backAria);
       document.getElementById('cvTitle').textContent = t.title;
-      document.getElementById('cvDownload').textContent = t.download;
+      document.getElementById('cvDownloadText').textContent = t.download;
       document.getElementById('pdfPages').setAttribute('aria-label', t.viewerAria);
       document.getElementById('viewerStatus').textContent = t.loading;
     })();

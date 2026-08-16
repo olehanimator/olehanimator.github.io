@@ -6,8 +6,9 @@ a{color:inherit}
 .cv-bar{min-height:76px;padding:14px 22px;display:grid;grid-template-columns:minmax(90px,1fr) auto minmax(130px,1fr);align-items:center;gap:18px;border-bottom:1px solid var(--line);background:rgba(5,7,8,.96);backdrop-filter:blur(18px);z-index:5}
 .back-link,.download-link{text-decoration:none;font-size:13px;letter-spacing:.02em}
 .back-link{justify-self:start;color:#c6cacc}.back-link:hover{color:#fff}
-.download-link{justify-self:end;padding:11px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04)}
+.download-link{justify-self:end;display:inline-flex;align-items:center;gap:8px;padding:11px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04)}
 .download-link:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.08)}
+.download-icon{width:17px;height:17px;display:block;flex:0 0 17px;fill:none;stroke:#6ea7ad;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .cv-title{text-align:center;display:flex;flex-direction:column;gap:2px;white-space:nowrap}
 .cv-title strong{font-size:14px;letter-spacing:.03em}.cv-title span{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
 .viewer-shell{position:relative;min-height:0;overflow:auto;overscroll-behavior:contain;background:#080b0d;padding:14px;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch}
@@ -20,8 +21,9 @@ a{color:inherit}
  .cv-bar{min-height:62px;padding:9px 12px;grid-template-columns:64px minmax(0,1fr) auto;gap:8px}
  .back-link{font-size:0;width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;font-size:22px;line-height:1}
  .back-link span{display:none}.cv-title strong{font-size:12px}.cv-title span{font-size:8px}
- .download-link{padding:9px 10px;font-size:10px;white-space:nowrap}
+ .download-link{padding:9px 10px;font-size:10px;white-space:nowrap;gap:6px}
+ .download-icon{width:15px;height:15px;flex-basis:15px}
  .viewer-shell{padding:8px 0 16px}
  .pdf-pages{gap:10px}
 }
-@media(max-width:390px){.cv-title span{display:none}.download-link{font-size:0}.download-link:after{content:"PDF ↓";font-size:10px}}
+@media(max-width:390px){.cv-title span{display:none}.download-link{font-size:0;padding:9px}.download-link #cvDownloadText{display:none}.download-icon{width:17px;height:17px;flex-basis:17px}}

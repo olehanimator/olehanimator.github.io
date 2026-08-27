@@ -71,3 +71,22 @@ document.querySelectorAll('.work-card,.cv-link,.contact-row,.language-switcher b
   element.addEventListener('pointercancel',release);
   element.addEventListener('pointerleave',release);
 });
+
+const showreelCard=document.querySelector('.hero-card');
+const showreelVideo=showreelCard?.querySelector('video');
+if(showreelCard&&showreelVideo){
+  const playerStateStyles=document.createElement('style');
+  playerStateStyles.textContent=`
+    .hero-card{transition:border-radius .26s cubic-bezier(.2,.8,.2,1)}
+    .hero-card.is-player-active{border-radius:0!important}
+  `;
+  document.head.appendChild(playerStateStyles);
+
+  const activatePlayer=()=>showreelCard.classList.add('is-player-active');
+  const restorePreview=()=>showreelCard.classList.remove('is-player-active');
+
+  showreelVideo.addEventListener('play',activatePlayer);
+  showreelVideo.addEventListener('playing',activatePlayer);
+  showreelVideo.addEventListener('ended',restorePreview);
+  showreelVideo.addEventListener('emptied',restorePreview);
+}

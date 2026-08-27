@@ -1,0 +1,3 @@
+.hero-card{transition:border-radius .26s cubic-bezier(.2,.8,.2,1),box-shadow .26s ease!important}
+.hero-card.is-playing{border-radius:0!important}
+@media(prefers-reduced-motion:reduce){.hero-card{transition:none!important}}

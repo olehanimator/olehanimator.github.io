@@ -73,6 +73,18 @@ const playButton=document.querySelector('.hero-card .play');
 if(showreel&&heroCard&&playButton){
   const poster=document.createElement('div');
   poster.className='showreel-poster';
+  poster.innerHTML=`
+    <div class="showreel-poster-content" aria-hidden="true">
+      <div class="showreel-poster-title">SHOWREEL</div>
+      <div class="showreel-poster-role">3D GENERALIST / TECHNICAL ARTIST</div>
+      <div class="showreel-poster-sections">
+        <span>ANIMATION</span>
+        <i></i>
+        <span>INTERACTIVE</span>
+        <i></i>
+        <span>GAME DEVELOPMENT</span>
+      </div>
+    </div>`;
   heroCard.insertBefore(poster,showreel.nextSibling);
 
   const loader=document.createElement('div');

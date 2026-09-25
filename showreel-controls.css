@@ -20,9 +20,9 @@
 
 .showreel-progress-wrap{
   position:absolute;
-  left:0;
-  right:0;
-  top:var(--showreel-divider-y);
+  left:var(--showreel-video-left,0px);
+  width:var(--showreel-video-width,100%);
+  top:calc(var(--showreel-video-top,0px) + (var(--showreel-video-height,100%) * .9));
   height:20px;
   transform:translateY(-50%);
   display:flex;
@@ -126,8 +126,8 @@
 .showreel-control-btn{
   position:absolute;
   z-index:2;
-  top:14px;
-  right:14px;
+  top:calc(var(--showreel-video-top,0px) + 14px);
+  left:calc(var(--showreel-video-left,0px) + var(--showreel-video-width,100%) - 52px);
   width:38px;
   height:38px;
   padding:0;
@@ -182,7 +182,11 @@ body.showreel-fullscreen-lock{overflow:hidden!important}
 
 @media(max-width:700px){
   .hero-card{--showreel-divider-y:90%}
-  .showreel-control-btn{top:8px;right:8px;width:34px;height:34px}
+  .showreel-control-btn{
+    top:calc(var(--showreel-video-top,0px) + 8px);
+    left:calc(var(--showreel-video-left,0px) + var(--showreel-video-width,100%) - 42px);
+    width:34px;height:34px
+  }
   .showreel-center-state{width:84px;height:84px}
   .showreel-center-play:before{border-top-width:9px;border-bottom-width:9px;border-left-width:14px}
   .showreel-control-btn svg{width:18px;height:18px}

@@ -14,14 +14,14 @@
   if(!document.querySelector('link[data-showreel-controls]')){
     const link=document.createElement('link');
     link.rel='stylesheet';
-    link.href='showreel-controls.css?v=20260925-2';
+    link.href='showreel-controls.css?v=20260925-3';
     link.dataset.showreelControls='';
     document.head.appendChild(link);
   }
 
   if(!document.querySelector('script[data-showreel-controls]')){
     const script=document.createElement('script');
-    script.src='showreel-controls.js?v=20260925-2';
+    script.src='showreel-controls.js?v=20260925-3';
     script.dataset.showreelControls='';
     document.body.appendChild(script);
   }

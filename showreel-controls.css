@@ -85,8 +85,9 @@
 }
 .hero-card.is-paused .showreel-pause-time{opacity:1}
 
-.showreel-center-feedback{
+.showreel-center-state{
   position:absolute;
+  z-index:9;
   left:50%;
   top:50%;
   width:100px;
@@ -121,7 +122,7 @@
   border-left:17px solid rgba(255,255,255,.82);
 }
 .hero-card.is-paused:not(.pause-feedback) .showreel-center-play{
-  opacity:.72;
+  opacity:.78;
   transform:scale(1);
 }
 .showreel-center-pause{
@@ -181,6 +182,10 @@
   stroke-linejoin:round;
 }
 
+.hero-card:not(.is-paused):not(.pause-feedback) .showreel-center-state{visibility:hidden}
+.hero-card.is-paused .showreel-center-state,
+.hero-card.pause-feedback .showreel-center-state{visibility:visible}
+
 .hero-card.is-web-fullscreen{
   position:fixed!important;
   z-index:9999!important;
@@ -205,7 +210,7 @@ body.showreel-fullscreen-lock{overflow:hidden!important}
 @media(max-width:700px){
   .hero-card{--showreel-divider-y:90%}
   .showreel-control-btn{top:8px;right:8px;width:34px;height:34px}
-  .showreel-center-feedback{width:84px;height:84px}
+  .showreel-center-state{width:84px;height:84px}
   .showreel-center-play:before{border-top-width:9px;border-bottom-width:9px;border-left-width:14px}
   .showreel-center-pause{gap:8px}
   .showreel-center-pause span{width:4px;height:22px}

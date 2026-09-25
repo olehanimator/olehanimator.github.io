@@ -71,8 +71,8 @@
     const sourceRatio=sourceW/sourceH;
     const cardRatio=cardRect.width/cardRect.height;
 
-    let displayW=cardRect.width;
-    let displayH=cardRect.height;
+    let displayW;
+    let displayH;
     if(cardRatio>sourceRatio){
       displayH=cardRect.height;
       displayW=displayH*sourceRatio;
@@ -83,11 +83,16 @@
 
     const left=(cardRect.width-displayW)/2;
     const top=(cardRect.height-displayH)/2;
+    const dividerTop=top+(displayH*0.9);
 
-    card.style.setProperty('--showreel-video-left',`${left}px`);
-    card.style.setProperty('--showreel-video-top',`${top}px`);
-    card.style.setProperty('--showreel-video-width',`${displayW}px`);
-    card.style.setProperty('--showreel-video-height',`${displayH}px`);
+    progress.parentElement.style.left=`${left}px`;
+    progress.parentElement.style.width=`${displayW}px`;
+    progress.parentElement.style.top=`${dividerTop}px`;
+
+    const buttonSize=fullscreen.getBoundingClientRect().width||38;
+    const inset=card.classList.contains('is-web-fullscreen')?14:14;
+    fullscreen.style.top=`${top+inset}px`;
+    fullscreen.style.left=`${left+displayW-buttonSize-inset}px`;
   };
 
   const setFullscreen=(enabled)=>{
@@ -129,12 +134,15 @@
     if(event.target.closest('.showreel-fullscreen,.showreel-progress-wrap,.play'))return;
     if(!(card.classList.contains('is-playing')||card.classList.contains('is-paused')))return;
     clearTimeout(clickTimer);
-    clickTimer=setTimeout(()=>togglePlayback(),220);
+    if(event.detail===1){
+      clickTimer=setTimeout(()=>togglePlayback(),260);
+    }
   });
 
   card.addEventListener('dblclick',(event)=>{
     if(event.target.closest('.showreel-fullscreen,.showreel-progress-wrap,.play'))return;
     event.preventDefault();
+    event.stopPropagation();
     clearTimeout(clickTimer);
     setFullscreen(!card.classList.contains('is-web-fullscreen'));
   });
@@ -161,6 +169,9 @@
   });
 
   window.addEventListener('resize',syncVideoBounds);
+  if('ResizeObserver' in window){
+    new ResizeObserver(syncVideoBounds).observe(card);
+  }
 
   syncPauseState();
   syncTime();

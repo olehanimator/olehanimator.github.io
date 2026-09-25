@@ -3,7 +3,23 @@ html,body{max-width:100%;overflow-x:clip}.logo-mark{width:40px;height:40px;displ
 .hero-card .showreel-poster{
   position:absolute;z-index:2;inset:0;opacity:1;transition:opacity .22s ease;pointer-events:none;overflow:hidden;
   background:
-    radial-gradient(ellipse 54% 46% at 50% 50%,rgba(11,27,29,.96) 0%,rgba(11,27,29,.72) 30%,rgba(11,27,29,.30) 55%,rgba(10,10,10,0) 78%),
+    radial-gradient(
+      ellipse 88% 72% at 50% 50%,
+      rgba(11,27,29,.96) 0%,
+      rgba(11,27,29,.92) 16%,
+      rgba(11,27,29,.84) 32%,
+      rgba(11,27,29,.70) 48%,
+      rgba(11,27,29,.52) 64%,
+      rgba(11,27,29,.30) 80%,
+      rgba(11,27,29,.12) 92%,
+      rgba(10,10,10,0) 100%
+    ),
+    radial-gradient(
+      ellipse 60% 46% at 50% 50%,
+      rgba(11,27,29,.28) 0%,
+      rgba(11,27,29,.10) 70%,
+      rgba(11,27,29,0) 100%
+    ),
     #0A0A0A;
 }
 .showreel-poster-content{
@@ -15,11 +31,11 @@ html,body{max-width:100%;overflow-x:clip}.logo-mark{width:40px;height:40px;displ
   font-size:clamp(50px,5.7vw,88px);font-weight:300;line-height:1;letter-spacing:.18em;white-space:nowrap;
 }
 .showreel-poster-role{
-  position:absolute;left:50%;top:61.5%;transform:translate(-50%,-50%);
+  position:absolute;left:50%;top:64.5%;transform:translate(-50%,-50%);
   font-size:clamp(15px,1.55vw,24px);font-weight:400;line-height:1.15;letter-spacing:.16em;white-space:nowrap;color:rgba(243,242,238,.94);
 }
 .showreel-poster-sections{
-  position:absolute;left:50%;top:72.5%;transform:translate(-50%,-50%);
+  position:absolute;left:50%;top:75.5%;transform:translate(-50%,-50%);
   display:flex;align-items:center;justify-content:center;gap:clamp(28px,3.4vw,58px);
   font-size:clamp(12px,1.08vw,17px);font-weight:400;letter-spacing:.16em;white-space:nowrap;color:rgba(243,242,238,.52);
 }
@@ -49,8 +65,8 @@ html,body{max-width:100%;overflow-x:clip}.logo-mark{width:40px;height:40px;displ
   footer{padding-left:0;padding-right:0}
   .hero-card button.play{left:0!important;right:0!important;top:50%!important;margin:auto!important}
   .showreel-poster-title{top:18%;font-size:clamp(30px,9.2vw,44px);letter-spacing:.16em}
-  .showreel-poster-role{top:74%;font-size:clamp(10px,3.15vw,14px);letter-spacing:.12em}
-  .showreel-poster-sections{top:81.5%;gap:clamp(9px,2.8vw,16px);font-size:clamp(7.5px,2.15vw,10px);letter-spacing:.09em}
+  .showreel-poster-role{top:76%;font-size:clamp(10px,3.15vw,14px);letter-spacing:.12em}
+  .showreel-poster-sections{top:84%;gap:clamp(9px,2.8vw,16px);font-size:clamp(7.5px,2.15vw,10px);letter-spacing:.09em}
   .showreel-poster-sections i{height:16px}
   .showreel-loader{width:40px;height:40px;margin:-20px 0 0 -20px}
   .reel-label{left:50%;top:calc(64% + 70px)}

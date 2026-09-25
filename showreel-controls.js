@@ -28,6 +28,7 @@
   const pauseTime=ui.querySelector('.showreel-pause-time');
 
   let scrubbing=false;
+  let clickTimer=null;
 
   const formatTime=(seconds)=>{
     if(!Number.isFinite(seconds))return '0:00';
@@ -63,10 +64,37 @@
     }
   };
 
+  const syncVideoBounds=()=>{
+    const cardRect=card.getBoundingClientRect();
+    const sourceW=video.videoWidth||1920;
+    const sourceH=video.videoHeight||1200;
+    const sourceRatio=sourceW/sourceH;
+    const cardRatio=cardRect.width/cardRect.height;
+
+    let displayW=cardRect.width;
+    let displayH=cardRect.height;
+    if(cardRatio>sourceRatio){
+      displayH=cardRect.height;
+      displayW=displayH*sourceRatio;
+    }else{
+      displayW=cardRect.width;
+      displayH=displayW/sourceRatio;
+    }
+
+    const left=(cardRect.width-displayW)/2;
+    const top=(cardRect.height-displayH)/2;
+
+    card.style.setProperty('--showreel-video-left',`${left}px`);
+    card.style.setProperty('--showreel-video-top',`${top}px`);
+    card.style.setProperty('--showreel-video-width',`${displayW}px`);
+    card.style.setProperty('--showreel-video-height',`${displayH}px`);
+  };
+
   const setFullscreen=(enabled)=>{
     card.classList.toggle('is-web-fullscreen',enabled);
     document.body.classList.toggle('showreel-fullscreen-lock',enabled);
     fullscreen.setAttribute('aria-label',enabled?'Exit fullscreen':'Enter fullscreen');
+    requestAnimationFrame(syncVideoBounds);
   };
 
   fullscreen.addEventListener('click',(event)=>{
@@ -99,10 +127,19 @@
 
   card.addEventListener('click',(event)=>{
     if(event.target.closest('.showreel-fullscreen,.showreel-progress-wrap,.play'))return;
-    if(card.classList.contains('is-playing')||card.classList.contains('is-paused')) togglePlayback();
+    if(!(card.classList.contains('is-playing')||card.classList.contains('is-paused')))return;
+    clearTimeout(clickTimer);
+    clickTimer=setTimeout(()=>togglePlayback(),220);
   });
 
-  video.addEventListener('loadedmetadata',syncTime);
+  card.addEventListener('dblclick',(event)=>{
+    if(event.target.closest('.showreel-fullscreen,.showreel-progress-wrap,.play'))return;
+    event.preventDefault();
+    clearTimeout(clickTimer);
+    setFullscreen(!card.classList.contains('is-web-fullscreen'));
+  });
+
+  video.addEventListener('loadedmetadata',()=>{syncTime();syncVideoBounds();});
   video.addEventListener('durationchange',syncTime);
   video.addEventListener('timeupdate',syncTime);
   video.addEventListener('play',()=>{syncPauseState();syncTime();});
@@ -123,6 +160,9 @@
     }
   });
 
+  window.addEventListener('resize',syncVideoBounds);
+
   syncPauseState();
   syncTime();
+  syncVideoBounds();
 })();

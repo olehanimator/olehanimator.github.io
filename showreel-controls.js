@@ -12,6 +12,12 @@
       <input class="showreel-progress" type="range" min="0" max="1000" value="0" step="1" aria-label="Showreel progress">
       <div class="showreel-pause-time" aria-hidden="true">0:00</div>
     </div>
+    <div class="showreel-center-feedback" aria-hidden="true">
+      <div class="showreel-center-pause">
+        <span></span><span></span>
+      </div>
+      <div class="showreel-center-play"></div>
+    </div>
     <button class="showreel-control-btn showreel-fullscreen" type="button" aria-label="Enter fullscreen">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H4v4M16 4h4v4M4 16v4h4M20 16v4h-4"/></svg>
     </button>`;
@@ -22,6 +28,7 @@
   const pauseTime=ui.querySelector('.showreel-pause-time');
 
   let scrubbing=false;
+  let pauseFeedbackTimer=null;
 
   const formatTime=(seconds)=>{
     if(!Number.isFinite(seconds))return '0:00';
@@ -47,10 +54,18 @@
     pauseTime.textContent=formatTime(time);
   };
 
+  const showPauseFeedback=()=>{
+    clearTimeout(pauseFeedbackTimer);
+    card.classList.add('pause-feedback');
+    pauseFeedbackTimer=setTimeout(()=>card.classList.remove('pause-feedback'),260);
+  };
+
   const togglePlayback=()=>{
     if(video.paused||video.ended){
+      card.classList.remove('pause-feedback');
       video.play().catch(()=>{});
     }else{
+      showPauseFeedback();
       video.pause();
     }
   };

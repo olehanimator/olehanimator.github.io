@@ -20,9 +20,7 @@
   const centerState=document.createElement('div');
   centerState.className='showreel-center-state';
   centerState.setAttribute('aria-hidden','true');
-  centerState.innerHTML=`
-    <div class="showreel-center-pause"><span></span><span></span></div>
-    <div class="showreel-center-play"></div>`;
+  centerState.innerHTML=`<div class="showreel-center-play"></div>`;
   card.appendChild(centerState);
 
   const progress=ui.querySelector('.showreel-progress');
@@ -30,7 +28,6 @@
   const pauseTime=ui.querySelector('.showreel-pause-time');
 
   let scrubbing=false;
-  let pauseFeedbackTimer=null;
 
   const formatTime=(seconds)=>{
     if(!Number.isFinite(seconds))return '0:00';
@@ -56,20 +53,12 @@
     pauseTime.textContent=formatTime(time);
   };
 
-  const showPauseFeedback=()=>{
-    clearTimeout(pauseFeedbackTimer);
-    card.classList.add('pause-feedback');
-    pauseFeedbackTimer=setTimeout(()=>card.classList.remove('pause-feedback'),260);
-  };
-
   const togglePlayback=()=>{
     if(video.paused||video.ended){
-      card.classList.remove('pause-feedback');
       card.classList.remove('is-paused');
       video.play().catch(()=>{});
     }else{
       card.classList.add('is-paused');
-      showPauseFeedback();
       video.pause();
     }
   };

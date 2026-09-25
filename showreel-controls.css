@@ -85,6 +85,69 @@
 }
 .hero-card.is-paused .showreel-pause-time{opacity:1}
 
+.showreel-center-feedback{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:100px;
+  height:100px;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.showreel-center-play,
+.showreel-center-pause{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.68);
+  background:rgba(0,0,0,.16);
+  box-shadow:0 0 0 1px rgba(255,255,255,.015) inset;
+}
+.showreel-center-play{
+  opacity:0;
+  transform:scale(.96);
+  transition:opacity .18s ease,transform .18s ease;
+}
+.showreel-center-play:before{
+  content:"";
+  position:absolute;
+  left:52%;
+  top:50%;
+  transform:translate(-43%,-50%);
+  width:0;
+  height:0;
+  border-top:11px solid transparent;
+  border-bottom:11px solid transparent;
+  border-left:17px solid rgba(255,255,255,.82);
+}
+.hero-card.is-paused:not(.pause-feedback) .showreel-center-play{
+  opacity:.72;
+  transform:scale(1);
+}
+.showreel-center-pause{
+  opacity:0;
+  transform:scale(.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+}
+.showreel-center-pause span{
+  display:block;
+  width:4px;
+  height:25px;
+  border-radius:2px;
+  background:rgba(255,255,255,.9);
+}
+.hero-card.pause-feedback .showreel-center-pause{
+  animation:showreel-pause-feedback .26s ease both;
+}
+@keyframes showreel-pause-feedback{
+  0%{opacity:0;transform:scale(.82)}
+  30%{opacity:.9;transform:scale(1)}
+  100%{opacity:0;transform:scale(1.05)}
+}
+
 .showreel-control-btn{
   position:absolute;
   z-index:2;
@@ -142,10 +205,15 @@ body.showreel-fullscreen-lock{overflow:hidden!important}
 @media(max-width:700px){
   .hero-card{--showreel-divider-y:90%}
   .showreel-control-btn{top:8px;right:8px;width:34px;height:34px}
+  .showreel-center-feedback{width:84px;height:84px}
+  .showreel-center-play:before{border-top-width:9px;border-bottom-width:9px;border-left-width:14px}
+  .showreel-center-pause{gap:8px}
+  .showreel-center-pause span{width:4px;height:22px}
   .showreel-control-btn svg{width:18px;height:18px}
   .showreel-pause-time{top:-22px;font-size:9px;padding:4px 6px}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .showreel-ui,.showreel-control-btn,.showreel-pause-time{transition:none}
+  .showreel-ui,.showreel-control-btn,.showreel-pause-time,.showreel-center-play{transition:none}
+  .hero-card.pause-feedback .showreel-center-pause{animation:none;opacity:.8}
 }

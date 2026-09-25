@@ -12,16 +12,18 @@
       <input class="showreel-progress" type="range" min="0" max="1000" value="0" step="1" aria-label="Showreel progress">
       <div class="showreel-pause-time" aria-hidden="true">0:00</div>
     </div>
-    <div class="showreel-center-feedback" aria-hidden="true">
-      <div class="showreel-center-pause">
-        <span></span><span></span>
-      </div>
-      <div class="showreel-center-play"></div>
-    </div>
     <button class="showreel-control-btn showreel-fullscreen" type="button" aria-label="Enter fullscreen">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H4v4M16 4h4v4M4 16v4h4M20 16v4h-4"/></svg>
     </button>`;
   card.appendChild(ui);
+
+  const centerState=document.createElement('div');
+  centerState.className='showreel-center-state';
+  centerState.setAttribute('aria-hidden','true');
+  centerState.innerHTML=`
+    <div class="showreel-center-pause"><span></span><span></span></div>
+    <div class="showreel-center-play"></div>`;
+  card.appendChild(centerState);
 
   const progress=ui.querySelector('.showreel-progress');
   const fullscreen=ui.querySelector('.showreel-fullscreen');
@@ -63,8 +65,10 @@
   const togglePlayback=()=>{
     if(video.paused||video.ended){
       card.classList.remove('pause-feedback');
+      card.classList.remove('is-paused');
       video.play().catch(()=>{});
     }else{
+      card.classList.add('is-paused');
       showPauseFeedback();
       video.pause();
     }

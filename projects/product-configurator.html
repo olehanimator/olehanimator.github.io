@@ -15,9 +15,13 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css?v=20260807-3">
-  <link rel="stylesheet" href="../project.css?v=20261015-2">
+  <link rel="stylesheet" href="../motion.css?v=20260808-1">
+  <link rel="stylesheet" href="../mobile-fixes.css?v=20260929-1">
+  <link rel="stylesheet" href="../visual-tuning-2026.css?v=20260906-1">
+  <link rel="stylesheet" href="../brand-2026.css?v=20260815-1">
+  <link rel="stylesheet" href="../project.css?v=20261015-3">
   <style>
     .media-frame video,.media-frame img{position:absolute;inset:0;width:100%;height:100%;display:block}
     .media-frame video{object-fit:contain;background:#000}
@@ -53,18 +57,20 @@
     .code-card .token.function{color:#e2c08d}
     .code-card .token.number,.code-card .token.boolean{color:#d79b7c}
     .code-card .token.punctuation,.code-card .token.operator{color:#8d9497}
-    .project-result .section-kicker{margin:0 0 10px;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+    
     .next-project.project-shell{margin-left:auto;margin-right:auto}
     .language-switcher button{cursor:pointer}
     @media(max-width:700px){.stat-row{grid-template-columns:1fr}.pipeline{padding:12px;overflow-x:auto}.pipeline svg{min-width:560px}}
-    .project-content > div{min-width:0}
     .code-card pre,.net-card{max-width:100%;overflow-x:auto}
   </style>
 </head>
 <body class="project-page">
-  <header class="project-header project-shell">
-    <a class="project-home" href="../index.html#projects"><span>←</span><span data-i18n="nav.back">Projects</span></a>
-    <div class="language-switcher" aria-label="Language selector"><button type="button" data-lang="en" class="active" aria-pressed="true">EN</button><button type="button" data-lang="de" aria-pressed="false">DE</button><button type="button" data-lang="uk" aria-pressed="false">UA</button></div>
+  <header class="topbar wrap">
+    <a class="logo-mark" href="../index.html" aria-label="Oleh Lytvynenko — home">
+      <svg viewBox="0 0 44 40" aria-hidden="true"><circle cx="14" cy="20" r="10.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M28 9v22h11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="logo-name">Oleh Lytvynenko</span>
+    </a>
+    <div class="topbar-right"><nav><a href="../index.html#projects" data-i18n="nav.projects">Projects</a><a href="../index.html#about" data-i18n="nav.about">About</a><a href="../cv.html">CV</a></nav><div class="language-switcher" aria-label="Language selector"><button type="button" data-lang="en" class="active" aria-pressed="true">EN</button><button type="button" data-lang="de" aria-pressed="false">DE</button><button type="button" data-lang="uk" aria-pressed="false">UA</button></div></div>
   </header>
   <main>
     <section class="project-hero project-shell">
@@ -85,27 +91,36 @@
       </div>
     </section>
     <div class="project-content project-shell">
-      <aside class="project-index" aria-label="Project sections"><p data-i18n="index.title">Case study</p><a href="#overview" data-i18n="index.overview">01 · Overview</a><a href="#challenge" data-i18n="index.challenge">02 · Challenge</a><a href="#work" data-i18n="index.work">03 · What I did</a><a href="#process" data-i18n="index.process">04 · Process</a><a href="#result" data-i18n="index.result">05 · Result</a></aside>
-      <div>
         <section id="overview" class="project-section">
+          <div class="section-head">
           <p class="section-kicker" data-i18n="index.overview">01 · Overview</p>
           <h2 data-i18n="overview.title">A sales configurator that runs from a link</h2>
+          </div>
+          <div class="section-body">
           <p data-i18n="overview.p1">The client, a manufacturer of heavy vehicles, used a 3D configurator in its showrooms so sales staff could show customers every body, chassis and equipment option. I built a completely new application in Unity WebGL, without reusing any code from the old one. It opens in the browser and loads 3D models from the server on demand.</p>
           <p data-i18n="overview.p2">I built the whole project on my own, from the architecture and code to the shaders, the 3D preparation and the interface.</p>
+          </div>
         </section>
         <section id="challenge" class="project-section">
+          <div class="section-head">
           <p class="section-kicker" data-i18n="index.challenge">02 · Challenge</p>
           <h2 data-i18n="challenge.title">Slow to distribute, slow to extend</h2>
+          </div>
+          <div class="section-body">
           <p data-i18n="challenge.p1">The previous app had two problems that grew with every new product.</p>
           <ul>
             <li data-i18n="challenge.l1">It had to be installed on tablets from USB sticks handed out to the showrooms, so every update meant a new round of sticks.</li>
             <li data-i18n="challenge.l2">Each new 3D model went to an external vendor, and integrating it into the app took close to a week.</li>
             <li data-i18n="challenge.l3">The replacement had to run in a browser with heavy, detailed models and work in several languages.</li>
           </ul>
+          </div>
         </section>
         <section id="work" class="project-section">
+          <div class="section-head">
           <p class="section-kicker" data-i18n="index.work">03 · What I did</p>
           <h2 data-i18n="work.title">My contribution</h2>
+          </div>
+          <div class="section-body">
           <ul>
             <li data-i18n="work.l1">Built a new configurator from scratch as a Unity WebGL app, hosted on the agency's server and opened by a link, with no installation.</li>
             <li data-i18n="work.l2">Built on-demand loading: every model, part and environment is a separate AssetBundle on the server and is downloaded only when the user selects it. The app itself stays light, while the catalogue grew to around 60 bundles.</li>
@@ -118,6 +133,7 @@
             <li data-i18n="work.l8">Localised the interface into German, English and French from JSON files, and added deep links: URL parameters open a specific model, colour, language and environment.</li>
             <li data-i18n="work.l9">Prepared the 3D models and environments for real-time rendering in the browser.</li>
           </ul>
+          </div>
         </section>
         <div class="project-gallery" aria-label="Project screenshots">
           <figure class="media-frame wide"><img src="../assets/projects/product-configurator/spray-labels.jpg" alt="Spray bottle with the label picker open" loading="lazy"></figure>
@@ -125,8 +141,11 @@
           <figure class="media-frame"><img src="../assets/projects/product-configurator/colors.jpg" alt="Colour zone picker recolouring the spray trigger" loading="lazy"></figure>
         </div>
         <section id="process" class="project-section">
+          <div class="section-head">
           <p class="section-kicker" data-i18n="index.process">04 · Process</p>
           <h2 data-i18n="process.title">From a week to ten minutes</h2>
+          </div>
+          <div class="section-body">
           <p data-i18n="process.p1">The key decision was to separate the application from its content. The WebGL app only knows the structure of the catalogue. The heavy models live on the server as AssetBundles and are referenced by name from the Unity scene.</p>
           <div class="pipeline" role="img" aria-label="Pipeline: Unity scene with bundle names, AssetBundles build, server, WebGL app loading on demand">
             <svg viewBox="0 0 720 170" xmlns="http://www.w3.org/2000/svg">
@@ -205,18 +224,22 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
           </div>
           <p style="margin-top:28px" data-i18n="process.p2">With a finished 3D model, adding it to the configurator now means building its AssetBundle, uploading it and assigning the bundle name to an object in the scene. That takes about ten minutes and happens in-house instead of at an external vendor.</p>
           <p data-i18n="process.p3">I also built a version on the Universal Render Pipeline with noticeably better visuals. Because of compatibility issues on the client side, the truck configurator stayed on the built-in pipeline; the packaging demo shown here runs on URP.</p>
+          </div>
         </section>
         <section id="result" class="project-result">
+          <div class="section-head">
           <p class="section-kicker" data-i18n="index.result">05 · Result</p>
           <h2 data-i18n="result.title">The outcome</h2>
+          </div>
+          <div class="section-body">
           <p data-i18n="result.p1">The configurator opens from a link in the browser: no installation and no USB sticks. New models are added in about ten minutes instead of a week, and the same engine was reused for other product lines, such as the packaging demo shown on this page.</p>
           <div class="stat-row">
             <div><strong data-i18n="stat1.value">~10 min</strong><small data-i18n="stat1.label">to add a new model, down from about a week</small></div>
             <div><strong>~60</strong><small data-i18n="stat2.label">AssetBundles, loaded only when selected</small></div>
             <div><strong>3</strong><small data-i18n="stat3.label">languages, plus deep links to any configuration</small></div>
           </div>
+          </div>
         </section>
-      </div>
     </div>
     <section class="next-project project-shell"><div><small data-i18n="next.label">More work</small><a href="../index.html#projects" data-i18n="next.link">Back to all projects</a></div><span class="arrow">→</span></section>
   </main>
@@ -227,7 +250,7 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
     const T={
       en:{},
       de:{
-        "nav.back":"Projekte","category":"Interaktiv · WebGL-Konfigurator","title":"Produkt-<br>konfigurator",
+        "nav.back":"Projekte","nav.projects":"Projekte","nav.about":"Über mich","category":"Interaktiv · WebGL-Konfigurator","title":"Produkt-<br>konfigurator",
         "lead":"Ein browserbasierter 3D-Konfigurator, der eine per USB-Stick verteilte Tablet-App ersetzt und den Aufwand für ein neues Produktmodell von etwa einer Woche auf zehn Minuten reduziert hat.",
         "heroCaption":"Bildschirmaufnahme der Demoversion. Das ursprüngliche Kundenprodukt unterliegt einer Geheimhaltungsvereinbarung, deshalb wird dieselbe Engine hier mit Verpackungsmodellen gezeigt.",
         "meta.role":"Rolle","meta.roleValue":"Alleinentwickler · Technical Artist","meta.contribution":"Beitrag","meta.contributionValue":"Architektur · Code · Shader · 3D-Aufbereitung · UI","meta.tools":"Tools","meta.year":"Jahr",
@@ -270,7 +293,7 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "next.label":"Weitere Arbeiten","next.link":"Zurück zu allen Projekten","footer.back":"Zurück zum Portfolio"
       },
       uk:{
-        "nav.back":"Проєкти","category":"Інтерактив · WebGL-конфігуратор","title":"Конфігуратор<br>продукту",
+        "nav.back":"Проєкти","nav.projects":"Проєкти","nav.about":"Про мене","category":"Інтерактив · WebGL-конфігуратор","title":"Конфігуратор<br>продукту",
         "lead":"Браузерний 3D-конфігуратор, який замінив планшетний застосунок, що роздавався на флешках, і скоротив додавання нової моделі продукту з приблизно тижня до десяти хвилин.",
         "heroCaption":"Запис екрана демоверсії. Оригінальний продукт клієнта під NDA, тому тут той самий рушій показано на моделях упаковки.",
         "meta.role":"Роль","meta.roleValue":"Єдиний розробник · Technical Artist","meta.contribution":"Внесок","meta.contributionValue":"Архітектура · Код · Шейдери · 3D-підготовка · UI","meta.tools":"Інструменти","meta.year":"Рік",

@@ -97,7 +97,7 @@
           <h2 data-i18n="work.title">My contribution</h2>
           <ul>
             <li data-i18n="work.l1">Built a new configurator from scratch as a Unity WebGL app, hosted on the agency's server and opened by a link, with no installation.</li>
-            <li data-i18n="work.l2">Built on-demand loading: every model, part and environment is a separate AssetBundle on the server and is downloaded only when the user selects it. The core app stays at about 4.7 MB while the catalogue grew to around 60 bundles.</li>
+            <li data-i18n="work.l2">Built on-demand loading: every model, part and environment is a separate AssetBundle on the server and is downloaded only when the user selects it. The app itself stays light, while the catalogue grew to around 60 bundles.</li>
             <li data-i18n="work.l3">Designed a data-driven scene structure: each configurable object in the Unity hierarchy gets a component and the name of its AssetBundle, so a new model is added without writing code.</li>
             <li data-i18n="work.l4">Wrote the configuration logic with two kinds of options: add-ons that switch on and off independently (such as an extra headlight) and either-or variants that replace a whole part (such as a different chassis). Only options that fit the current selection are shown.</li>
             <li data-i18n="work.l5">Implemented recolouring by paint zones and material swapping: beyond colour, whole materials can be replaced, such as the labels in the packaging demo.</li>
@@ -131,7 +131,7 @@
                 <text x="79" y="88">object + component</text><text x="79" y="106">+ bundle name</text>
                 <text x="267" y="88">~60 AssetBundles</text><text x="267" y="106">models · parts · scenes</text>
                 <text x="455" y="88">hosted bundles</text><text x="455" y="106">shared by link</text>
-                <text x="641" y="88">4.7 MB core</text><text x="641" y="106">loads on click</text>
+                <text x="641" y="88">light core app</text><text x="641" y="106">loads on click</text>
               </g>
             </svg>
           </div>
@@ -178,7 +178,7 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
           <p data-i18n="result.p1">The configurator opens from a link in the browser: no installation and no USB sticks. New models are added in about ten minutes instead of a week, and the same engine was reused for other product lines, such as the packaging demo shown on this page.</p>
           <div class="stat-row">
             <div><strong data-i18n="stat1.value">~10 min</strong><small data-i18n="stat1.label">to add a new model, down from about a week</small></div>
-            <div><strong>4.7 MB</strong><small data-i18n="stat2.label">core app; models load only when selected</small></div>
+            <div><strong>~60</strong><small data-i18n="stat2.label">AssetBundles, loaded only when selected</small></div>
             <div><strong>3</strong><small data-i18n="stat3.label">languages, plus deep links to any configuration</small></div>
           </div>
         </section>
@@ -207,7 +207,7 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "challenge.l3":"Die neue Lösung sollte im Browser mit schweren, detaillierten Modellen laufen und mehrsprachig sein.",
         "work.title":"Mein Beitrag",
         "work.l1":"Einen neuen Konfigurator von Grund auf als Unity-WebGL-App entwickelt: auf dem Server der Agentur gehostet, per Link aufrufbar, ohne Installation.",
-        "work.l2":"Laden bei Bedarf entwickelt: Jedes Modell, jedes Anbauteil und jede Umgebung ist ein eigenes AssetBundle auf dem Server und wird erst geladen, wenn der Nutzer es auswählt. Die Kern-App bleibt bei etwa 4,7 MB, während der Katalog auf rund 60 Bundles wuchs.",
+        "work.l2":"Laden bei Bedarf entwickelt: Jedes Modell, jedes Anbauteil und jede Umgebung ist ein eigenes AssetBundle auf dem Server und wird erst geladen, wenn der Nutzer es auswählt. Die App selbst bleibt schlank, während der Katalog auf rund 60 Bundles wuchs.",
         "work.l3":"Eine datengetriebene Szenenstruktur entworfen: Jedes konfigurierbare Objekt in der Unity-Hierarchie erhält eine Komponente und den Namen seines AssetBundles. Neue Modelle kommen so ohne neuen Code hinzu.",
         "work.l4":"Die Konfigurationslogik mit zwei Arten von Optionen geschrieben: Anbauteile, die sich unabhängig ein- und ausschalten lassen (etwa ein zusätzlicher Scheinwerfer), und Entweder-oder-Varianten, die ein ganzes Teil ersetzen (etwa ein anderes Fahrgestell). Angezeigt werden nur Optionen, die zur aktuellen Auswahl passen.",
         "work.l5":"Umlackieren über Lackzonen und Materialwechsel umgesetzt: Neben der Farbe lassen sich ganze Materialien austauschen, etwa die Etiketten in der Verpackungs-Demo.",
@@ -223,7 +223,7 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "process.p3":"Außerdem habe ich eine Version mit der Universal Render Pipeline und deutlich besserer Optik gebaut. Wegen Kompatibilitätsproblemen auf Kundenseite blieb die Produktion bei der Built-in-Pipeline.",
         "result.title":"Das Ergebnis",
         "result.p1":"Der Konfigurator startet per Link im Browser: keine Installation, keine USB-Sticks. Neue Modelle kommen in etwa zehn Minuten statt einer Woche hinzu, und dieselbe Engine wurde für weitere Produktlinien wiederverwendet, etwa für die hier gezeigte Verpackungs-Demo.",
-        "stat1.value":"~10 Min.","stat1.label":"für ein neues Modell statt etwa einer Woche","stat2.label":"Kern-App; Modelle laden erst bei Auswahl","stat3.label":"Sprachen, plus Deep Links zu jeder Konfiguration",
+        "stat1.value":"~10 Min.","stat1.label":"für ein neues Modell statt etwa einer Woche","stat2.label":"AssetBundles, geladen erst bei Auswahl","stat3.label":"Sprachen, plus Deep Links zu jeder Konfiguration",
         "next.label":"Weitere Arbeiten","next.link":"Zurück zu allen Projekten","footer.back":"Zurück zum Portfolio"
       },
       uk:{
@@ -241,7 +241,7 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "challenge.l3":"Нове рішення мало працювати в браузері з важкими детальними моделями та кількома мовами.",
         "work.title":"Мій внесок",
         "work.l1":"Написав новий конфігуратор з нуля як застосунок Unity WebGL на сервері агенції, що відкривається за посиланням без встановлення.",
-        "work.l2":"Зробив завантаження на вимогу: кожна модель, деталь і оточення — окремий AssetBundle на сервері, який завантажується лише тоді, коли користувач його обирає. Основний застосунок важить близько 4,7 МБ, а каталог виріс приблизно до 60 бандлів.",
+        "work.l2":"Зробив завантаження на вимогу: кожна модель, деталь і оточення — окремий AssetBundle на сервері, який завантажується лише тоді, коли користувач його обирає. Сам застосунок лишається легким, а каталог виріс приблизно до 60 бандлів.",
         "work.l3":"Спроєктував структуру сцени, керовану даними: кожен об’єкт в ієрархії Unity отримує компонент і назву свого AssetBundle, тож нова модель додається без написання коду.",
         "work.l4":"Написав логіку конфігурації з двома типами опцій: додаткові деталі, які вмикаються й вимикаються незалежно (наприклад, додаткова фара), і варіанти «або-або», що замінюють цілу частину (наприклад, інше шасі). Показуються лише опції, сумісні з поточним вибором.",
         "work.l5":"Реалізував перефарбування за зонами та заміну матеріалів: окрім кольору, можна замінювати цілі матеріали, як-от етикетки в демо з упаковкою.",
@@ -257,7 +257,7 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "process.p3":"Я також зробив версію на Universal Render Pipeline з помітно кращою картинкою. Через проблеми сумісності на боці клієнта у продакшні залишився стандартний пайплайн.",
         "result.title":"Результат",
         "result.p1":"Конфігуратор відкривається за посиланням у браузері: без встановлення й без флешок. Нові моделі додаються приблизно за десять хвилин замість тижня, а той самий рушій використано для інших продуктових ліній, як-от демо з упаковкою на цій сторінці.",
-        "stat1.value":"~10 хв","stat1.label":"на нову модель замість приблизно тижня","stat2.label":"основний застосунок; моделі вантажаться лише при виборі","stat3.label":"мови, плюс глибокі посилання на будь-яку конфігурацію",
+        "stat1.value":"~10 хв","stat1.label":"на нову модель замість приблизно тижня","stat2.label":"AssetBundle, що завантажуються лише при виборі","stat3.label":"мови, плюс глибокі посилання на будь-яку конфігурацію",
         "next.label":"Інші роботи","next.link":"Назад до всіх проєктів","footer.back":"Назад до портфоліо"
       }
     };

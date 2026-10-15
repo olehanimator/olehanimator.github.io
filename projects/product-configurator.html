@@ -99,8 +99,8 @@
             <li data-i18n="work.l1">Built a new configurator from scratch as a Unity WebGL app, hosted on the agency's server and opened by a link, with no installation.</li>
             <li data-i18n="work.l2">Built on-demand loading: every model, part and environment is a separate AssetBundle on the server and is downloaded only when the user selects it. The core app stays at about 4.7 MB while the catalogue grew to around 60 bundles.</li>
             <li data-i18n="work.l3">Designed a data-driven scene structure: each configurable object in the Unity hierarchy gets a component and the name of its AssetBundle, so a new model is added without writing code.</li>
-            <li data-i18n="work.l4">Wrote the configuration logic: product, then body variant, then chassis, then add-on parts, showing only the options that fit the current selection.</li>
-            <li data-i18n="work.l5">Implemented colour and label switching by paint zones.</li>
+            <li data-i18n="work.l4">Wrote the configuration logic with two kinds of options: add-ons that switch on and off independently (such as an extra headlight) and either-or variants that replace a whole part (such as a different chassis). Only options that fit the current selection are shown.</li>
+            <li data-i18n="work.l5">Implemented recolouring by paint zones and material swapping: beyond colour, whole materials can be replaced, such as the labels in the packaging demo.</li>
             <li data-i18n="work.l6">Wrote a custom hotspot shader that looks solid in front of the model and turns pale when the hotspot is behind it.</li>
             <li data-i18n="work.l7">Added studio, day and night environments, an orbit camera and fullscreen mode.</li>
             <li data-i18n="work.l10">For the packaging version, added uploading your own label from the computer and saving screenshots of the configured product straight to the computer.</li>
@@ -209,8 +209,8 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "work.l1":"Einen neuen Konfigurator von Grund auf als Unity-WebGL-App entwickelt: auf dem Server der Agentur gehostet, per Link aufrufbar, ohne Installation.",
         "work.l2":"Laden bei Bedarf entwickelt: Jedes Modell, jedes Anbauteil und jede Umgebung ist ein eigenes AssetBundle auf dem Server und wird erst geladen, wenn der Nutzer es auswählt. Die Kern-App bleibt bei etwa 4,7 MB, während der Katalog auf rund 60 Bundles wuchs.",
         "work.l3":"Eine datengetriebene Szenenstruktur entworfen: Jedes konfigurierbare Objekt in der Unity-Hierarchie erhält eine Komponente und den Namen seines AssetBundles. Neue Modelle kommen so ohne neuen Code hinzu.",
-        "work.l4":"Die Konfigurationslogik geschrieben: Produkt, dann Aufbauvariante, dann Fahrgestell, dann Anbauteile, wobei nur passende Optionen angezeigt werden.",
-        "work.l5":"Farb- und Etikettenwechsel über Lackzonen umgesetzt.",
+        "work.l4":"Die Konfigurationslogik mit zwei Arten von Optionen geschrieben: Anbauteile, die sich unabhängig ein- und ausschalten lassen (etwa ein zusätzlicher Scheinwerfer), und Entweder-oder-Varianten, die ein ganzes Teil ersetzen (etwa ein anderes Fahrgestell). Angezeigt werden nur Optionen, die zur aktuellen Auswahl passen.",
+        "work.l5":"Umlackieren über Lackzonen und Materialwechsel umgesetzt: Neben der Farbe lassen sich ganze Materialien austauschen, etwa die Etiketten in der Verpackungs-Demo.",
         "work.l6":"Einen eigenen Hotspot-Shader geschrieben, der vor dem Modell deckend wirkt und blass wird, wenn der Hotspot dahinter liegt.",
         "work.l7":"Studio-, Tag- und Nachtumgebung, Orbit-Kamera und Vollbildmodus ergänzt.",
         "work.l10":"Für die Verpackungsversion ergänzt: eigene Etiketten vom Computer hochladen und Screenshots des konfigurierten Produkts direkt auf dem Computer speichern.",
@@ -243,8 +243,8 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "work.l1":"Написав новий конфігуратор з нуля як застосунок Unity WebGL на сервері агенції, що відкривається за посиланням без встановлення.",
         "work.l2":"Зробив завантаження на вимогу: кожна модель, деталь і оточення — окремий AssetBundle на сервері, який завантажується лише тоді, коли користувач його обирає. Основний застосунок важить близько 4,7 МБ, а каталог виріс приблизно до 60 бандлів.",
         "work.l3":"Спроєктував структуру сцени, керовану даними: кожен об’єкт в ієрархії Unity отримує компонент і назву свого AssetBundle, тож нова модель додається без написання коду.",
-        "work.l4":"Написав логіку конфігурації: продукт, потім варіант кабіни, потім шасі, потім додаткові деталі, з показом лише сумісних опцій.",
-        "work.l5":"Реалізував зміну кольорів і етикеток за зонами фарбування.",
+        "work.l4":"Написав логіку конфігурації з двома типами опцій: додаткові деталі, які вмикаються й вимикаються незалежно (наприклад, додаткова фара), і варіанти «або-або», що замінюють цілу частину (наприклад, інше шасі). Показуються лише опції, сумісні з поточним вибором.",
+        "work.l5":"Реалізував перефарбування за зонами та заміну матеріалів: окрім кольору, можна замінювати цілі матеріали, як-от етикетки в демо з упаковкою.",
         "work.l6":"Написав власний шейдер для хотспотів: перед моделлю він виглядає насиченим, а за нею стає блідим.",
         "work.l7":"Додав оточення «студія», «день» і «ніч», орбітальну камеру та повноекранний режим.",
         "work.l10":"Для версії з упаковкою додав завантаження власної етикетки з комп’ютера та збереження скриншотів налаштованого продукту прямо на комп’ютер.",

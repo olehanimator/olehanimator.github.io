@@ -3,7 +3,7 @@
 .project-page{--project-max:var(--max)}
 .project-page .project-shell{width:min(calc(100% - 48px),var(--max))}
 .project-page .project-category{margin:56px 0 18px;color:var(--accent,#5c9fa1);font-size:12px;font-weight:500;letter-spacing:.18em}
-.project-page .project-hero h1{max-width:none;font-family:Montserrat,Arial,sans-serif;font-weight:300;font-size:clamp(38px,5.4vw,84px);line-height:1.08;letter-spacing:.12em;text-transform:uppercase}
+.project-page .project-hero h1{max-width:none;font-family:Montserrat,Arial,sans-serif;font-weight:300;font-size:clamp(30px,3.3vw,54px);line-height:1.12;letter-spacing:.12em;text-transform:uppercase}
 .project-page .project-lead{max-width:820px;margin:26px 0 34px;color:#aeb4b5;font-size:18px;line-height:1.6}
 .project-page .media-frame{border-color:var(--ui-border,rgba(205,224,225,.18));border-radius:var(--radius-lg,20px)}
 .project-page .project-meta{margin:20px 0 0}
@@ -31,5 +31,5 @@
 .project-page .project-gallery{gap:14px;margin:0 0 48px}
 .project-page .next-project{margin:56px auto 64px}
 .project-page .next-project a{font-size:clamp(27px,2.5vw,39px);font-weight:450;letter-spacing:-.035em}
-@media(max-width:700px){.project-page .project-shell{width:min(calc(100% - 28px),var(--max))}.project-page .project-category{margin-top:34px}.project-page .project-hero h1{font-size:30px;letter-spacing:.08em}.project-page .project-lead{font-size:16px}.project-page .project-section,.project-page .project-result{padding:34px 0}.project-page .section-body>p,.project-page .section-body li{font-size:14px}}
+@media(max-width:700px){.project-page .project-shell{width:min(calc(100% - 28px),var(--max))}.project-page .project-category{margin-top:34px}.project-page .project-hero h1{font-size:26px;letter-spacing:.08em}.project-page .project-lead{font-size:16px}.project-page .project-section,.project-page .project-result{padding:34px 0}.project-page .section-body>p,.project-page .section-body li{font-size:14px}}
 .project-page .pipeline svg{max-width:980px;margin-inline:auto}

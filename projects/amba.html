@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Case study: Amba, my own mobile runner game with hand-drawn frame-by-frame animation in the style of 90s cartoons.">
+  <meta name="author" content="Oleh Lytvynenko">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://olehanimator.github.io/projects/amba.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Amba — Oleh Lytvynenko">
+  <meta property="og:description" content="A side-scrolling mobile runner: concept, characters, frame-by-frame animation and Unity development.">
+  <meta property="og:image" content="https://olehanimator.github.io/assets/projects/amba/poster.jpg">
+  <title>Amba — Oleh Lytvynenko</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=20260807-3">
+  <link rel="stylesheet" href="../motion.css?v=20260808-1">
+  <link rel="stylesheet" href="../mobile-fixes.css?v=20260929-1">
+  <link rel="stylesheet" href="../visual-tuning-2026.css?v=20260906-1">
+  <link rel="stylesheet" href="../brand-2026.css?v=20260815-1">
+  <link rel="stylesheet" href="../project.css?v=20261015-3">
+  <style>
+    .media-frame video,.media-frame img{position:absolute;inset:0;width:100%;height:100%;display:block}
+    .media-frame video{object-fit:contain;background:#000}
+    .media-frame img{object-fit:cover}
+    .project-gallery .media-frame{aspect-ratio:16/9}
+    .project-gallery figure{margin:0}
+    .media-caption{margin:10px 2px 0;color:#7f878b;font-size:13px}
+    .project-hero .media-caption{margin-bottom:0}
+    .section-media{margin:28px 0 0}
+    .section-media .media-frame{aspect-ratio:16/9}
+    .timelapse{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center;margin:28px 0 0}
+    .timelapse .media-frame{aspect-ratio:1/1}
+    .timelapse video{background:#fff}
+    .next-project.project-shell{margin-left:auto;margin-right:auto}
+    .language-switcher button{cursor:pointer}
+    @media(max-width:700px){.timelapse{grid-template-columns:1fr}}
+  </style>
+</head>
+<body class="project-page">
+  <header class="topbar wrap">
+    <a class="logo-mark" href="../index.html" aria-label="Oleh Lytvynenko — home">
+      <svg viewBox="0 0 44 40" aria-hidden="true"><circle cx="14" cy="20" r="10.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M28 9v22h11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="logo-name">Oleh Lytvynenko</span>
+    </a>
+    <div class="topbar-right"><nav><a href="../index.html#projects" data-i18n="nav.projects">Projects</a><a href="../index.html#about" data-i18n="nav.about">About</a><a href="../cv.html">CV</a></nav><div class="language-switcher" aria-label="Language selector"><button type="button" data-lang="en" class="active" aria-pressed="true">EN</button><button type="button" data-lang="de" aria-pressed="false">DE</button><button type="button" data-lang="uk" aria-pressed="false">UA</button></div></div>
+  </header>
+  <main>
+    <section class="project-hero project-shell">
+      <p class="project-category" data-i18n="category">Game development · Mobile game</p>
+      <h1>Amba</h1>
+      <p class="project-lead" data-i18n="lead">My own side-scrolling runner for mobile: an astronaut chases the aliens who stole parts of his ship, while Amba, a huge hungry creature, tries to catch him with its tongue. Every character and every move is animated by hand, frame by frame.</p>
+      <div class="media-frame hero-media">
+        <video controls playsinline preload="metadata" poster="../assets/projects/amba/poster.jpg">
+          <source src="../assets/projects/amba/cutscene.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="media-caption" data-i18n="heroCaption">The opening cutscene of the game. Drawing, animation and editing are all mine.</p>
+      <div class="project-meta">
+        <div><small data-i18n="meta.role">Role</small><strong data-i18n="meta.roleValue">Author · Artist · Animator · Unity developer</strong></div>
+        <div><small data-i18n="meta.contribution">Contribution</small><strong data-i18n="meta.contributionValue">Concept · Characters · Frame-by-frame animation · Backgrounds · UI · Code</strong></div>
+        <div><small data-i18n="meta.tools">Tools</small><strong>Photoshop · After Effects · Unity · C#</strong></div>
+        <div><small data-i18n="meta.year">Year</small><strong>2012–2024</strong></div>
+      </div>
+    </section>
+    <div class="project-content project-shell">
+        <section id="overview" class="project-section">
+          <div class="section-head">
+          <p class="section-kicker" data-i18n="index.overview">01 · Overview</p>
+          <h2 data-i18n="overview.title">A runner that feels like surfing</h2>
+          </div>
+          <div class="section-body">
+          <p data-i18n="overview.p1">Each run gives the player a limited number of “hits” to push off the ground and fly further. The goal is to land precisely on the aliens running along the path: every hit on an alien gives extra hits and keeps you ahead of Amba. Between runs the player spends what they collected on upgrades, so the game also has roguelite progression.</p>
+          <p data-i18n="overview.p2">The art direction is the acidic, cartoonish look of 90s TV animation such as “Earthworm Jim” and “The Ren &amp; Stimpy Show”. The hand-drawn animation is tied to the character’s movement, so the controls feel smooth, like surfing through enemies and obstacles.</p>
+          </div>
+        </section>
+        <section id="animation" class="project-section">
+          <div class="section-head">
+          <p class="section-kicker" data-i18n="index.animation">02 · Animation</p>
+          <h2 data-i18n="animation.title">From sketch to final frames</h2>
+          </div>
+          <div class="section-body">
+          <p data-i18n="animation.p1">I animate every move by hand in Photoshop, frame by frame. The timelapse plays one animation of the bird in every saved version of the file, in the order I made them: you can see the rough pass, the cleanup, the colour and the timing change from version to version.</p>
+          <div class="timelapse">
+            <div class="media-frame"><video controls playsinline muted loop preload="metadata" poster="../assets/projects/amba/ptah-poster.jpg"><source src="../assets/projects/amba/ptah-timelapse.mp4" type="video/mp4"></video></div>
+            <p class="media-caption" data-i18n="animation.caption">16 versions of the bird animation, from July to August 2012. Each version plays its own frame-by-frame animation, exactly as it was saved in the Photoshop file.</p>
+          </div>
+          </div>
+        </section>
+        <section id="work" class="project-section">
+          <div class="section-head">
+          <p class="section-kicker" data-i18n="index.work">03 · What I did</p>
+          <h2 data-i18n="work.title">My contribution</h2>
+          </div>
+          <div class="section-body">
+          <p data-i18n="work.p1">Amba started as my personal project and stayed one for many years. Later a game designer, a developer, a composer and a sound designer joined to help prepare it for release.</p>
+          <ul>
+            <li data-i18n="work.l1">Came up with the game, its world and its characters.</li>
+            <li data-i18n="work.l2">Drew and animated all characters frame by frame: the astronaut, Amba, the aliens and the bosses.</li>
+            <li data-i18n="work.l3">Painted the backgrounds of several biomes, the interface and the visual effects.</li>
+            <li data-i18n="work.l4">Storyboarded, animated and edited the cutscenes.</li>
+            <li data-i18n="work.l5">Learned Unity and C# to build the game myself: movement, the hit system, the shop, the slot machine and the mini-games.</li>
+            <li data-i18n="work.l6">Prepared the pitch deck and the marketing materials for publishers.</li>
+          </ul>
+          </div>
+        </section>
+        <section id="gameplay" class="project-section">
+          <div class="section-head">
+          <p class="section-kicker" data-i18n="index.gameplay">04 · Gameplay</p>
+          <h2 data-i18n="gameplay.title">In the game</h2>
+          </div>
+          <div class="section-body">
+          <div class="section-media">
+            <div class="media-frame"><video controls playsinline preload="metadata" poster="../assets/projects/amba/gameplay-poster.jpg"><source src="../assets/projects/amba/gameplay.mp4" type="video/mp4"></video></div>
+            <p class="media-caption" data-i18n="gameplay.caption">Gameplay recording: the run, the bonus round, the slot machine and the shop.</p>
+          </div>
+          </div>
+        </section>
+        <div class="project-gallery" aria-label="Game screenshots">
+          <figure class="media-frame wide"><img src="../assets/projects/amba/tongue.jpg" alt="Amba catches the astronaut with its tongue" loading="lazy"></figure>
+          <figure class="media-frame"><img src="../assets/projects/amba/cookie.jpg" alt="A furry boss reaching for a cookie" loading="lazy"></figure>
+          <figure class="media-frame"><img src="../assets/projects/amba/slots.jpg" alt="Slot machine bonus round" loading="lazy"></figure>
+          <figure class="media-frame"><img src="../assets/projects/amba/shop.jpg" alt="Upgrade shop between runs" loading="lazy"></figure>
+          <figure class="media-frame"><img src="../assets/projects/amba/teleport.jpg" alt="Teleport scene in space" loading="lazy"></figure>
+        </div>
+    </div>
+    <section class="next-project project-shell"><div><small data-i18n="next.label">More work</small><a href="../index.html#projects" data-i18n="next.link">Back to all projects</a></div><span class="arrow">→</span></section>
+  </main>
+  <footer class="project-footer project-shell"><span>© <b id="year">2026</b> Oleh Lytvynenko</span><a class="project-home" href="../index.html" data-i18n="footer.back">Back to portfolio</a></footer>
+  <script>
+    const T={
+      en:{},
+      de:{
+        "nav.projects":"Projekte","nav.about":"Über mich","category":"Spieleentwicklung · Mobile Game",
+        "lead":"Mein eigenes Side-Scrolling-Runner-Spiel für Mobilgeräte: Ein Astronaut jagt die Aliens, die Teile seines Raumschiffs gestohlen haben, während Amba, ein riesiges hungriges Wesen, ihn mit der Zunge fangen will. Jede Figur und jede Bewegung ist von Hand animiert, Bild für Bild.",
+        "heroCaption":"Die Eröffnungs-Cutscene des Spiels. Zeichnung, Animation und Schnitt stammen von mir.",
+        "meta.role":"Rolle","meta.roleValue":"Autor · Artist · Animator · Unity-Entwickler","meta.contribution":"Beitrag","meta.contributionValue":"Konzept · Figuren · Frame-by-Frame-Animation · Hintergründe · UI · Code","meta.tools":"Tools","meta.year":"Jahr",
+        "index.overview":"01 · Überblick","index.animation":"02 · Animation","index.work":"03 · Meine Arbeit","index.gameplay":"04 · Gameplay",
+        "overview.title":"Ein Runner, der sich wie Surfen anfühlt",
+        "overview.p1":"In jedem Lauf hat der Spieler eine begrenzte Zahl von „Hits“, um sich vom Boden abzustoßen und weiter zu fliegen. Ziel ist es, genau auf den Aliens zu landen, die den Weg entlanglaufen: Jeder Treffer bringt zusätzliche Hits und hält Amba auf Abstand. Zwischen den Läufen gibt der Spieler das Gesammelte für Upgrades aus, das Spiel hat also auch Roguelite-Elemente.",
+        "overview.p2":"Der Stil orientiert sich am grellen, cartoonhaften Look der TV-Animation der 90er wie „Earthworm Jim“ und „The Ren &amp; Stimpy Show“. Die handgezeichnete Animation ist an die Bewegung der Figur gekoppelt, deshalb fühlt sich die Steuerung flüssig an, wie Surfen durch Gegner und Hindernisse.",
+        "animation.title":"Von der Skizze zum fertigen Frame",
+        "animation.p1":"Jede Bewegung animiere ich von Hand in Photoshop, Bild für Bild. Der Zeitraffer spielt eine Animation des Vogels in jeder gespeicherten Version der Datei ab, in der Reihenfolge ihrer Entstehung: Man sieht, wie sich Rohfassung, Clean-up, Farbe und Timing von Version zu Version verändern.",
+        "animation.caption":"16 Versionen der Vogelanimation, Juli bis August 2012. Jede Version spielt ihre eigene Frame-by-Frame-Animation genau so ab, wie sie in der Photoshop-Datei gespeichert war.",
+        "work.title":"Mein Beitrag",
+        "work.p1":"Amba begann als mein persönliches Projekt und blieb es viele Jahre lang. Später kamen ein Game Designer, ein Entwickler, ein Komponist und ein Sounddesigner dazu, um das Spiel für den Release vorzubereiten.",
+        "work.l1":"Das Spiel, seine Welt und seine Figuren erfunden.",
+        "work.l2":"Alle Figuren Bild für Bild gezeichnet und animiert: den Astronauten, Amba, die Aliens und die Bosse.",
+        "work.l3":"Die Hintergründe mehrerer Biome, die Benutzeroberfläche und die visuellen Effekte gemalt.",
+        "work.l4":"Die Cutscenes gestoryboardet, animiert und geschnitten.",
+        "work.l5":"Unity und C# gelernt, um das Spiel selbst zu bauen: Bewegung, Hit-System, Shop, Spielautomat und Minispiele.",
+        "work.l6":"Das Pitch Deck und die Marketingmaterialien für Publisher erstellt.",
+        "gameplay.title":"Im Spiel","gameplay.caption":"Gameplay-Aufnahme: der Lauf, die Bonusrunde, der Spielautomat und der Shop.",
+        "next.label":"Weitere Arbeiten","next.link":"Zurück zu allen Projekten","footer.back":"Zurück zum Portfolio"
+      },
+      uk:{
+        "nav.projects":"Проєкти","nav.about":"Про мене","category":"Розробка ігор · Мобільна гра",
+        "lead":"Моя власна мобільна гра-раннер з боковим скролінгом: астронавт женеться за прибульцями, які вкрали деталі його корабля, а Амба, величезна голодна істота, намагається впіймати його язиком. Кожен персонаж і кожен рух анімовано вручну, кадр за кадром.",
+        "heroCaption":"Вступна катсцена гри. Малювання, анімація та монтаж — мої.",
+        "meta.role":"Роль","meta.roleValue":"Автор · Художник · Аніматор · Unity-розробник","meta.contribution":"Внесок","meta.contributionValue":"Концепт · Персонажі · Покадрова анімація · Фони · UI · Код","meta.tools":"Інструменти","meta.year":"Рік",
+        "index.overview":"01 · Огляд","index.animation":"02 · Анімація","index.work":"03 · Що я зробив","index.gameplay":"04 · Геймплей",
+        "overview.title":"Раннер, у якому ніби сьорфиш",
+        "overview.p1":"У кожному забігу гравець має обмежену кількість «ударів», щоб відштовхнутися від землі й пролетіти далі. Мета — точно приземлитися на прибульців, що біжать доріжкою: кожне влучання дає додаткові удари й тримає Амбу позаду. Між забігами гравець витрачає зібране на покращення, тож у грі є й елементи roguelite.",
+        "overview.p2":"Стиль натхненний кислотною мультяшною естетикою телеанімації 90-х, як-от «Earthworm Jim» і «The Ren &amp; Stimpy Show». Мальована анімація прив’язана до руху персонажа, тому керування відчувається плавним, ніби сьорфиш крізь ворогів і перешкоди.",
+        "animation.title":"Від ескізу до фінальних кадрів",
+        "animation.p1":"Кожен рух я анімую вручну у Photoshop, кадр за кадром. Таймлапс програє одну анімацію птаха в кожній збереженій версії файлу, у тому порядку, в якому я їх робив: видно, як від версії до версії змінюються чорновий прохід, клінап, колір і таймінг.",
+        "animation.caption":"16 версій анімації птаха, липень–серпень 2012. Кожна версія програє власну покадрову анімацію саме так, як її було збережено у файлі Photoshop.",
+        "work.title":"Мій внесок",
+        "work.p1":"Амба почалася як мій особистий проєкт і залишалася ним багато років. Згодом до неї долучилися геймдизайнер, розробник, композитор і звукорежисер, щоб підготувати гру до релізу.",
+        "work.l1":"Придумав гру, її світ і персонажів.",
+        "work.l2":"Намалював і покадрово анімував усіх персонажів: астронавта, Амбу, прибульців і босів.",
+        "work.l3":"Намалював фони кількох біомів, інтерфейс і візуальні ефекти.",
+        "work.l4":"Зробив розкадрування, анімацію та монтаж катсцен.",
+        "work.l5":"Вивчив Unity та C#, щоб самому зібрати гру: рух, систему ударів, магазин, слот-машину та мініігри.",
+        "work.l6":"Підготував пітч-презентацію та маркетингові матеріали для видавців.",
+        "gameplay.title":"У грі","gameplay.caption":"Запис геймплею: забіг, бонусний раунд, слот-машина й магазин.",
+        "next.label":"Інші роботи","next.link":"Назад до всіх проєктів","footer.back":"Назад до портфоліо"
+      }
+    };
+    document.querySelectorAll('[data-i18n],[data-i18n-html]').forEach(el=>{el.dataset.en=el.innerHTML;});
+    const buttons=[...document.querySelectorAll('[data-lang]')];
+    function setLanguage(lang){
+      if(!T[lang])lang='en';
+      document.documentElement.lang=lang;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{const v=T[lang][el.dataset.i18n];el.innerHTML=v?v.replace(/</g,'&lt;'):el.dataset.en;});
+      document.querySelectorAll('[data-i18n-html]').forEach(el=>{el.innerHTML=T[lang][el.dataset.i18nHtml]||el.dataset.en;});
+      buttons.forEach(b=>{const a=b.dataset.lang===lang;b.classList.toggle('active',a);b.setAttribute('aria-pressed',String(a));});
+      try{localStorage.setItem('portfolio-language',lang);}catch(e){}
+    }
+    buttons.forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));
+    let saved=null;try{saved=localStorage.getItem('portfolio-language');}catch(e){}
+    const browser=(navigator.language||'en').slice(0,2);
+    setLanguage(saved||(['en','de','uk'].includes(browser)?browser:'en'));
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+/* Real project cards inside the home "Selected work" block (overrides the compact placeholder card styles) */
+.home-projects .work-cards{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))!important;grid-auto-flow:row!important;grid-auto-columns:auto!important;gap:12px!important;padding:18px 0 0!important;overflow:visible!important}
+.home-projects .project-count{display:inline-block!important}
+.home-projects .work-card[data-project]{display:flex!important;flex-direction:column!important;height:auto!important;min-height:0!important;width:100%!important;max-width:none!important;grid-template-columns:none!important;border-radius:var(--radius-md,14px)!important}
+.home-projects .work-card[data-project] .work-thumb{width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:16/9;border-radius:0!important}
+.home-projects .work-card[data-project] .work-thumb img{width:100%!important;height:100%!important;object-fit:cover!important;transform:none!important;filter:none!important}
+.home-projects .work-card[data-project]:hover .work-thumb img{transform:scale(1.03)!important}
+.home-projects .work-card[data-project] .work-card-copy{display:block!important;padding:14px 16px 16px!important}
+.home-projects .work-card[data-project] .work-card-copy:after{display:none!important}
+.home-projects .work-card[data-project] .work-card-copy small,.home-projects .work-card[data-project] .work-card-copy p,.home-projects .work-card[data-project] .work-card-copy>span{display:block!important}
+.home-projects .work-card[data-project] .work-card-copy small{color:#7f878b!important;font-size:10px!important;letter-spacing:.14em!important;text-transform:uppercase;white-space:normal!important}
+.home-projects .work-card[data-project] .work-card-copy h3{display:block!important;margin:6px 0!important;font-size:20px!important;line-height:1.15!important;white-space:normal!important;-webkit-line-clamp:unset!important}
+.home-projects .work-card[data-project] .work-card-copy p{margin:0 0 10px!important;color:#aeb4b7;font-size:14px;line-height:1.5}
+.home-projects .work-card[data-project] .work-card-copy>span{color:#6ea7ad;font-size:13px}

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Case study: a browser-based 3D product configurator built in Unity WebGL with on-demand AssetBundle loading. Adding a new model went from about a week to ten minutes.">
+  <meta name="author" content="Oleh Lytvynenko">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://olehanimator.github.io/projects/product-configurator.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="3D Product Configurator — Oleh Lytvynenko">
+  <meta property="og:description" content="Unity WebGL configurator with on-demand AssetBundle loading, label and colour swapping, three languages and deep links.">
+  <meta property="og:image" content="https://olehanimator.github.io/assets/projects/product-configurator/poster.jpg">
+  <title>3D Product Configurator — Oleh Lytvynenko</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=20260807-3">
+  <link rel="stylesheet" href="../project.css?v=20261015-1">
+  <style>
+    .media-frame video,.media-frame img{position:absolute;inset:0;width:100%;height:100%;display:block}
+    .media-frame video{object-fit:contain;background:#000}
+    .media-frame img{object-fit:cover}
+    .project-gallery .media-frame{aspect-ratio:16/9}
+    .media-caption{margin:10px 2px 0;color:#7f878b;font-size:13px}
+    .project-hero .media-caption{margin-bottom:0}
+    .pipeline{margin:28px 0 0;padding:22px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02)}
+    .pipeline svg{display:block;width:100%;height:auto}
+    .pipeline text{font-family:Montserrat,Arial,sans-serif}
+    .stat-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:28px 0 0}
+    .stat-row div{padding:18px;border:1px solid var(--line);border-radius:14px}
+    .stat-row strong{display:block;font-size:clamp(26px,3vw,38px);font-weight:500;letter-spacing:-.03em}
+    .stat-row small{display:block;margin-top:6px;color:#8d9497;font-size:13px;line-height:1.4}
+    .project-gallery figure{margin:0}
+    .project-result .section-kicker{margin:0 0 10px;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+    .next-project.project-shell{margin-left:auto;margin-right:auto}
+    .language-switcher button{cursor:pointer}
+    @media(max-width:700px){.stat-row{grid-template-columns:1fr}.pipeline{padding:12px;overflow-x:auto}.pipeline svg{min-width:560px}}
+  </style>
+</head>
+<body class="project-page">
+  <header class="project-header project-shell">
+    <a class="project-home" href="../index.html#projects"><span>←</span><span data-i18n="nav.back">Projects</span></a>
+    <div class="language-switcher" aria-label="Language selector"><button type="button" data-lang="en" class="active" aria-pressed="true">EN</button><button type="button" data-lang="de" aria-pressed="false">DE</button><button type="button" data-lang="uk" aria-pressed="false">UA</button></div>
+  </header>
+  <main>
+    <section class="project-hero project-shell">
+      <p class="project-category" data-i18n="category">Interactive · WebGL configurator</p>
+      <h1 data-i18n-html="title">Product<br>Configurator</h1>
+      <p class="project-lead" data-i18n="lead">A browser-based 3D configurator that replaced a tablet app handed out on USB sticks, and cut the time to add a new product model from about a week to ten minutes.</p>
+      <div class="media-frame hero-media">
+        <video controls playsinline muted loop preload="metadata" poster="../assets/projects/product-configurator/poster.jpg">
+          <source src="../assets/projects/product-configurator/configurator-demo.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="media-caption" data-i18n="heroCaption">Screen recording of the demo version. The original client product is under NDA, so the same engine is shown here with packaging models.</p>
+      <div class="project-meta">
+        <div><small data-i18n="meta.role">Role</small><strong data-i18n="meta.roleValue">Sole developer · Technical Artist</strong></div>
+        <div><small data-i18n="meta.contribution">Contribution</small><strong data-i18n="meta.contributionValue">Architecture · Code · Shaders · 3D prep · UI</strong></div>
+        <div><small data-i18n="meta.tools">Tools</small><strong>Unity · C# · WebGL · AssetBundles</strong></div>
+        <div><small data-i18n="meta.year">Year</small><strong>2022–2023</strong></div>
+      </div>
+    </section>
+    <div class="project-content project-shell">
+      <aside class="project-index" aria-label="Project sections"><p data-i18n="index.title">Case study</p><a href="#overview" data-i18n="index.overview">01 · Overview</a><a href="#challenge" data-i18n="index.challenge">02 · Challenge</a><a href="#work" data-i18n="index.work">03 · What I did</a><a href="#process" data-i18n="index.process">04 · Process</a><a href="#result" data-i18n="index.result">05 · Result</a></aside>
+      <div>
+        <section id="overview" class="project-section">
+          <p class="section-kicker" data-i18n="index.overview">01 · Overview</p>
+          <h2 data-i18n="overview.title">A sales configurator that runs from a link</h2>
+          <p data-i18n="overview.p1">The client, a manufacturer of heavy vehicles, used a 3D configurator in its showrooms so sales staff could show customers every body, chassis and equipment option. I rebuilt it from scratch as a Unity WebGL application that opens in the browser and loads 3D models from the server on demand.</p>
+          <p data-i18n="overview.p2">I built the whole project on my own, from the architecture and code to the shaders, the 3D preparation and the interface.</p>
+        </section>
+        <section id="challenge" class="project-section">
+          <p class="section-kicker" data-i18n="index.challenge">02 · Challenge</p>
+          <h2 data-i18n="challenge.title">Slow to distribute, slow to extend</h2>
+          <p data-i18n="challenge.p1">The previous app had two problems that grew with every new product.</p>
+          <ul>
+            <li data-i18n="challenge.l1">It had to be installed on tablets from USB sticks handed out to the showrooms, so every update meant a new round of sticks.</li>
+            <li data-i18n="challenge.l2">Each new 3D model went to an external vendor, and integrating it into the app took close to a week.</li>
+            <li data-i18n="challenge.l3">The replacement had to run in a browser with heavy, detailed models and work in several languages.</li>
+          </ul>
+        </section>
+        <section id="work" class="project-section">
+          <p class="section-kicker" data-i18n="index.work">03 · What I did</p>
+          <h2 data-i18n="work.title">My contribution</h2>
+          <ul>
+            <li data-i18n="work.l1">Moved the configurator to the web: a Unity WebGL build hosted on the agency's server and opened by a link, with no installation.</li>
+            <li data-i18n="work.l2">Built on-demand loading: every model, part and environment is a separate AssetBundle on the server and is downloaded only when the user selects it. The core app stays at about 4.7 MB while the catalogue grew to around 60 bundles.</li>
+            <li data-i18n="work.l3">Designed a data-driven scene structure: each configurable object in the Unity hierarchy gets a component and the name of its AssetBundle, so a new model is added without writing code.</li>
+            <li data-i18n="work.l4">Wrote the configuration logic: product, then body variant, then chassis, then add-on parts, showing only the options that fit the current selection.</li>
+            <li data-i18n="work.l5">Implemented colour and label switching by paint zones, including uploading your own label image.</li>
+            <li data-i18n="work.l6">Wrote a custom hotspot shader that looks solid in front of the model and turns pale when the hotspot is behind it.</li>
+            <li data-i18n="work.l7">Added studio, day and night environments, an orbit camera, screenshots and fullscreen mode.</li>
+            <li data-i18n="work.l8">Localised the interface into German, English and French from JSON files, and added deep links: URL parameters open a specific model, colour, language and environment.</li>
+            <li data-i18n="work.l9">Prepared the 3D models and environments for real-time rendering in the browser.</li>
+          </ul>
+        </section>
+        <div class="project-gallery" aria-label="Project screenshots">
+          <figure class="media-frame wide"><img src="../assets/projects/product-configurator/spray-labels.jpg" alt="Spray bottle with the label picker open" loading="lazy"></figure>
+          <figure class="media-frame"><img src="../assets/projects/product-configurator/labels.jpg" alt="Can with label options and custom label upload" loading="lazy"></figure>
+          <figure class="media-frame"><img src="../assets/projects/product-configurator/colors.jpg" alt="Colour zone picker recolouring the spray trigger" loading="lazy"></figure>
+        </div>
+        <section id="process" class="project-section">
+          <p class="section-kicker" data-i18n="index.process">04 · Process</p>
+          <h2 data-i18n="process.title">From a week to ten minutes</h2>
+          <p data-i18n="process.p1">The key decision was to separate the application from its content. The WebGL app only knows the structure of the catalogue. The heavy models live on the server as AssetBundles and are referenced by name from the Unity scene.</p>
+          <div class="pipeline" role="img" aria-label="Pipeline: Unity scene with bundle names, AssetBundles build, server, WebGL app loading on demand">
+            <svg viewBox="0 0 720 170" xmlns="http://www.w3.org/2000/svg">
+              <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7f878b"/></marker></defs>
+              <g fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.2">
+                <rect x="4" y="30" width="150" height="110" rx="12"/><rect x="192" y="30" width="150" height="110" rx="12"/><rect x="380" y="30" width="150" height="110" rx="12"/><rect x="566" y="30" width="150" height="110" rx="12" stroke="#6ea7ad"/>
+              </g>
+              <g stroke="#7f878b" stroke-width="1.4" marker-end="url(#arr)"><path d="M156 85H188"/><path d="M344 85H376"/><path d="M532 85H562"/></g>
+              <g fill="#f3f2ee" font-size="14" font-weight="500" text-anchor="middle">
+                <text x="79" y="62">Unity scene</text><text x="267" y="62">Build</text><text x="455" y="62">Server</text><text x="641" y="62">WebGL app</text>
+              </g>
+              <g fill="#9ba1a4" font-size="11.5" text-anchor="middle">
+                <text x="79" y="88">object + component</text><text x="79" y="106">+ bundle name</text>
+                <text x="267" y="88">~60 AssetBundles</text><text x="267" y="106">models · parts · scenes</text>
+                <text x="455" y="88">hosted bundles</text><text x="455" y="106">shared by link</text>
+                <text x="641" y="88">4.7 MB core</text><text x="641" y="106">loads on click</text>
+              </g>
+            </svg>
+          </div>
+          <p style="margin-top:24px" data-i18n="process.p2">With a finished 3D model, adding it to the configurator now means building its AssetBundle, uploading it and assigning the bundle name to an object in the scene. That takes about ten minutes and happens in-house instead of at an external vendor.</p>
+          <p data-i18n="process.p3">I also built a version on the Universal Render Pipeline with noticeably better visuals. Because of compatibility issues on the client side, production stayed on the built-in pipeline.</p>
+        </section>
+        <section id="result" class="project-result">
+          <p class="section-kicker" data-i18n="index.result">05 · Result</p>
+          <h2 data-i18n="result.title">The outcome</h2>
+          <p data-i18n="result.p1">The configurator opens from a link in the browser: no installation and no USB sticks. New models are added in about ten minutes instead of a week, and the same engine was reused for other product lines, such as the packaging demo shown on this page.</p>
+          <div class="stat-row">
+            <div><strong data-i18n="stat1.value">~10 min</strong><small data-i18n="stat1.label">to add a new model, down from about a week</small></div>
+            <div><strong>4.7 MB</strong><small data-i18n="stat2.label">core app; models load only when selected</small></div>
+            <div><strong>3</strong><small data-i18n="stat3.label">languages, plus deep links to any configuration</small></div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <section class="next-project project-shell"><div><small data-i18n="next.label">More work</small><a href="../index.html#projects" data-i18n="next.link">Back to all projects</a></div><span class="arrow">→</span></section>
+  </main>
+  <footer class="project-footer project-shell"><span>© <b id="year">2026</b> Oleh Lytvynenko</span><a class="project-home" href="../index.html" data-i18n="footer.back">Back to portfolio</a></footer>
+  <script>
+    const T={
+      en:{},
+      de:{
+        "nav.back":"Projekte","category":"Interaktiv · WebGL-Konfigurator","title":"Produkt-<br>konfigurator",
+        "lead":"Ein browserbasierter 3D-Konfigurator, der eine per USB-Stick verteilte Tablet-App ersetzt und den Aufwand für ein neues Produktmodell von etwa einer Woche auf zehn Minuten reduziert hat.",
+        "heroCaption":"Bildschirmaufnahme der Demoversion. Das ursprüngliche Kundenprodukt unterliegt einer Geheimhaltungsvereinbarung, deshalb wird dieselbe Engine hier mit Verpackungsmodellen gezeigt.",
+        "meta.role":"Rolle","meta.roleValue":"Alleinentwickler · Technical Artist","meta.contribution":"Beitrag","meta.contributionValue":"Architektur · Code · Shader · 3D-Aufbereitung · UI","meta.tools":"Tools","meta.year":"Jahr",
+        "index.title":"Case Study","index.overview":"01 · Überblick","index.challenge":"02 · Herausforderung","index.work":"03 · Meine Arbeit","index.process":"04 · Prozess","index.result":"05 · Ergebnis",
+        "overview.title":"Ein Vertriebskonfigurator, der per Link läuft",
+        "overview.p1":"Der Kunde, ein Hersteller von Nutzfahrzeugen, nutzte in seinen Showrooms einen 3D-Konfigurator, mit dem das Vertriebsteam alle Aufbau-, Fahrgestell- und Ausstattungsvarianten zeigen konnte. Ich habe ihn von Grund auf als Unity-WebGL-Anwendung neu entwickelt, die im Browser startet und 3D-Modelle bei Bedarf vom Server lädt.",
+        "overview.p2":"Das gesamte Projekt habe ich allein umgesetzt: Architektur, Code, Shader, 3D-Aufbereitung und Benutzeroberfläche.",
+        "challenge.title":"Mühsam zu verteilen, mühsam zu erweitern","challenge.p1":"Die bisherige App hatte zwei Probleme, die mit jedem neuen Produkt größer wurden.",
+        "challenge.l1":"Sie musste per USB-Stick auf Tablets installiert werden, die an die Showrooms verteilt wurden. Jedes Update bedeutete neue Sticks.",
+        "challenge.l2":"Jedes neue 3D-Modell ging an einen externen Dienstleister, und die Integration in die App dauerte fast eine Woche.",
+        "challenge.l3":"Die neue Lösung sollte im Browser mit schweren, detaillierten Modellen laufen und mehrsprachig sein.",
+        "work.title":"Mein Beitrag",
+        "work.l1":"Den Konfigurator ins Web gebracht: ein Unity-WebGL-Build auf dem Server der Agentur, per Link aufrufbar, ohne Installation.",
+        "work.l2":"Laden bei Bedarf entwickelt: Jedes Modell, jedes Anbauteil und jede Umgebung ist ein eigenes AssetBundle auf dem Server und wird erst geladen, wenn der Nutzer es auswählt. Die Kern-App bleibt bei etwa 4,7 MB, während der Katalog auf rund 60 Bundles wuchs.",
+        "work.l3":"Eine datengetriebene Szenenstruktur entworfen: Jedes konfigurierbare Objekt in der Unity-Hierarchie erhält eine Komponente und den Namen seines AssetBundles. Neue Modelle kommen so ohne neuen Code hinzu.",
+        "work.l4":"Die Konfigurationslogik geschrieben: Produkt, dann Aufbauvariante, dann Fahrgestell, dann Anbauteile, wobei nur passende Optionen angezeigt werden.",
+        "work.l5":"Farb- und Etikettenwechsel über Lackzonen umgesetzt, inklusive Upload eigener Etiketten.",
+        "work.l6":"Einen eigenen Hotspot-Shader geschrieben, der vor dem Modell deckend wirkt und blass wird, wenn der Hotspot dahinter liegt.",
+        "work.l7":"Studio-, Tag- und Nachtumgebung, Orbit-Kamera, Screenshot-Funktion und Vollbildmodus ergänzt.",
+        "work.l8":"Die Oberfläche über JSON-Dateien auf Deutsch, Englisch und Französisch lokalisiert und Deep Links ergänzt: URL-Parameter öffnen ein bestimmtes Modell, eine Farbe, Sprache und Umgebung.",
+        "work.l9":"3D-Modelle und Umgebungen für das Echtzeit-Rendering im Browser aufbereitet.",
+        "process.title":"Von einer Woche auf zehn Minuten",
+        "process.p1":"Die zentrale Entscheidung war, Anwendung und Inhalte zu trennen. Die WebGL-App kennt nur die Struktur des Katalogs. Die schweren Modelle liegen als AssetBundles auf dem Server und werden in der Unity-Szene über ihren Namen referenziert.",
+        "process.p2":"Mit einem fertigen 3D-Modell bedeutet die Integration nur noch: AssetBundle bauen, hochladen und den Bundle-Namen einem Objekt in der Szene zuweisen. Das dauert etwa zehn Minuten und passiert intern statt bei einem externen Dienstleister.",
+        "process.p3":"Außerdem habe ich eine Version mit der Universal Render Pipeline und deutlich besserer Optik gebaut. Wegen Kompatibilitätsproblemen auf Kundenseite blieb die Produktion bei der Built-in-Pipeline.",
+        "result.title":"Das Ergebnis",
+        "result.p1":"Der Konfigurator startet per Link im Browser: keine Installation, keine USB-Sticks. Neue Modelle kommen in etwa zehn Minuten statt einer Woche hinzu, und dieselbe Engine wurde für weitere Produktlinien wiederverwendet, etwa für die hier gezeigte Verpackungs-Demo.",
+        "stat1.value":"~10 Min.","stat1.label":"für ein neues Modell statt etwa einer Woche","stat2.label":"Kern-App; Modelle laden erst bei Auswahl","stat3.label":"Sprachen, plus Deep Links zu jeder Konfiguration",
+        "next.label":"Weitere Arbeiten","next.link":"Zurück zu allen Projekten","footer.back":"Zurück zum Portfolio"
+      },
+      uk:{
+        "nav.back":"Проєкти","category":"Інтерактив · WebGL-конфігуратор","title":"Конфігуратор<br>продукту",
+        "lead":"Браузерний 3D-конфігуратор, який замінив планшетний застосунок, що роздавався на флешках, і скоротив додавання нової моделі продукту з приблизно тижня до десяти хвилин.",
+        "heroCaption":"Запис екрана демоверсії. Оригінальний продукт клієнта під NDA, тому тут той самий рушій показано на моделях упаковки.",
+        "meta.role":"Роль","meta.roleValue":"Єдиний розробник · Technical Artist","meta.contribution":"Внесок","meta.contributionValue":"Архітектура · Код · Шейдери · 3D-підготовка · UI","meta.tools":"Інструменти","meta.year":"Рік",
+        "index.title":"Кейс","index.overview":"01 · Огляд","index.challenge":"02 · Завдання","index.work":"03 · Що я зробив","index.process":"04 · Процес","index.result":"05 · Результат",
+        "overview.title":"Конфігуратор для продажів, що відкривається за посиланням",
+        "overview.p1":"Клієнт, виробник вантажної техніки, використовував у салонах 3D-конфігуратор, щоб менеджери могли показати покупцям усі варіанти кабін, шасі та обладнання. Я з нуля перебудував його як застосунок на Unity WebGL, який відкривається в браузері й підвантажує 3D-моделі з сервера на вимогу.",
+        "overview.p2":"Увесь проєкт я зробив сам: архітектуру, код, шейдери, підготовку 3D та інтерфейс.",
+        "challenge.title":"Довго поширювати, довго розширювати","challenge.p1":"Попередній застосунок мав дві проблеми, які зростали з кожним новим продуктом.",
+        "challenge.l1":"Його доводилося встановлювати на планшети з флешок, які роздавали в салони, тож кожне оновлення означало нові флешки.",
+        "challenge.l2":"Кожну нову 3D-модель передавали сторонній компанії, і її інтеграція в застосунок тривала майже тиждень.",
+        "challenge.l3":"Нове рішення мало працювати в браузері з важкими детальними моделями та кількома мовами.",
+        "work.title":"Мій внесок",
+        "work.l1":"Переніс конфігуратор у веб: збірка Unity WebGL на сервері агенції, що відкривається за посиланням без встановлення.",
+        "work.l2":"Зробив завантаження на вимогу: кожна модель, деталь і оточення — окремий AssetBundle на сервері, який завантажується лише тоді, коли користувач його обирає. Основний застосунок важить близько 4,7 МБ, а каталог виріс приблизно до 60 бандлів.",
+        "work.l3":"Спроєктував структуру сцени, керовану даними: кожен об’єкт в ієрархії Unity отримує компонент і назву свого AssetBundle, тож нова модель додається без написання коду.",
+        "work.l4":"Написав логіку конфігурації: продукт, потім варіант кабіни, потім шасі, потім додаткові деталі, з показом лише сумісних опцій.",
+        "work.l5":"Реалізував зміну кольорів і етикеток за зонами фарбування, зокрема завантаження власної етикетки.",
+        "work.l6":"Написав власний шейдер для хотспотів: перед моделлю він виглядає насиченим, а за нею стає блідим.",
+        "work.l7":"Додав оточення «студія», «день» і «ніч», орбітальну камеру, скриншоти та повноекранний режим.",
+        "work.l8":"Локалізував інтерфейс німецькою, англійською та французькою через JSON-файли й додав глибокі посилання: параметри URL відкривають потрібну модель, колір, мову та оточення.",
+        "work.l9":"Підготував 3D-моделі та оточення для рендерингу в реальному часі в браузері.",
+        "process.title":"Від тижня до десяти хвилин",
+        "process.p1":"Ключовим рішенням було відокремити застосунок від контенту. WebGL-застосунок знає лише структуру каталогу, а важкі моделі лежать на сервері як AssetBundle і підключаються до сцени Unity за назвою.",
+        "process.p2":"Маючи готову 3D-модель, щоб додати її в конфігуратор, достатньо зібрати AssetBundle, завантажити його на сервер і призначити назву бандла об’єкту в сцені. Це займає близько десяти хвилин і робиться власними силами, а не сторонньою компанією.",
+        "process.p3":"Я також зробив версію на Universal Render Pipeline з помітно кращою картинкою. Через проблеми сумісності на боці клієнта у продакшні залишився стандартний пайплайн.",
+        "result.title":"Результат",
+        "result.p1":"Конфігуратор відкривається за посиланням у браузері: без встановлення й без флешок. Нові моделі додаються приблизно за десять хвилин замість тижня, а той самий рушій використано для інших продуктових ліній, як-от демо з упаковкою на цій сторінці.",
+        "stat1.value":"~10 хв","stat1.label":"на нову модель замість приблизно тижня","stat2.label":"основний застосунок; моделі вантажаться лише при виборі","stat3.label":"мови, плюс глибокі посилання на будь-яку конфігурацію",
+        "next.label":"Інші роботи","next.link":"Назад до всіх проєктів","footer.back":"Назад до портфоліо"
+      }
+    };
+    document.querySelectorAll('[data-i18n],[data-i18n-html]').forEach(el=>{el.dataset.en=el.innerHTML;});
+    const buttons=[...document.querySelectorAll('[data-lang]')];
+    function setLanguage(lang){
+      if(!T[lang])lang='en';
+      document.documentElement.lang=lang;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{const v=T[lang][el.dataset.i18n];el.innerHTML=v?v.replace(/</g,'&lt;'):el.dataset.en;});
+      document.querySelectorAll('[data-i18n-html]').forEach(el=>{el.innerHTML=T[lang][el.dataset.i18nHtml]||el.dataset.en;});
+      buttons.forEach(b=>{const a=b.dataset.lang===lang;b.classList.toggle('active',a);b.setAttribute('aria-pressed',String(a));});
+      try{localStorage.setItem('portfolio-language',lang);}catch(e){}
+    }
+    buttons.forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));
+    let saved=null;try{saved=localStorage.getItem('portfolio-language');}catch(e){}
+    const browser=(navigator.language||'en').slice(0,2);
+    setLanguage(saved||(['en','de','uk'].includes(browser)?browser:'en'));
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

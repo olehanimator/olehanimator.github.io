@@ -1,5 +1,6 @@
 const translations={
   en:{
+    "projects.countOne":"1 project","cards.configurator.title":"Product Configurator","cards.configurator.text":"Browser 3D configurator with on-demand model loading. New models in 10 minutes instead of a week.",
     "nav.projects":"Projects","nav.about":"About",
     "hero.role":"3D Artist · Technical Artist","hero.intro":"I create animation, interactive experiences<br>and technical visualization.","hero.location":"● Nürnberg, Germany","hero.showreel":"Showreel","hero.comingSoon":"coming soon","hero.play":"Play showreel","hero.aiNote":"The work presented in this showreel was created using traditional 3D, animation, real-time development and programming workflows. Today, I’m actively integrating AI into my production process and exploring AI-assisted tools and pipelines.",
     "projects.label":"Selected work","projects.countTwo":"2 projects","projects.interactive.title":"Interactive<br>Experiences","projects.interactive.text":"Interactive 3D solutions, WebAR, configurators and real-time applications.","projects.animation.title":"Animation","projects.animation.text":"2D and 3D animation, motion design, character animation and storytelling.","projects.game.title":"Game<br>Development","projects.game.text":"Game design, artwork, animation and development for engaging experiences.",
@@ -9,6 +10,7 @@ const translations={
     "footer.rights":"All rights reserved","showreel.alert":"Showreel placeholder — the real video will be connected here.","meta.description":"Portfolio of Oleh Lytvynenko, a 3D Artist and Technical Artist working in 3D graphics, animation, interactive applications, real-time solutions and game development."
   },
   de:{
+    "projects.countOne":"1 Projekt","cards.configurator.title":"Produktkonfigurator","cards.configurator.text":"3D-Konfigurator im Browser mit Laden bei Bedarf. Neue Modelle in 10 Minuten statt einer Woche.",
     "nav.projects":"Projekte","nav.about":"Über mich",
     "hero.role":"3D Artist · Technical Artist","hero.intro":"Ich entwickle Animationen, interaktive Erlebnisse<br>und technische Visualisierungen.","hero.location":"● Nürnberg, Deutschland","hero.showreel":"Showreel","hero.comingSoon":"demnächst","hero.play":"Showreel abspielen","hero.aiNote":"Die in diesem Showreel gezeigten Arbeiten entstanden mit klassischen Workflows für 3D, Animation, Echtzeitentwicklung und Programmierung. Heute integriere ich KI aktiv in meinen Produktionsprozess und beschäftige mich mit KI-gestützten Tools und Pipelines.",
     "projects.label":"Ausgewählte Arbeiten","projects.countTwo":"2 Projekte","projects.interactive.title":"Interaktive<br>Erlebnisse","projects.interactive.text":"Interaktive 3D-Lösungen, WebAR, Konfiguratoren und Echtzeitanwendungen.","projects.animation.title":"Animation","projects.animation.text":"2D- und 3D-Animation, Motion Design, Character Animation und visuelles Storytelling.","projects.game.title":"Game<br>Development","projects.game.text":"Game Design, Grafik, Animation und Entwicklung für überzeugende Spielerlebnisse.",
@@ -18,6 +20,7 @@ const translations={
     "footer.rights":"Alle Rechte vorbehalten","showreel.alert":"Showreel-Platzhalter — hier wird später das echte Video eingebunden.","meta.description":"Portfolio von Oleh Lytvynenko, 3D Artist und Technical Artist mit Schwerpunkt auf 3D-Grafik, Animation, interaktiven Anwendungen, Echtzeitlösungen und Game Development."
   },
   uk:{
+    "projects.countOne":"1 проєкт","cards.configurator.title":"Конфігуратор продукту","cards.configurator.text":"3D-конфігуратор у браузері з підвантаженням моделей. Нова модель за 10 хвилин замість тижня.",
     "nav.projects":"Проєкти","nav.about":"Про мене",
     "hero.role":"3D Artist · Technical Artist","hero.intro":"Я створюю анімацію, інтерактивні проєкти<br>та технічну візуалізацію.","hero.location":"● Нюрнберг, Німеччина","hero.showreel":"Шоуріл","hero.comingSoon":"незабаром","hero.play":"Відтворити шоуріл","hero.aiNote":"Роботи, представлені в цьому шоурілі, були створені з використанням традиційних процесів 3D, анімації, розробки в реальному часі та програмування. Сьогодні я активно інтегрую ШІ у свій виробничий процес і досліджую інструменти та пайплайни з підтримкою ШІ.",
     "projects.label":"Вибрані роботи","projects.countTwo":"2 проєкти","projects.interactive.title":"Інтерактивні<br>проєкти","projects.interactive.text":"Інтерактивні 3D-рішення, WebAR, конфігуратори та застосунки реального часу.","projects.animation.title":"Анімація","projects.animation.text":"2D- і 3D-анімація, motion design, анімація персонажів та візуальний сторітелінг.","projects.game.title":"Розробка<br>ігор","projects.game.text":"Геймдизайн, графіка, анімація та розробка захопливих ігрових проєктів.",
@@ -42,8 +45,8 @@ function setLanguage(language){
   document.querySelectorAll('[data-i18n]').forEach(element=>{const value=t[element.dataset.i18n];if(value)element.textContent=value;});
   document.querySelectorAll('[data-i18n-html]').forEach(element=>{const value=t[element.dataset.i18nHtml];if(value)element.innerHTML=value;});
 
-  texts('.work-card-copy h3',[t['cards.interactive1'],t['cards.interactive2'],t['cards.animation1'],t['cards.animation2'],t['cards.game1'],t['cards.game2']]);
-  document.querySelectorAll('.work-card-copy p').forEach(el=>el.textContent=t['cards.details']);
+  texts('.work-card:not([data-project]) .work-card-copy h3',[t['cards.animation1'],t['cards.animation2'],t['cards.game1'],t['cards.game2']]);
+  document.querySelectorAll('.work-card:not([data-project]) .work-card-copy p').forEach(el=>el.textContent=t['cards.details']);
   document.querySelectorAll('.work-card-copy>span').forEach(el=>el.textContent=t['cards.view']);
   text('.contact-label',t['contact.title']);
   const contactLabels=document.querySelectorAll('.contact-row small');

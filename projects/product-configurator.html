@@ -33,6 +33,15 @@
     .stat-row strong{display:block;font-size:clamp(26px,3vw,38px);font-weight:500;letter-spacing:-.03em}
     .stat-row small{display:block;margin-top:6px;color:#8d9497;font-size:13px;line-height:1.4}
     .project-gallery figure{margin:0}
+    .net-card{margin:14px 0 0;border:1px solid var(--line);border-radius:16px;background:#070b0e;overflow:hidden}
+    .net-body{padding:6px 16px 10px;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .net-group{margin:12px 0 4px;color:#7fb6c0;font:600 11px/1.4 Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .net-row{display:grid;grid-template-columns:minmax(0,1fr) 56px 72px;gap:10px;padding:4px 0;border-top:1px solid rgba(255,255,255,.05);color:#d6dadb}
+    .net-file{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .net-kind{color:#8d9497;font-size:11px;align-self:center}
+    .net-label{color:#c9b77a}.net-mesh{color:#8fb4d8}.net-env{color:#a8d0a0}
+    .net-size{text-align:right;color:#9ba1a4}
+    .net-foot{padding:12px 16px;border-top:1px solid var(--line);color:#c8ccce;font-size:14px}
     .code-card{margin:18px 0 0;border:1px solid var(--line);border-radius:16px;background:#070b0e;overflow:hidden}
     .code-head{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);color:#9ba1a4;font-size:12px}
     .code-head small{color:#6d7579}
@@ -48,6 +57,8 @@
     .next-project.project-shell{margin-left:auto;margin-right:auto}
     .language-switcher button{cursor:pointer}
     @media(max-width:700px){.stat-row{grid-template-columns:1fr}.pipeline{padding:12px;overflow-x:auto}.pipeline svg{min-width:560px}}
+    .project-content > div{min-width:0}
+    .code-card pre,.net-card{max-width:100%;overflow-x:auto}
   </style>
 </head>
 <body class="project-page">
@@ -169,8 +180,31 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
     newVariant.ModelInScene.SetActive(true);
 }</code></pre>
           </div>
+          <p style="margin-top:28px" data-i18n="net.intro">To check it on the real thing, I ran the packaging build and recorded its network requests while clicking through products. Every product is split into two bundles, the body and the label, and each click downloads only those two:</p>
+          <div class="net-card">
+            <div class="code-head"><span data-i18n="net.title">Network log · filter: .assetbundle</span><small data-i18n="net.note">Recorded from the demo build</small></div>
+            <div class="net-body">
+              <div class="net-group" data-i18n="net.g1">App start</div>
+              <div class="net-row"><span class="net-file">umgebung_studio_for_tubex.assetbundle</span><span class="net-kind net-env">env</span><span class="net-size">162 KB</span></div>
+              <div class="net-row"><span class="net-file">dose1_alu.assetbundle</span><span class="net-kind net-mesh">body</span><span class="net-size">684 KB</span></div>
+              <div class="net-row"><span class="net-file">dose1_eticket.assetbundle</span><span class="net-kind net-label">label</span><span class="net-size">2.8 MB</span></div>
+              <div class="net-group" data-i18n="net.g2">Select can 2</div>
+              <div class="net-row"><span class="net-file">dose2_alu.assetbundle</span><span class="net-kind net-mesh">body</span><span class="net-size">751 KB</span></div>
+              <div class="net-row"><span class="net-file">dose2_eticket.assetbundle</span><span class="net-kind net-label">label</span><span class="net-size">472 KB</span></div>
+              <div class="net-group" data-i18n="net.g3">Select can 3</div>
+              <div class="net-row"><span class="net-file">dose3_alu.assetbundle</span><span class="net-kind net-mesh">body</span><span class="net-size">653 KB</span></div>
+              <div class="net-row"><span class="net-file">dose3_eticket.assetbundle</span><span class="net-kind net-label">label</span><span class="net-size">431 KB</span></div>
+              <div class="net-group" data-i18n="net.g4">Switch category · pump bottle</div>
+              <div class="net-row"><span class="net-file">verpakung_1_pakung.assetbundle</span><span class="net-kind net-mesh">body</span><span class="net-size">1.6 MB</span></div>
+              <div class="net-row"><span class="net-file">verpakung_1_etikette.assetbundle</span><span class="net-kind net-label">label</span><span class="net-size">481 KB</span></div>
+              <div class="net-group" data-i18n="net.g5">Select jar</div>
+              <div class="net-row"><span class="net-file">verpakung_2_pakung.assetbundle</span><span class="net-kind net-mesh">body</span><span class="net-size">1.6 MB</span></div>
+              <div class="net-row"><span class="net-file">verpakung_2_etikette.assetbundle</span><span class="net-kind net-label">label</span><span class="net-size">582 KB</span></div>
+            </div>
+            <div class="net-foot" data-i18n="net.foot">Five products viewed: 10.1 MB downloaded out of a 20.4 MB catalogue of 24 bundles.</div>
+          </div>
           <p style="margin-top:28px" data-i18n="process.p2">With a finished 3D model, adding it to the configurator now means building its AssetBundle, uploading it and assigning the bundle name to an object in the scene. That takes about ten minutes and happens in-house instead of at an external vendor.</p>
-          <p data-i18n="process.p3">I also built a version on the Universal Render Pipeline with noticeably better visuals. Because of compatibility issues on the client side, production stayed on the built-in pipeline.</p>
+          <p data-i18n="process.p3">I also built a version on the Universal Render Pipeline with noticeably better visuals. Because of compatibility issues on the client side, the truck configurator stayed on the built-in pipeline; the packaging demo shown here runs on URP.</p>
         </section>
         <section id="result" class="project-result">
           <p class="section-kicker" data-i18n="index.result">05 · Result</p>
@@ -219,8 +253,17 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "process.title":"Von einer Woche auf zehn Minuten",
         "process.p1":"Die zentrale Entscheidung war, Anwendung und Inhalte zu trennen. Die WebGL-App kennt nur die Struktur des Katalogs. Die schweren Modelle liegen als AssetBundles auf dem Server und werden in der Unity-Szene über ihren Namen referenziert.",
         "code.intro":"Der Loader dahinter ist kurz. Jedes konfigurierbare Teil kennt nur den Namen seines Bundles, und dieselbe Coroutine lädt, instanziiert und tauscht es aus:","code.note":"Vereinfachter Auszug",
+        "net.intro":"Um es am echten Build zu prüfen, habe ich die Verpackungsversion gestartet und beim Durchklicken der Produkte die Netzwerkanfragen aufgezeichnet. Jedes Produkt ist in zwei Bundles aufgeteilt, Körper und Etikett, und jeder Klick lädt nur diese beiden:",
+        "net.title":"Netzwerk-Log · Filter: .assetbundle",
+        "net.note":"Aufgezeichnet im Demo-Build",
+        "net.g1":"App-Start",
+        "net.g2":"Dose 2 auswählen",
+        "net.g3":"Dose 3 auswählen",
+        "net.g4":"Kategorie wechseln · Pumpflasche",
+        "net.g5":"Tiegel auswählen",
+        "net.foot":"Fünf Produkte angesehen: 10,1 MB von einem 20,4 MB großen Katalog mit 24 Bundles geladen.",
         "process.p2":"Mit einem fertigen 3D-Modell bedeutet die Integration nur noch: AssetBundle bauen, hochladen und den Bundle-Namen einem Objekt in der Szene zuweisen. Das dauert etwa zehn Minuten und passiert intern statt bei einem externen Dienstleister.",
-        "process.p3":"Außerdem habe ich eine Version mit der Universal Render Pipeline und deutlich besserer Optik gebaut. Wegen Kompatibilitätsproblemen auf Kundenseite blieb die Produktion bei der Built-in-Pipeline.",
+        "process.p3":"Außerdem habe ich eine Version mit der Universal Render Pipeline und deutlich besserer Optik gebaut. Wegen Kompatibilitätsproblemen auf Kundenseite blieb der Lkw-Konfigurator bei der Built-in-Pipeline; die hier gezeigte Verpackungs-Demo läuft auf URP.",
         "result.title":"Das Ergebnis",
         "result.p1":"Der Konfigurator startet per Link im Browser: keine Installation, keine USB-Sticks. Neue Modelle kommen in etwa zehn Minuten statt einer Woche hinzu, und dieselbe Engine wurde für weitere Produktlinien wiederverwendet, etwa für die hier gezeigte Verpackungs-Demo.",
         "stat1.value":"~10 Min.","stat1.label":"für ein neues Modell statt etwa einer Woche","stat2.label":"AssetBundles, geladen erst bei Auswahl","stat3.label":"Sprachen, plus Deep Links zu jeder Konfiguration",
@@ -253,8 +296,17 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "process.title":"Від тижня до десяти хвилин",
         "process.p1":"Ключовим рішенням було відокремити застосунок від контенту. WebGL-застосунок знає лише структуру каталогу, а важкі моделі лежать на сервері як AssetBundle і підключаються до сцени Unity за назвою.",
         "code.intro":"Завантажувач за цим зовсім короткий. Кожна деталь знає лише назву свого бандла, а одна корутина завантажує, створює й замінює її:","code.note":"Спрощений фрагмент",
+        "net.intro":"Щоб перевірити це на справжньому білді, я запустив версію з упаковкою й записав мережеві запити, перемикаючи продукти. Кожен продукт розділено на два бандли, корпус та етикетку, і кожен клік завантажує лише їх:",
+        "net.title":"Мережевий лог · фільтр: .assetbundle",
+        "net.note":"Записано з демобілда",
+        "net.g1":"Запуск застосунку",
+        "net.g2":"Вибір банки 2",
+        "net.g3":"Вибір банки 3",
+        "net.g4":"Зміна категорії · флакон з дозатором",
+        "net.g5":"Вибір баночки",
+        "net.foot":"Переглянуто п’ять продуктів: завантажено 10,1 МБ із каталогу 20,4 МБ з 24 бандлів.",
         "process.p2":"Маючи готову 3D-модель, щоб додати її в конфігуратор, достатньо зібрати AssetBundle, завантажити його на сервер і призначити назву бандла об’єкту в сцені. Це займає близько десяти хвилин і робиться власними силами, а не сторонньою компанією.",
-        "process.p3":"Я також зробив версію на Universal Render Pipeline з помітно кращою картинкою. Через проблеми сумісності на боці клієнта у продакшні залишився стандартний пайплайн.",
+        "process.p3":"Я також зробив версію на Universal Render Pipeline з помітно кращою картинкою. Через проблеми сумісності на боці клієнта конфігуратор вантажівок залишився на стандартному пайплайні, а показане тут демо з упаковкою працює на URP.",
         "result.title":"Результат",
         "result.p1":"Конфігуратор відкривається за посиланням у браузері: без встановлення й без флешок. Нові моделі додаються приблизно за десять хвилин замість тижня, а той самий рушій використано для інших продуктових ліній, як-от демо з упаковкою на цій сторінці.",
         "stat1.value":"~10 хв","stat1.label":"на нову модель замість приблизно тижня","stat2.label":"AssetBundle, що завантажуються лише при виборі","stat3.label":"мови, плюс глибокі посилання на будь-яку конфігурацію",

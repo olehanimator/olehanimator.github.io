@@ -35,9 +35,11 @@
     .timelapse{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center;margin:28px 0 0}
     .timelapse .media-frame{aspect-ratio:1/1}
     .timelapse video{background:#fff}
+    .item-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:28px 0 0}
+    .item-grid .media-frame{aspect-ratio:4/3}
     .next-project.project-shell{margin-left:auto;margin-right:auto}
     .language-switcher button{cursor:pointer}
-    @media(max-width:700px){.timelapse{grid-template-columns:1fr}}
+    @media(max-width:700px){.timelapse,.item-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body class="project-page">
@@ -96,14 +98,13 @@
           <h2 data-i18n="work.title">My contribution</h2>
           </div>
           <div class="section-body">
-          <p data-i18n="work.p1">Amba started as my personal project and stayed one for many years. Later a game designer, a developer, a composer and a sound designer joined to help prepare it for release.</p>
+          <p data-i18n="work.p1">Amba is my own project, and I made the game myself, from the first sketches to the build. A sound designer worked with me on the sound.</p>
           <ul>
             <li data-i18n="work.l1">Came up with the game, its world and its characters.</li>
             <li data-i18n="work.l2">Drew and animated all characters frame by frame: the astronaut, Amba, the aliens and the bosses.</li>
             <li data-i18n="work.l3">Painted the backgrounds of several biomes, the interface and the visual effects.</li>
             <li data-i18n="work.l4">Storyboarded, animated and edited the cutscenes.</li>
             <li data-i18n="work.l5">Learned Unity and C# to build the game myself: movement, the hit system, the shop, the slot machine and the mini-games.</li>
-            <li data-i18n="work.l6">Prepared the pitch deck and the marketing materials for publishers.</li>
           </ul>
           </div>
         </section>
@@ -126,6 +127,27 @@
           <figure class="media-frame"><img src="../assets/projects/amba/shop.jpg" alt="Upgrade shop between runs" loading="lazy"></figure>
           <figure class="media-frame"><img src="../assets/projects/amba/teleport.jpg" alt="Teleport scene in space" loading="lazy"></figure>
         </div>
+        <section id="items" class="project-section">
+          <div class="section-head">
+          <p class="section-kicker" data-i18n="index.items">05 · Items</p>
+          <h2 data-i18n="items.title">Equipment in action</h2>
+          </div>
+          <div class="section-body">
+          <p data-i18n="items.p1">During a run the astronaut picks up equipment that changes how he moves. Each item has its own hand-drawn animation that plays in sync with the movement.</p>
+          <div class="item-grid">
+            <div class="media-frame"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/items/item-1.jpg"><source src="../assets/projects/amba/items/item-1.mp4" type="video/mp4"></video></div>
+            <div class="media-frame"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/items/item-2.jpg"><source src="../assets/projects/amba/items/item-2.mp4" type="video/mp4"></video></div>
+            <div class="media-frame"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/items/item-3.jpg"><source src="../assets/projects/amba/items/item-3.mp4" type="video/mp4"></video></div>
+            <div class="media-frame"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/items/item-4.jpg"><source src="../assets/projects/amba/items/item-4.mp4" type="video/mp4"></video></div>
+            <div class="media-frame"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/items/item-5.jpg"><source src="../assets/projects/amba/items/item-5.mp4" type="video/mp4"></video></div>
+            <div class="media-frame"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/items/item-6.jpg"><source src="../assets/projects/amba/items/item-6.mp4" type="video/mp4"></video></div>
+            <div class="media-frame"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/items/item-7.jpg"><source src="../assets/projects/amba/items/item-7.mp4" type="video/mp4"></video></div>
+            <div class="media-frame"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/items/item-8.jpg"><source src="../assets/projects/amba/items/item-8.mp4" type="video/mp4"></video></div>
+            <div class="media-frame"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/items/item-9.jpg"><source src="../assets/projects/amba/items/item-9.mp4" type="video/mp4"></video></div>
+            <div class="media-frame"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/items/item-10.jpg"><source src="../assets/projects/amba/items/item-10.mp4" type="video/mp4"></video></div>
+          </div>
+          </div>
+        </section>
     </div>
     <section class="next-project project-shell"><div><small data-i18n="next.label">More work</small><a href="../index.html#projects" data-i18n="next.link">Back to all projects</a></div><span class="arrow">→</span></section>
   </main>
@@ -146,14 +168,13 @@
         "animation.p1":"Jede Bewegung animiere ich von Hand in Photoshop, Bild für Bild. Der Zeitraffer spielt eine Animation des Vogels in jeder gespeicherten Version der Datei ab, in der Reihenfolge ihrer Entstehung: Man sieht, wie sich Rohfassung, Clean-up, Farbe und Timing von Version zu Version verändern.",
         "animation.caption":"16 Versionen der Vogelanimation, Juli bis August 2012. Jede Version spielt ihre eigene Frame-by-Frame-Animation genau so ab, wie sie in der Photoshop-Datei gespeichert war.",
         "work.title":"Mein Beitrag",
-        "work.p1":"Amba begann als mein persönliches Projekt und blieb es viele Jahre lang. Später kamen ein Game Designer, ein Entwickler, ein Komponist und ein Sounddesigner dazu, um das Spiel für den Release vorzubereiten.",
+        "work.p1":"Amba ist mein eigenes Projekt, und ich habe das Spiel selbst gemacht, von den ersten Skizzen bis zum Build. Beim Sound hat ein Sounddesigner mit mir gearbeitet.",
         "work.l1":"Das Spiel, seine Welt und seine Figuren erfunden.",
         "work.l2":"Alle Figuren Bild für Bild gezeichnet und animiert: den Astronauten, Amba, die Aliens und die Bosse.",
         "work.l3":"Die Hintergründe mehrerer Biome, die Benutzeroberfläche und die visuellen Effekte gemalt.",
         "work.l4":"Die Cutscenes gestoryboardet, animiert und geschnitten.",
         "work.l5":"Unity und C# gelernt, um das Spiel selbst zu bauen: Bewegung, Hit-System, Shop, Spielautomat und Minispiele.",
-        "work.l6":"Das Pitch Deck und die Marketingmaterialien für Publisher erstellt.",
-        "gameplay.title":"Im Spiel","gameplay.caption":"Gameplay-Aufnahme: der Lauf, die Bonusrunde, der Spielautomat und der Shop.",
+        "index.items":"05 · Items","items.title":"Ausrüstung in Aktion","items.p1":"Während eines Laufs sammelt der Astronaut Ausrüstung, die seine Bewegung verändert. Jedes Item hat eine eigene handgezeichnete Animation, die synchron zur Bewegung läuft.","gameplay.title":"Im Spiel","gameplay.caption":"Gameplay-Aufnahme: der Lauf, die Bonusrunde, der Spielautomat und der Shop.",
         "next.label":"Weitere Arbeiten","next.link":"Zurück zu allen Projekten","footer.back":"Zurück zum Portfolio"
       },
       uk:{
@@ -169,14 +190,13 @@
         "animation.p1":"Кожен рух я анімую вручну у Photoshop, кадр за кадром. Таймлапс програє одну анімацію птаха в кожній збереженій версії файлу, у тому порядку, в якому я їх робив: видно, як від версії до версії змінюються чорновий прохід, клінап, колір і таймінг.",
         "animation.caption":"16 версій анімації птаха, липень–серпень 2012. Кожна версія програє власну покадрову анімацію саме так, як її було збережено у файлі Photoshop.",
         "work.title":"Мій внесок",
-        "work.p1":"Амба почалася як мій особистий проєкт і залишалася ним багато років. Згодом до неї долучилися геймдизайнер, розробник, композитор і звукорежисер, щоб підготувати гру до релізу.",
+        "work.p1":"Амба — мій власний проєкт, і гру я зробив сам, від перших ескізів до білда. Над звуком зі мною працював звукорежисер.",
         "work.l1":"Придумав гру, її світ і персонажів.",
         "work.l2":"Намалював і покадрово анімував усіх персонажів: астронавта, Амбу, прибульців і босів.",
         "work.l3":"Намалював фони кількох біомів, інтерфейс і візуальні ефекти.",
         "work.l4":"Зробив розкадрування, анімацію та монтаж катсцен.",
         "work.l5":"Вивчив Unity та C#, щоб самому зібрати гру: рух, систему ударів, магазин, слот-машину та мініігри.",
-        "work.l6":"Підготував пітч-презентацію та маркетингові матеріали для видавців.",
-        "gameplay.title":"У грі","gameplay.caption":"Запис геймплею: забіг, бонусний раунд, слот-машина й магазин.",
+        "index.items":"05 · Предмети","items.title":"Спорядження в дії","items.p1":"Під час забігу астронавт підбирає спорядження, яке змінює його рух. Кожен предмет має власну мальовану анімацію, що грає синхронно з рухом.","gameplay.title":"У грі","gameplay.caption":"Запис геймплею: забіг, бонусний раунд, слот-машина й магазин.",
         "next.label":"Інші роботи","next.link":"Назад до всіх проєктів","footer.back":"Назад до портфоліо"
       }
     };

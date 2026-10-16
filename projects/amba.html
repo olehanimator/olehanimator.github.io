@@ -32,14 +32,14 @@
     .project-hero .media-caption{margin-bottom:0}
     .section-media{margin:28px 0 0}
     .section-media .media-frame{aspect-ratio:16/9}
-    .timelapse{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center;margin:28px 0 0}
-    .timelapse .media-frame{aspect-ratio:1/1}
-    .timelapse video{background:#fff}
+    .anim-block{margin:28px 0 0}
+    .anim-sheet{aspect-ratio:4/3}
+    .anim-keyart{aspect-ratio:16/9}
     .item-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:28px 0 0}
     .item-grid .media-frame{aspect-ratio:4/3}
     .next-project.project-shell{margin-left:auto;margin-right:auto}
     .language-switcher button{cursor:pointer}
-    @media(max-width:700px){.timelapse,.item-grid{grid-template-columns:1fr}}
+    @media(max-width:700px){.item-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body class="project-page">
@@ -85,11 +85,15 @@
           <h2 data-i18n="animation.title">From sketch to final frames</h2>
           </div>
           <div class="section-body">
-          <p data-i18n="animation.p1">I animate every move by hand in Photoshop, frame by frame. The timelapse plays one animation of the bird in every saved version of the file, in the order I made them: you can see the rough pass, the cleanup, the colour and the timing change from version to version.</p>
-          <div class="timelapse">
-            <div class="media-frame"><video controls playsinline muted loop preload="metadata" poster="../assets/projects/amba/ptah-poster.jpg"><source src="../assets/projects/amba/ptah-timelapse.mp4" type="video/mp4"></video></div>
-            <p class="media-caption" data-i18n="animation.caption">16 versions of the bird animation, from July to August 2012. Each version plays its own frame-by-frame animation, exactly as it was saved in the Photoshop file.</p>
-          </div>
+          <p data-i18n="animation.p1">I draw and animate every character by hand in Photoshop, frame by frame. Below are all the astronaut's animations from the game on one sheet, followed by the loading screen key art growing from the first pencil sketch to the final picture.</p>
+          <figure class="anim-block">
+            <div class="media-frame anim-sheet"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/astronaut-animations.jpg"><source src="../assets/projects/amba/astronaut-animations.mp4" type="video/mp4"></video></div>
+            <figcaption class="media-caption" data-i18n="animation.sheet">The astronaut: every frame-by-frame animation of the main character, playing at once.</figcaption>
+          </figure>
+          <figure class="anim-block">
+            <div class="media-frame anim-keyart"><video autoplay muted loop playsinline preload="metadata" poster="../assets/projects/amba/keyart-poster.jpg"><source src="../assets/projects/amba/keyart-timelapse.mp4" type="video/mp4"></video></div>
+            <figcaption class="media-caption" data-i18n="animation.caption">Loading screen key art: 8 saved versions of the Photoshop file, from the pencil sketch to the final picture.</figcaption>
+          </figure>
           </div>
         </section>
         <section id="work" class="project-section">
@@ -165,8 +169,9 @@
         "overview.p1":"In jedem Lauf hat der Spieler eine begrenzte Zahl von „Hits“, um sich vom Boden abzustoßen und weiter zu fliegen. Ziel ist es, genau auf den Aliens zu landen, die den Weg entlanglaufen: Jeder Treffer bringt zusätzliche Hits und hält Amba auf Abstand. Zwischen den Läufen gibt der Spieler das Gesammelte für Upgrades aus, das Spiel hat also auch Roguelite-Elemente.",
         "overview.p2":"Der Stil orientiert sich am grellen, cartoonhaften Look der TV-Animation der 90er wie „Earthworm Jim“ und „The Ren &amp; Stimpy Show“. Die handgezeichnete Animation ist an die Bewegung der Figur gekoppelt, deshalb fühlt sich die Steuerung flüssig an, wie Surfen durch Gegner und Hindernisse.",
         "animation.title":"Von der Skizze zum fertigen Frame",
-        "animation.p1":"Jede Bewegung animiere ich von Hand in Photoshop, Bild für Bild. Der Zeitraffer spielt eine Animation des Vogels in jeder gespeicherten Version der Datei ab, in der Reihenfolge ihrer Entstehung: Man sieht, wie sich Rohfassung, Clean-up, Farbe und Timing von Version zu Version verändern.",
-        "animation.caption":"16 Versionen der Vogelanimation, Juli bis August 2012. Jede Version spielt ihre eigene Frame-by-Frame-Animation genau so ab, wie sie in der Photoshop-Datei gespeichert war.",
+        "animation.p1":"Jede Figur zeichne und animiere ich von Hand in Photoshop, Bild für Bild. Unten sind alle Animationen des Astronauten aus dem Spiel auf einem Blatt zu sehen, danach das Key Art des Ladebildschirms, wie es von der ersten Bleistiftskizze zum fertigen Bild wächst.",
+        "animation.sheet":"Der Astronaut: alle Frame-by-Frame-Animationen der Hauptfigur, gleichzeitig abgespielt.",
+        "animation.caption":"Key Art des Ladebildschirms: 8 gespeicherte Versionen der Photoshop-Datei, von der Bleistiftskizze bis zum fertigen Bild.",
         "work.title":"Mein Beitrag",
         "work.p1":"Amba ist mein eigenes Projekt, und ich habe das Spiel selbst gemacht, von den ersten Skizzen bis zum Build. Beim Sound hat ein Sounddesigner mit mir gearbeitet.",
         "work.l1":"Das Spiel, seine Welt und seine Figuren erfunden.",
@@ -187,8 +192,9 @@
         "overview.p1":"У кожному забігу гравець має обмежену кількість «ударів», щоб відштовхнутися від землі й пролетіти далі. Мета — точно приземлитися на прибульців, що біжать доріжкою: кожне влучання дає додаткові удари й тримає Амбу позаду. Між забігами гравець витрачає зібране на покращення, тож у грі є й елементи roguelite.",
         "overview.p2":"Стиль натхненний кислотною мультяшною естетикою телеанімації 90-х, як-от «Earthworm Jim» і «The Ren &amp; Stimpy Show». Мальована анімація прив’язана до руху персонажа, тому керування відчувається плавним, ніби сьорфиш крізь ворогів і перешкоди.",
         "animation.title":"Від ескізу до фінальних кадрів",
-        "animation.p1":"Кожен рух я анімую вручну у Photoshop, кадр за кадром. Таймлапс програє одну анімацію птаха в кожній збереженій версії файлу, у тому порядку, в якому я їх робив: видно, як від версії до версії змінюються чорновий прохід, клінап, колір і таймінг.",
-        "animation.caption":"16 версій анімації птаха, липень–серпень 2012. Кожна версія програє власну покадрову анімацію саме так, як її було збережено у файлі Photoshop.",
+        "animation.p1":"Кожного персонажа я малюю й анімую вручну у Photoshop, кадр за кадром. Нижче всі анімації астронавта з гри на одному аркуші, а далі кіарт екрана завантаження, який виростає з першого олівцевого ескізу до фінальної картинки.",
+        "animation.sheet":"Астронавт: усі покадрові анімації головного героя, що програються одночасно.",
+        "animation.caption":"Кіарт екрана завантаження: 8 збережених версій файлу Photoshop, від олівцевого ескізу до фінальної картинки.",
         "work.title":"Мій внесок",
         "work.p1":"Амба — мій власний проєкт, і гру я зробив сам, від перших ескізів до білда. Над звуком зі мною працював звукорежисер.",
         "work.l1":"Придумав гру, її світ і персонажів.",

@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="../visual-tuning-2026.css?v=20260906-1">
   <link rel="stylesheet" href="../brand-2026.css?v=20260815-1">
   <link rel="stylesheet" href="../project.css?v=20261015-3">
+  <link rel="stylesheet" href="../buttons.css?v=20261122-1">
   <style>
     .media-frame video,.media-frame img{position:absolute;inset:0;width:100%;height:100%;display:block}
     .media-frame video{object-fit:contain;background:#000}
@@ -39,7 +40,9 @@
     .anim-trio img{display:block;width:100%;height:auto;aspect-ratio:4/3;border-radius:6px}
     .item-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:28px 0 0}
     .item-grid .media-frame{aspect-ratio:4/3}
-    .next-project.project-shell{margin-left:auto;margin-right:auto}
+    .project-page .back-link{margin:40px 0 0}
+    .project-page .back-link+.project-category{margin-top:28px}
+    @media(max-width:700px){.project-page .back-link{margin-top:28px}}
     .language-switcher button{cursor:pointer}
     @media(max-width:700px){.anim-trio,.item-grid{grid-template-columns:1fr}}
   </style>
@@ -54,6 +57,7 @@
   </header>
   <main>
     <section class="project-hero project-shell">
+      <a class="btn btn-sm back-link" href="../index.html#projects"><span class="btn-arrow btn-arrow-back" aria-hidden="true">←</span><span data-i18n="back.top">All projects</span></a>
       <p class="project-category" data-i18n="category">Game development · Mobile game</p>
       <h1>Amba</h1>
       <p class="project-lead" data-i18n="lead">My own side-scrolling runner for mobile: an astronaut chases the aliens who stole parts of his ship, while Amba, a huge hungry creature, tries to catch him with its tongue. Every character and every move is animated by hand, frame by frame.</p>
@@ -156,7 +160,7 @@
           </div>
         </section>
     </div>
-    <section class="next-project project-shell"><div><small data-i18n="next.label">More work</small><a href="../index.html#projects" data-i18n="next.link">Back to all projects</a></div><span class="arrow">→</span></section>
+    <div class="page-back project-shell"><a class="btn btn-lg" href="../index.html#projects"><span class="btn-arrow btn-arrow-back" aria-hidden="true">←</span><span data-i18n="next.link">Back to all projects</span></a></div>
   </main>
   <footer class="project-footer project-shell"><span>© <b id="year">2026</b> Oleh Lytvynenko</span><a class="project-home" href="../index.html" data-i18n="footer.back">Back to portfolio</a></footer>
   <script>
@@ -185,7 +189,7 @@
         "work.l4":"Die Cutscenes gestoryboardet, animiert und geschnitten.",
         "work.l5":"Unity und C# gelernt, um das Spiel selbst zu bauen: Bewegung, Hit-System, Shop, Spielautomat und Minispiele.",
         "index.items":"05 · Items","items.title":"Ausrüstung in Aktion","items.p1":"Während eines Laufs sammelt der Astronaut Ausrüstung, die seine Bewegung verändert. Jedes Item hat eine eigene handgezeichnete Animation, die synchron zur Bewegung läuft.","gameplay.title":"Im Spiel","gameplay.caption":"Gameplay-Aufnahme: der Lauf, die Bonusrunde, der Spielautomat und der Shop.",
-        "next.label":"Weitere Arbeiten","next.link":"Zurück zu allen Projekten","footer.back":"Zurück zum Portfolio"
+        "back.top":"Alle Projekte","next.label":"Weitere Arbeiten","next.link":"Zurück zu allen Projekten","footer.back":"Zurück zum Portfolio"
       },
       uk:{
         "nav.projects":"Проєкти","nav.ai":"ШІ у роботі","nav.about":"Про мене","category":"Розробка ігор · Мобільна гра",
@@ -210,7 +214,7 @@
         "work.l4":"Зробив розкадрування, анімацію та монтаж катсцен.",
         "work.l5":"Вивчив Unity та C#, щоб самому зібрати гру: рух, систему ударів, магазин, слот-машину та мініігри.",
         "index.items":"05 · Предмети","items.title":"Спорядження в дії","items.p1":"Під час забігу астронавт підбирає спорядження, яке змінює його рух. Кожен предмет має власну мальовану анімацію, що грає синхронно з рухом.","gameplay.title":"У грі","gameplay.caption":"Запис геймплею: забіг, бонусний раунд, слот-машина й магазин.",
-        "next.label":"Інші роботи","next.link":"Назад до всіх проєктів","footer.back":"Назад до портфоліо"
+        "back.top":"Усі проєкти","next.label":"Інші роботи","next.link":"Назад до всіх проєктів","footer.back":"Назад до портфоліо"
       }
     };
     document.querySelectorAll('[data-i18n],[data-i18n-html]').forEach(el=>{el.dataset.en=el.innerHTML;});

@@ -12,3 +12,12 @@
 .home-projects .work-card[data-project] .work-card-copy h3{display:block!important;margin:6px 0!important;font-size:20px!important;line-height:1.15!important;white-space:normal!important;-webkit-line-clamp:unset!important}
 .home-projects .work-card[data-project] .work-card-copy p{margin:0 0 10px!important;color:#aeb4b7;font-size:14px;line-height:1.5}
 .home-projects .work-card[data-project] .work-card-copy>span{color:#6ea7ad;font-size:13px}
+/* Home teaser for the AI workflow page: same outer panel and inner panel as "Selected work" */
+.ai-teaser{margin-top:28px;padding:18px;border:1px solid var(--ui-border,rgba(205,224,225,.18));border-radius:var(--radius-xl,24px);background:linear-gradient(145deg,rgba(18,27,32,.96),rgba(9,14,18,.98));box-shadow:0 20px 60px rgba(0,0,0,.22),0 1px 0 rgba(255,255,255,.025) inset;overflow:hidden}
+.ai-teaser>.section-label{margin:0 0 16px;padding:0 2px 14px;text-align:left;border-bottom:1px solid rgba(205,224,225,.13)}
+.ai-teaser-body{padding:20px;border:1px solid rgba(205,224,225,.13);border-radius:var(--radius-lg,20px);background:linear-gradient(145deg,rgba(22,32,38,.78),rgba(13,20,24,.82))}
+.ai-teaser-body h2{margin:0 0 12px;font-size:clamp(22px,2vw,30px);font-weight:450;line-height:1.15;letter-spacing:-.02em}
+.ai-teaser-body p{max-width:820px;margin:0 0 14px;color:#aeb4b5;font-size:15px;line-height:1.7}
+.ai-teaser-link{color:#6ea7ad;font-size:14px;text-decoration:none}
+.ai-teaser-link:hover{color:#9fd0d4}
+@media(max-width:700px){.ai-teaser-body{padding:16px 12px}}

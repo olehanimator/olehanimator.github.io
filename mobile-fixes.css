@@ -101,3 +101,17 @@ html,body{max-width:100%;overflow-x:clip}.logo-mark{width:40px;height:40px;displ
   }
   .hero + .about{margin-top:52px}
 }
+
+/* Four nav items (with the AI workflow link) on one line on phones */
+@media (max-width:480px){
+  .topbar nav{gap:8px 16px!important;flex-wrap:nowrap!important}
+  .topbar nav a{letter-spacing:.06em!important;white-space:nowrap}
+}
+
+/* Phones: Projects, AI teaser and About use almost the full screen width; the showreel keeps its margins */
+@media (max-width:700px){
+  .home-projects,.ai-teaser,.about{width:calc(100% - 12px)!important;max-width:none!important}
+  #projects.home-projects,#ai-workflow.ai-teaser{padding:14px 8px 8px!important}
+  #projects.home-projects>.work-section{padding-left:12px!important;padding-right:12px!important}
+  .about .portrait{max-width:none!important;width:100%!important}
+}

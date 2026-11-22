@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How Oleh Lytvynenko uses AI in his work: concepts and scripts, video and animation, images, textures and 3D, virtual showrooms, editing automation and development.">
+  <meta name="author" content="Oleh Lytvynenko">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://olehanimator.github.io/ai-workflow.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How I use AI in my work — Oleh Lytvynenko">
+  <meta property="og:description" content="AI helps me develop concepts faster, create assets and automate repetitive stages of production. Direction, composition, timing and final quality stay under my control.">
+  <meta property="og:image" content="https://olehanimator.github.io/assets/og-image-v2.png">
+  <title>How I use AI in my work — Oleh Lytvynenko</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260807-3">
+  <link rel="stylesheet" href="motion.css?v=20260808-1">
+  <link rel="stylesheet" href="mobile-fixes.css?v=20261122-1">
+  <link rel="stylesheet" href="visual-tuning-2026.css?v=20260906-1">
+  <link rel="stylesheet" href="brand-2026.css?v=20260815-1">
+  <link rel="stylesheet" href="project.css?v=20261015-3">
+  <style>
+    .ai-page .project-hero .project-lead{margin-bottom:8px}
+    .ai-page .section-media{margin:26px 0 0}
+    .ai-page .section-media .media-frame{aspect-ratio:16/9}
+    .ai-page .section-media img,.ai-page .section-media video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+    .ai-page .section-media video{object-fit:contain;background:#000}
+    .ai-page .media-caption{margin:10px 2px 0;color:#7f878b;font-size:13px}
+    .tool-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+    .project-page .section-body .tool-tags li{padding:7px 13px;border:1px solid rgba(205,224,225,.16);border-radius:999px;background:rgba(255,255,255,.02);color:#c8ccce;font-size:13px;line-height:1.3}
+    .project-page .section-body .tool-tags li:before{content:none}
+    .project-page .section-body .tool-tags li:first-child{padding-top:7px}
+    .next-project.project-shell{margin-left:auto;margin-right:auto}
+    .language-switcher button{cursor:pointer}
+  </style>
+</head>
+<body class="project-page ai-page">
+  <header class="topbar wrap">
+    <a class="logo-mark" href="index.html" aria-label="Oleh Lytvynenko — home">
+      <svg viewBox="0 0 44 40" aria-hidden="true"><circle cx="14" cy="20" r="10.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M28 9v22h11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="logo-name">Oleh Lytvynenko</span>
+    </a>
+    <div class="topbar-right"><nav><a href="index.html#projects" data-i18n="nav.projects">Projects</a><a href="ai-workflow.html" aria-current="page" data-i18n="nav.ai">AI workflow</a><a href="index.html#about" data-i18n="nav.about">About</a><a href="cv.html">CV</a></nav><div class="language-switcher" aria-label="Language selector"><button type="button" data-lang="en" class="active" aria-pressed="true">EN</button><button type="button" data-lang="de" aria-pressed="false">DE</button><button type="button" data-lang="uk" aria-pressed="false">UA</button></div></div>
+  </header>
+  <main>
+    <section class="project-hero project-shell">
+      <p class="project-category" data-i18n="category">AI workflow</p>
+      <h1 data-i18n="title">How I use AI in my work</h1>
+      <p class="project-lead" data-i18n="lead">AI helps me develop concepts faster, create assets and automate repetitive stages of production. Direction, composition, timing and final quality stay under my control.</p>
+    </section>
+    <div class="project-content project-shell">
+      <section id="idea" class="project-section">
+        <div class="section-head">
+          <p class="section-kicker">01</p>
+          <h2 data-i18n="idea.title">Idea and script</h2>
+        </div>
+        <div class="section-body">
+          <p data-i18n="idea.p1">In brainstorming sessions with ChatGPT, I develop the concept, story and characters, and write the screenplay and the shooting script with a storyboard. For apps, I work out the product concept and UX the same way. Technical decisions and architecture I discuss with Claude.</p>
+          <!-- Media slot: <figure class="section-media"><div class="media-frame"><img src="assets/ai/idea.jpg" alt="" loading="lazy"></div></figure> -->
+        </div>
+      </section>
+      <section id="video" class="project-section">
+        <div class="section-head">
+          <p class="section-kicker">02</p>
+          <h2 data-i18n="video.title">Video and animation</h2>
+        </div>
+        <div class="section-body">
+          <p data-i18n="video.p1">I generate visual concepts, characters and environments and assemble them into a storyboard. When the camera work has to be precise, Claude builds a rough 3D scene with basic animation. A simple scene is built right in the browser with Three.js. A complex one is assembled in a 3D package via MCP, where I refine the camera path, timing and animation myself. The rough render then serves as the base for video-to-video generation. When an exact camera path isn’t needed, I generate the video directly from the storyboard.</p>
+          <!-- Media slot: storyboard, rough 3D scene frame and final clip -->
+        </div>
+      </section>
+      <section id="images" class="project-section">
+        <div class="section-head">
+          <p class="section-kicker">03</p>
+          <h2 data-i18n="images.title">Images, textures and 3D</h2>
+        </div>
+        <div class="section-body">
+          <p data-i18n="images.p1">For series in a consistent style, I build pipelines in ComfyUI (FLUX) and train LoRAs when needed. I generate textures for materials and models of simple props from several views, and refine the geometry by hand. Through MCP, I connect Claude to 3D packages to edit scenes and set up basic animation.</p>
+          <!-- Media slot -->
+        </div>
+      </section>
+      <section id="showrooms" class="project-section">
+        <div class="section-head">
+          <p class="section-kicker">04</p>
+          <h2 data-i18n="showrooms.title">Virtual showrooms</h2>
+        </div>
+        <div class="section-body">
+          <p data-i18n="showrooms.p1">I have used two approaches: generating views based on a rough 3D model, and a pipeline of panorama → camera fly-throughs → Gaussian Splatting → 3D model.</p>
+          <!-- Media slot: Gaussian Splatting showroom -->
+        </div>
+      </section>
+      <section id="editing" class="project-section">
+        <div class="section-head">
+          <p class="section-kicker">05</p>
+          <h2 data-i18n="editing.title">Editing and automation</h2>
+        </div>
+        <div class="section-body">
+          <p data-i18n="editing.p1">For the YouTube channel The Bamboo Storyteller, I automated episode assembly: a script puts the illustrations and voice-over together into an After Effects composition, leaving me only the review and the render. In other projects, scripts produce a rough cut, and I refine the rhythm and transitions myself.</p>
+          <!-- Media slot: The Bamboo Storyteller episode -->
+        </div>
+      </section>
+      <section id="development" class="project-section">
+        <div class="section-head">
+          <p class="section-kicker">06</p>
+          <h2 data-i18n="dev.title">Development</h2>
+        </div>
+        <div class="section-body">
+          <p data-i18n="dev.p1">I develop games and apps in Unity, as well as websites, web apps and interactive presentations. Claude helps me write code, build prototypes and edit scenes in Unity. Architecture, testing and final decisions are my responsibility.</p>
+          <!-- Media slot -->
+        </div>
+      </section>
+      <section id="tools" class="project-section">
+        <div class="section-head">
+          <h2 data-i18n="tools.title">Tools</h2>
+        </div>
+        <div class="section-body">
+          <ul class="tool-tags">
+            <li>ChatGPT</li><li>Claude</li><li>Nano Banana Pro</li><li>ComfyUI / FLUX</li><li>Seedance</li><li>Veo</li><li>ElevenLabs</li><li>Google Flow</li><li>Higgsfield</li><li>Three.js</li><li>Unity</li><li>After Effects</li><li>Cinema 4D</li><li>Maya</li><li>3ds Max</li><li>Blender</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <section class="next-project project-shell"><div><small data-i18n="next.label">Selected work</small><a href="index.html#projects" data-i18n="next.link">See the projects</a></div><span class="arrow">→</span></section>
+  </main>
+  <footer class="project-footer project-shell"><span>© <b id="year">2026</b> Oleh Lytvynenko</span><a class="project-home" href="index.html" data-i18n="footer.back">Back to portfolio</a></footer>
+  <script>
+    const T={
+      en:{},
+      de:{
+        "nav.projects":"Projekte","nav.ai":"KI-Workflow","nav.about":"Über mich","category":"KI-Workflow",
+        "title":"Wie ich KI in meiner Arbeit einsetze",
+        "lead":"KI hilft mir, Konzepte schneller zu entwickeln, Material zu erstellen und wiederkehrende Arbeitsschritte zu automatisieren. Regie, Bildkomposition, Timing und die finale Qualität verantworte ich selbst.",
+        "idea.title":"Idee und Drehbuch",
+        "idea.p1":"In Brainstormings mit ChatGPT entwickle ich Konzept, Handlung und Figuren und schreibe Drehbuch und Regiebuch mit Storyboard. Bei Anwendungen erarbeite ich auf dieselbe Weise das Produktkonzept und die UX. Technische Entscheidungen und die Architektur bespreche ich mit Claude.",
+        "video.title":"Video und Animation",
+        "video.p1":"Ich generiere visuelle Konzepte, Figuren und Umgebungen und baue daraus ein Storyboard. Wenn die Kameraarbeit präzise sein muss, erstellt Claude eine grobe 3D-Szene mit einfacher Animation. Eine einfache Szene entsteht direkt im Browser mit Three.js. Eine komplexe wird per MCP in einem 3D-Programm aufgebaut, wo ich Kamerafahrt, Timing und Animation selbst ausarbeite. Das grobe Rendering dient anschließend als Grundlage für Video-to-Video. Ist keine exakte Kamerafahrt nötig, generiere ich das Video direkt aus dem Storyboard.",
+        "images.title":"Bilder, Texturen und 3D",
+        "images.p1":"Für Serien in einheitlichem Stil baue ich Pipelines in ComfyUI (FLUX) und trainiere bei Bedarf LoRAs. Ich generiere Texturen für Materialien sowie Modelle einfacher Props aus mehreren Ansichten und überarbeite die Geometrie von Hand. Über MCP verbinde ich Claude mit 3D-Programmen, um Szenen zu bearbeiten und einfache Animationen aufzusetzen.",
+        "showrooms.title":"Virtuelle Showrooms",
+        "showrooms.p1":"Ich habe zwei Ansätze eingesetzt: die Generierung von Ansichten auf Basis eines groben 3D-Modells und die Pipeline Panorama → Kameraflüge → Gaussian Splatting → 3D-Modell.",
+        "editing.title":"Schnitt und Automatisierung",
+        "editing.p1":"Für den YouTube-Kanal The Bamboo Storyteller habe ich die Produktion der Folgen automatisiert: Ein Skript setzt Illustrationen und Sprachaufnahmen zu einer After-Effects-Komposition zusammen, mir bleiben nur Prüfung und Rendering. In anderen Projekten erstellen Skripte einen Rohschnitt, Rhythmus und Übergänge arbeite ich selbst aus.",
+        "dev.title":"Entwicklung",
+        "dev.p1":"Ich entwickle Spiele und Anwendungen in Unity sowie Websites, Web-Apps und interaktive Präsentationen. Claude unterstützt mich beim Schreiben von Code, beim Bau von Prototypen und beim Bearbeiten von Szenen in Unity. Architektur, Tests und die finalen Entscheidungen liegen bei mir.",
+        "tools.title":"Tools",
+        "next.label":"Ausgewählte Arbeiten","next.link":"Zu den Projekten","footer.back":"Zurück zum Portfolio"
+      },
+      uk:{
+        "nav.projects":"Проєкти","nav.ai":"ШІ у роботі","nav.about":"Про мене","category":"ШІ у роботі",
+        "title":"Як я використовую ШІ в роботі",
+        "lead":"ШІ допомагає мені швидше розробляти концепції, створювати матеріали й автоматизувати повторювані етапи роботи. Режисуру, композицію, таймінг і фінальну якість я контролюю сам.",
+        "idea.title":"Ідея та сценарій",
+        "idea.p1":"У брейнштормах із ChatGPT я опрацьовую концепцію, сюжет і персонажів, пишу літературний і режисерський сценарій із розкадровкою. Для застосунків так само продумую концепцію продукту та UX. Технічні рішення й архітектуру обговорюю з Claude.",
+        "video.title":"Відео та анімація",
+        "video.p1":"Генерую візуальні концепти, персонажів і оточення та збираю з них розкадровку. Якщо потрібна точна робота камери, Claude збирає чорнову 3D-сцену з базовою анімацією. Просту сцену він робить прямо в браузері на Three.js. Складну збирає в 3D-пакеті через MCP, і там я сам доопрацьовую траєкторію, таймінг і анімацію. Чорновий рендер потім слугує основою для video-to-video. Якщо точна траєкторія не потрібна, генерую відео напряму за розкадровкою.",
+        "images.title":"Зображення, текстури та 3D",
+        "images.p1":"Для серій в єдиному стилі збираю пайплайни в ComfyUI (FLUX) і за потреби навчаю LoRA. Генерую текстури для матеріалів і моделі простих пропсів за кількома ракурсами, а геометрію доопрацьовую вручну. Через MCP підключаю Claude до 3D-пакетів, щоб редагувати сцени й збирати базову анімацію.",
+        "showrooms.title":"Віртуальні шоуруми",
+        "showrooms.p1":"Застосовував два підходи: генерацію ракурсів на основі чорнової 3D-моделі та пайплайн «панорама → прольоти камери → Gaussian Splatting → 3D-модель».",
+        "editing.title":"Монтаж і автоматизація",
+        "editing.p1":"Для YouTube-каналу The Bamboo Storyteller автоматизував збирання випусків: скрипт збирає ілюстрації та озвучення в композицію After Effects, а мені залишаються перевірка й рендер. В інших проєктах скрипти роблять чорновий монтаж, а ритм і переходи я доопрацьовую сам.",
+        "dev.title":"Розробка",
+        "dev.p1":"Розробляю ігри та застосунки на Unity, а також сайти, вебзастосунки й інтерактивні презентації. Claude допомагає мені писати код, збирати прототипи й редагувати сцени в Unity. Архітектуру, тестування й остаточні рішення беру на себе.",
+        "tools.title":"Інструменти",
+        "next.label":"Вибрані роботи","next.link":"Перейти до проєктів","footer.back":"Назад до портфоліо"
+      }
+    };
+    document.querySelectorAll('[data-i18n],[data-i18n-html]').forEach(el=>{el.dataset.en=el.innerHTML;});
+    const buttons=[...document.querySelectorAll('[data-lang]')];
+    function setLanguage(lang){
+      if(!T[lang])lang='en';
+      document.documentElement.lang=lang;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{const v=T[lang][el.dataset.i18n];if(v)el.textContent=v;else el.innerHTML=el.dataset.en;});
+      document.querySelectorAll('[data-i18n-html]').forEach(el=>{el.innerHTML=T[lang][el.dataset.i18nHtml]||el.dataset.en;});
+      buttons.forEach(b=>{const a=b.dataset.lang===lang;b.classList.toggle('active',a);b.setAttribute('aria-pressed',String(a));});
+      try{localStorage.setItem('portfolio-language',lang);}catch(e){}
+    }
+    buttons.forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));
+    let saved=null;try{saved=localStorage.getItem('portfolio-language');}catch(e){}
+    const browser=(navigator.language||'en').slice(0,2);
+    setLanguage(saved||(['en','de','uk'].includes(browser)?browser:'en'));
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

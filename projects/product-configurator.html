@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="../visual-tuning-2026.css?v=20260906-1">
   <link rel="stylesheet" href="../brand-2026.css?v=20260815-1">
   <link rel="stylesheet" href="../project.css?v=20261015-3">
+  <link rel="stylesheet" href="../buttons.css?v=20261122-1">
   <style>
     .media-frame video,.media-frame img{position:absolute;inset:0;width:100%;height:100%;display:block}
     .media-frame video{object-fit:contain;background:#000}
@@ -58,7 +59,9 @@
     .code-card .token.number,.code-card .token.boolean{color:#d79b7c}
     .code-card .token.punctuation,.code-card .token.operator{color:#8d9497}
     
-    .next-project.project-shell{margin-left:auto;margin-right:auto}
+    .project-page .back-link{margin:40px 0 0}
+    .project-page .back-link+.project-category{margin-top:28px}
+    @media(max-width:700px){.project-page .back-link{margin-top:28px}}
     .language-switcher button{cursor:pointer}
     @media(max-width:700px){.stat-row{grid-template-columns:1fr}.pipeline{padding:12px;overflow-x:auto}.pipeline svg{min-width:560px}}
     .code-card pre,.net-card{max-width:100%;overflow-x:auto}
@@ -74,6 +77,7 @@
   </header>
   <main>
     <section class="project-hero project-shell">
+      <a class="btn btn-sm back-link" href="../index.html#projects"><span class="btn-arrow btn-arrow-back" aria-hidden="true">←</span><span data-i18n="back.top">All projects</span></a>
       <p class="project-category" data-i18n="category">Interactive · WebGL configurator</p>
       <h1 data-i18n-html="title">Product<br>Configurator</h1>
       <p class="project-lead" data-i18n="lead">A browser-based 3D configurator that replaced a tablet app handed out on USB sticks, and cut the time to add a new product model from about a week to ten minutes.</p>
@@ -241,7 +245,7 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
           </div>
         </section>
     </div>
-    <section class="next-project project-shell"><div><small data-i18n="next.label">More work</small><a href="../index.html#projects" data-i18n="next.link">Back to all projects</a></div><span class="arrow">→</span></section>
+    <div class="page-back project-shell"><a class="btn btn-lg" href="../index.html#projects"><span class="btn-arrow btn-arrow-back" aria-hidden="true">←</span><span data-i18n="next.link">Back to all projects</span></a></div>
   </main>
   <footer class="project-footer project-shell"><span>© <b id="year">2026</b> Oleh Lytvynenko</span><a class="project-home" href="../index.html" data-i18n="footer.back">Back to portfolio</a></footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" data-manual></script>
@@ -290,7 +294,7 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "result.title":"Das Ergebnis",
         "result.p1":"Der Konfigurator startet per Link im Browser: keine Installation, keine USB-Sticks. Neue Modelle kommen in etwa zehn Minuten statt einer Woche hinzu, und dieselbe Engine wurde für weitere Produktlinien wiederverwendet, etwa für die hier gezeigte Verpackungs-Demo.",
         "stat1.value":"~10 Min.","stat1.label":"für ein neues Modell statt etwa einer Woche","stat2.label":"AssetBundles, geladen erst bei Auswahl","stat3.label":"Sprachen, plus Deep Links zu jeder Konfiguration",
-        "next.label":"Weitere Arbeiten","next.link":"Zurück zu allen Projekten","footer.back":"Zurück zum Portfolio"
+        "back.top":"Alle Projekte","next.label":"Weitere Arbeiten","next.link":"Zurück zu allen Projekten","footer.back":"Zurück zum Portfolio"
       },
       uk:{
         "nav.back":"Проєкти","nav.projects":"Проєкти","nav.ai":"ШІ у роботі","nav.about":"Про мене","category":"Інтерактив · WebGL-конфігуратор","title":"Конфігуратор<br>продукту",
@@ -333,7 +337,7 @@ public IEnumerator SwapVariant(Input_Variant_Base oldVariant, Input_Variant_Base
         "result.title":"Результат",
         "result.p1":"Конфігуратор відкривається за посиланням у браузері: без встановлення й без флешок. Нові моделі додаються приблизно за десять хвилин замість тижня, а той самий рушій використано для інших продуктових ліній, як-от демо з упаковкою на цій сторінці.",
         "stat1.value":"~10 хв","stat1.label":"на нову модель замість приблизно тижня","stat2.label":"AssetBundle, що завантажуються лише при виборі","stat3.label":"мови, плюс глибокі посилання на будь-яку конфігурацію",
-        "next.label":"Інші роботи","next.link":"Назад до всіх проєктів","footer.back":"Назад до портфоліо"
+        "back.top":"Усі проєкти","next.label":"Інші роботи","next.link":"Назад до всіх проєктів","footer.back":"Назад до портфоліо"
       }
     };
     document.querySelectorAll('[data-i18n],[data-i18n-html]').forEach(el=>{el.dataset.en=el.innerHTML;});

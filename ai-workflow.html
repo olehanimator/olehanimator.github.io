@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="visual-tuning-2026.css?v=20260906-1">
   <link rel="stylesheet" href="brand-2026.css?v=20260815-1">
   <link rel="stylesheet" href="project.css?v=20261015-3">
+  <link rel="stylesheet" href="buttons.css?v=20261122-1">
   <style>
     .ai-page .project-hero .project-lead{margin-bottom:8px}
     .ai-page .section-media{margin:26px 0 0}
@@ -33,15 +34,9 @@
     .project-page .section-body .tool-tags li{padding:7px 13px;border:1px solid rgba(205,224,225,.16);border-radius:999px;background:rgba(255,255,255,.02);color:#c8ccce;font-size:13px;line-height:1.3}
     .project-page .section-body .tool-tags li:before{content:none}
     .project-page .section-body .tool-tags li:first-child{padding-top:7px}
-    .back-link{display:inline-flex;align-items:center;gap:8px;margin:40px 0 0;color:#9da4a6;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
-    .back-link:hover{color:#eef1f0}
+    .ai-page .back-link{margin:40px 0 0}
     .ai-page .project-hero .project-category{margin-top:28px}
-    .back-home{display:flex;align-items:center;gap:22px;margin:56px auto 64px;padding-top:28px;border-top:1px solid var(--line);color:var(--text);text-decoration:none}
-    .back-home .arrow{display:grid;place-items:center;flex:none;width:56px;height:56px;border:1px solid rgba(205,224,225,.2);border-radius:50%;color:#6ea7ad;font-size:24px;transition:border-color .2s,transform .2s}
-    .back-home small{display:block;margin-bottom:6px;color:#747b7e;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
-    .back-home strong{display:block;font-size:clamp(24px,2.5vw,39px);font-weight:450;letter-spacing:-.035em;line-height:1.05}
-    .back-home:hover .arrow{border-color:#6ea7ad;transform:translateX(-4px)}
-    @media(max-width:700px){.back-link{margin-top:28px}.back-home{gap:16px;margin:40px auto 48px}.back-home .arrow{width:46px;height:46px;font-size:20px}}
+    @media(max-width:700px){.ai-page .back-link{margin-top:28px}}
     .language-switcher button{cursor:pointer}
   </style>
 </head>
@@ -55,7 +50,7 @@
   </header>
   <main>
     <section class="project-hero project-shell">
-      <a class="back-link" href="index.html"><span aria-hidden="true">←</span> <span data-i18n="back.top">Portfolio</span></a>
+      <a class="btn btn-sm back-link" href="index.html"><span class="btn-arrow btn-arrow-back" aria-hidden="true">←</span><span data-i18n="back.top">Portfolio</span></a>
       <p class="project-category" data-i18n="category">AI workflow</p>
       <h1 data-i18n="title">How I use AI in my work</h1>
       <p class="project-lead" data-i18n="lead">AI helps me develop concepts faster, create assets and automate repetitive stages of production. Direction, composition, timing and final quality stay under my control.</p>
@@ -132,7 +127,7 @@
         </div>
       </section>
     </div>
-    <a class="back-home project-shell" href="index.html"><span class="arrow" aria-hidden="true">←</span><span><small data-i18n="back.label">Oleh Lytvynenko</small><strong data-i18n="back.link">Back to portfolio</strong></span></a>
+    <div class="page-back project-shell"><a class="btn btn-lg" href="index.html"><span class="btn-arrow btn-arrow-back" aria-hidden="true">←</span><span data-i18n="back.link">Back to portfolio</span></a></div>
   </main>
   <footer class="project-footer project-shell"><span>© <b id="year">2026</b> Oleh Lytvynenko</span></footer>
   <script>

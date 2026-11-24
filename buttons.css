@@ -10,3 +10,8 @@
 /* Bottom "back" row on case pages and the AI page */
 .page-back{margin:56px auto 64px;padding-top:28px;border-top:1px solid var(--line,rgba(255,255,255,.1))}
 @media(max-width:700px){.page-back{margin:40px auto 48px}.btn-lg{min-height:48px;padding:0 22px;font-size:14px}}
+/* Phones: buttons sit on the right edge, under the right thumb (desktop keeps them on the left) */
+@media(max-width:700px){.btn,.home-projects .work-card[data-project] .work-card-copy>.btn{display:flex!important;width:fit-content;margin-left:auto!important;margin-right:0!important}}
+/* Language switcher: pill shape like every other button on the site (was 10-14px corners) */
+.language-switcher{border-radius:999px!important}
+.language-switcher button{border-radius:999px!important}

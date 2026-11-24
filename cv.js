@@ -2,7 +2,7 @@
   const shell = document.getElementById('viewerShell');
   const pagesEl = document.getElementById('pdfPages');
   const statusEl = document.getElementById('viewerStatus');
-  const PDF_URL = 'assets/cv.pdf?v=20261124';
+  const PDF_URL = window.CV_PDF || 'assets/cv.pdf?v=20261124';
   const MIN_ZOOM = 1;
   const MAX_ZOOM = 3.5;
   const text = window.CV_TEXT || { rendering:'Rendering CV…', error:'Could not load CV.', open:'Open PDF' };
@@ -143,7 +143,7 @@
       await renderInitial();
     } catch (error) {
       console.error(error);
-      statusEl.innerHTML = `${text.error} <a href="assets/cv.pdf?v=20261124" style="color:#78adff">${text.open}</a>`;
+      statusEl.innerHTML = `${text.error} <a href="${PDF_URL}" style="color:#78adff">${text.open}</a>`;
     }
   }
 

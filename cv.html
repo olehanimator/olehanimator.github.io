@@ -44,6 +44,15 @@
       const lang = texts[saved] ? saved : (texts[browser] ? browser : 'en');
       const t = texts[lang];
       window.CV_TEXT = t;
+      const files = {
+        en: { pdf:'assets/cv-en.pdf?v=20261124', name:'CV_Oleh_Lytvynenko_EN.pdf' },
+        de: { pdf:'assets/cv-de.pdf?v=20261124', name:'Lebenslauf_Oleh_Lytvynenko_DE.pdf' },
+        uk: { pdf:'assets/cv-uk.pdf?v=20261124', name:'Rezyume_Oleh_Lytvynenko_UA.pdf' }
+      };
+      window.CV_PDF = files[lang].pdf;
+      const dl = document.getElementById('cvDownload');
+      dl.setAttribute('href', files[lang].pdf);
+      dl.setAttribute('download', files[lang].name);
       document.documentElement.lang = lang;
       document.getElementById('cvBack').querySelector('span').textContent = t.back;
       document.getElementById('cvBack').setAttribute('aria-label', t.backAria);
@@ -54,6 +63,6 @@
     })();
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="cv.js?v=20261124-1"></script>
+  <script src="cv.js?v=20261124-2"></script>
 </body>
 </html>

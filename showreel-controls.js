@@ -64,48 +64,150 @@
     }
   };
 
+  const isTouch=window.matchMedia('(pointer:coarse)').matches;
+  const canElementFullscreen=!!(card.requestFullscreen||card.webkitRequestFullscreen);
+  const fsElement=()=>document.fullscreenElement||document.webkitFullscreenElement||null;
+  const isFullscreen=()=>card.classList.contains('is-web-fullscreen');
+  const isRotated=()=>card.classList.contains('is-rotated');
+
   const syncVideoBounds=()=>{
-    const cardRect=card.getBoundingClientRect();
+    // offsetWidth/offsetHeight ignore the CSS rotation used for landscape mode
+    const cardW=card.offsetWidth;
+    const cardH=card.offsetHeight;
+    if(!cardW||!cardH)return;
     const sourceW=video.videoWidth||1920;
     const sourceH=video.videoHeight||1200;
     const sourceRatio=sourceW/sourceH;
-    const cardRatio=cardRect.width/cardRect.height;
+    const cardRatio=cardW/cardH;
 
     let displayW;
     let displayH;
     if(cardRatio>sourceRatio){
-      displayH=cardRect.height;
+      displayH=cardH;
       displayW=displayH*sourceRatio;
     }else{
-      displayW=cardRect.width;
+      displayW=cardW;
       displayH=displayW/sourceRatio;
     }
 
-    const left=(cardRect.width-displayW)/2;
-    const top=(cardRect.height-displayH)/2;
+    const left=(cardW-displayW)/2;
+    const top=(cardH-displayH)/2;
     const dividerTop=top+(displayH*0.9);
 
     progress.parentElement.style.left=`${left}px`;
     progress.parentElement.style.width=`${displayW}px`;
     progress.parentElement.style.top=`${dividerTop}px`;
 
-    const buttonSize=fullscreen.getBoundingClientRect().width||38;
-    const inset=card.classList.contains('is-web-fullscreen')?14:14;
+    const buttonSize=fullscreen.offsetWidth||38;
+    const inset=14;
     fullscreen.style.top=`${top+inset}px`;
     fullscreen.style.left=`${left+displayW-buttonSize-inset}px`;
   };
 
-  const setFullscreen=(enabled)=>{
-    card.classList.toggle('is-web-fullscreen',enabled);
-    document.body.classList.toggle('showreel-fullscreen-lock',enabled);
-    fullscreen.setAttribute('aria-label',enabled?'Exit fullscreen':'Enter fullscreen');
+  // Phones held upright (or with rotation lock on): turn the player sideways
+  // so the video fills the screen in landscape.
+  const syncRotation=()=>{
+    const vw=window.innerWidth;
+    const vh=window.innerHeight;
+    card.style.setProperty('--showreel-vw',`${vw}px`);
+    card.style.setProperty('--showreel-vh',`${vh}px`);
+    card.classList.toggle('is-rotated',isFullscreen()&&isTouch&&vh>vw);
     requestAnimationFrame(syncVideoBounds);
   };
 
+  const setFullscreenState=(enabled)=>{
+    card.classList.toggle('is-web-fullscreen',enabled);
+    document.body.classList.toggle('showreel-fullscreen-lock',enabled);
+    fullscreen.setAttribute('aria-label',enabled?'Exit fullscreen':'Enter fullscreen');
+    syncRotation();
+  };
+
+  const enterFullscreen=async()=>{
+    setFullscreenState(true);
+    if(!canElementFullscreen)return; // iPhone Safari: page-level fullscreen only
+    try{
+      if(card.requestFullscreen) await card.requestFullscreen({navigationUI:'hide'});
+      else card.webkitRequestFullscreen();
+    }catch(error){}
+    if(isTouch&&screen.orientation&&screen.orientation.lock){
+      try{await screen.orientation.lock('landscape');}catch(error){}
+    }
+    syncRotation();
+  };
+
+  const exitFullscreen=()=>{
+    if(fsElement()){
+      try{
+        const result=document.exitFullscreen ? document.exitFullscreen() : document.webkitExitFullscreen();
+        if(result&&result.catch) result.catch(()=>{});
+      }catch(error){}
+    }
+    if(screen.orientation&&screen.orientation.unlock){
+      try{screen.orientation.unlock();}catch(error){}
+    }
+    setFullscreenState(false);
+  };
+
+  const toggleFullscreen=()=>{
+    if(isFullscreen()) exitFullscreen();
+    else enterFullscreen();
+  };
+
+  const onFullscreenChange=()=>{
+    if(!fsElement()&&isFullscreen()&&canElementFullscreen) setFullscreenState(false);
+    else syncRotation();
+  };
+  document.addEventListener('fullscreenchange',onFullscreenChange);
+  document.addEventListener('webkitfullscreenchange',onFullscreenChange);
+
   fullscreen.addEventListener('click',(event)=>{
     event.stopPropagation();
-    setFullscreen(!card.classList.contains('is-web-fullscreen'));
+    toggleFullscreen();
   });
+
+  // Scrubbing while the player is rotated: map the finger position along the
+  // rotated bar ourselves, because a rotated range input is unreliable on iOS.
+  const wrap=progress.parentElement;
+  let rotatedScrub=false;
+  const rotatedRatio=(event)=>{
+    const rect=wrap.getBoundingClientRect();
+    return Math.min(1,Math.max(0,(event.clientY-rect.top)/rect.height));
+  };
+  const applyRotatedScrub=(event,commit)=>{
+    const ratio=rotatedRatio(event);
+    progress.value=String(Math.round(ratio*1000));
+    if(commit&&Number.isFinite(video.duration)) video.currentTime=video.duration*ratio;
+    syncTime();
+  };
+  wrap.addEventListener('pointerdown',(event)=>{
+    if(!isRotated())return;
+    event.preventDefault();
+    event.stopPropagation();
+    rotatedScrub=true;
+    scrubbing=true;
+    try{wrap.setPointerCapture(event.pointerId);}catch(error){}
+    applyRotatedScrub(event,false);
+  });
+  wrap.addEventListener('pointermove',(event)=>{
+    if(!rotatedScrub)return;
+    event.preventDefault();
+    applyRotatedScrub(event,false);
+  });
+  const endRotatedScrub=(event)=>{
+    if(!rotatedScrub)return;
+    rotatedScrub=false;
+    scrubbing=false;
+    applyRotatedScrub(event,true);
+    syncPauseState();
+  };
+  wrap.addEventListener('pointerup',endRotatedScrub);
+  wrap.addEventListener('pointercancel',endRotatedScrub);
+  wrap.addEventListener('click',(event)=>event.stopPropagation());
+
+  // Keep the page underneath from scrolling while the player covers the screen.
+  card.addEventListener('touchmove',(event)=>{
+    if(isFullscreen()&&!event.target.closest('.showreel-progress')) event.preventDefault();
+  },{passive:false});
 
   progress.addEventListener('input',(event)=>{
     event.stopPropagation();
@@ -130,21 +232,22 @@
   });
   progress.addEventListener('click',(event)=>event.stopPropagation());
 
+  // One tap/click = play/pause, two quick taps/clicks = fullscreen.
+  // Detected from click timing so it also works on iPhone, where dblclick is unreliable.
   card.addEventListener('click',(event)=>{
     if(event.target.closest('.showreel-fullscreen,.showreel-progress-wrap,.play'))return;
     if(!(card.classList.contains('is-playing')||card.classList.contains('is-paused')))return;
-    clearTimeout(clickTimer);
-    if(event.detail===1){
-      clickTimer=setTimeout(()=>togglePlayback(),260);
+    if(clickTimer){
+      clearTimeout(clickTimer);
+      clickTimer=null;
+      toggleFullscreen();
+      return;
     }
+    clickTimer=setTimeout(()=>{clickTimer=null;togglePlayback();},280);
   });
 
   card.addEventListener('dblclick',(event)=>{
-    if(event.target.closest('.showreel-fullscreen,.showreel-progress-wrap,.play'))return;
     event.preventDefault();
-    event.stopPropagation();
-    clearTimeout(clickTimer);
-    setFullscreen(!card.classList.contains('is-web-fullscreen'));
   });
 
   video.addEventListener('loadedmetadata',()=>{syncTime();syncVideoBounds();});
@@ -156,11 +259,11 @@
   video.addEventListener('ended',()=>{
     syncPauseState();
     syncTime();
-    if(card.classList.contains('is-web-fullscreen')) setFullscreen(false);
+    if(isFullscreen()) exitFullscreen();
   });
 
   document.addEventListener('keydown',(event)=>{
-    if(event.key==='Escape'&&card.classList.contains('is-web-fullscreen')) setFullscreen(false);
+    if(event.key==='Escape'&&isFullscreen()) exitFullscreen();
     if((event.code==='Space'||event.key===' ')&&(card.classList.contains('is-playing')||card.classList.contains('is-paused'))){
       if(document.activeElement===progress||document.activeElement===fullscreen)return;
       event.preventDefault();
@@ -168,7 +271,9 @@
     }
   });
 
-  window.addEventListener('resize',syncVideoBounds);
+  window.addEventListener('resize',syncRotation);
+  window.addEventListener('orientationchange',()=>setTimeout(syncRotation,250));
+  if(window.visualViewport) window.visualViewport.addEventListener('resize',syncRotation);
   if('ResizeObserver' in window){
     new ResizeObserver(syncVideoBounds).observe(card);
   }

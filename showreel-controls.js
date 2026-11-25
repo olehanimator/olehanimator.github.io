@@ -104,14 +104,14 @@
     fullscreen.style.left=`${left+displayW-buttonSize-inset}px`;
   };
 
-  // Phones held upright (or with rotation lock on): turn the player sideways
-  // so the video fills the screen in landscape.
   const syncRotation=()=>{
     const vw=window.innerWidth;
     const vh=window.innerHeight;
     card.style.setProperty('--showreel-vw',`${vw}px`);
     card.style.setProperty('--showreel-vh',`${vh}px`);
-    card.classList.toggle('is-rotated',isFullscreen()&&isTouch&&vh>vw);
+    // Upright phone: video fills the width, centred on black (like YouTube).
+    // Turning the phone (rotation lock off) gives the full landscape view.
+    card.classList.remove('is-rotated');
     requestAnimationFrame(syncVideoBounds);
   };
 
@@ -123,12 +123,6 @@
   };
 
   const enterFullscreen=async()=>{
-    // iPhone (Safari and Chrome): no element fullscreen, so hand the video to the
-    // built-in iOS player. It hides the browser bars, fits the video to the screen
-    // and rotates with the phone when rotation lock is off (same as YouTube).
-    if(!canElementFullscreen&&video.webkitEnterFullscreen){
-      try{video.webkitEnterFullscreen();return;}catch(error){}
-    }
     setFullscreenState(true);
     if(!canElementFullscreen)return; // fallback: page-level fullscreen only
     try{

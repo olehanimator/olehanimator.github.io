@@ -123,8 +123,14 @@
   };
 
   const enterFullscreen=async()=>{
+    // iPhone (Safari and Chrome): no element fullscreen, so hand the video to the
+    // built-in iOS player. It hides the browser bars, fits the video to the screen
+    // and rotates with the phone when rotation lock is off (same as YouTube).
+    if(!canElementFullscreen&&video.webkitEnterFullscreen){
+      try{video.webkitEnterFullscreen();return;}catch(error){}
+    }
     setFullscreenState(true);
-    if(!canElementFullscreen)return; // iPhone Safari: page-level fullscreen only
+    if(!canElementFullscreen)return; // fallback: page-level fullscreen only
     try{
       if(card.requestFullscreen) await card.requestFullscreen({navigationUI:'hide'});
       else card.webkitRequestFullscreen();
